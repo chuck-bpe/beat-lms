@@ -69,13 +69,13 @@ export default async function HomePage() {
         </article>
         <article className="card">
           <p className="eyebrow">v1 Scope</p>
-          <h3>Fast MVP with room to grow</h3>
+          <h3>Live now with room to grow</h3>
           <ul className="clean-list">
-            <li>Invite-only access with future magic-link auth integration</li>
+            <li>Invite-only access with production magic-link authentication</li>
             <li>Shared curriculum for all learners</li>
-            <li>Admin progress dashboard and Slack nudge flow</li>
+            <li>Admin progress dashboard, submission review, and Slack tools</li>
             <li>Prompt library and agent/workflow gallery</li>
-            <li>Seeded lessons for the full 12-week journey</li>
+            <li>Supabase-backed lessons for the full 12-week journey</li>
           </ul>
         </article>
       </section>
@@ -100,7 +100,7 @@ export default async function HomePage() {
             <li>Prompt playground with structured recruiting exercises</li>
             <li>ChatGPT vs Claude side-by-side demos in modules</li>
             <li>Assignments with screenshot, text, and output submissions</li>
-            <li>AI-guided feedback for clarity, rigor, and reuse potential</li>
+            <li>Admin review workflows plus Slack digests and nudges</li>
           </ul>
         </article>
         <article className="card">

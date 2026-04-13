@@ -2,7 +2,6 @@ import Link from "next/link";
 import { redirect } from "next/navigation";
 import { Header } from "@/components/header";
 import { getCurrentUserProfile } from "@/lib/auth";
-import { DebugSession } from "./debug-session";
 import { SignInForm } from "./sign-in-form";
 
 export default async function AuthPage() {
@@ -30,7 +29,7 @@ export default async function AuthPage() {
           <ul className="clean-list">
             <li>Magic link sign-in only</li>
             <li>Invite-only learner access</li>
-            <li>Slack nudges and progress tracking come next</li>
+            <li>Progress tracking, submissions, and Slack support are built in</li>
           </ul>
         </div>
         <div className="card inset-card">
@@ -38,15 +37,14 @@ export default async function AuthPage() {
           <h3>Use your team email</h3>
           <SignInForm />
           <p className="muted">
-            Need help? Start with your admin email first, then we will add the rest of the
-            team to the `users` table.
+            Use one of the approved BEAT team emails. Admins will route to the dashboard
+            automatically after sign-in.
           </p>
           <Link className="text-link" href="/">
             Back to overview
           </Link>
         </div>
       </section>
-      <DebugSession />
     </main>
   );
 }
