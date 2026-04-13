@@ -402,6 +402,10 @@ input {
   margin: 14px 0 18px;
 }
 
+.debug-card {
+  margin-top: 24px;
+}
+
 .review-reviewed {
   background: rgba(15, 118, 110, 0.12);
   color: #0b5954;

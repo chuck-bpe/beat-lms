@@ -2,6 +2,7 @@ import Link from "next/link";
 import { redirect } from "next/navigation";
 import { Header } from "@/components/header";
 import { getCurrentUserProfile } from "@/lib/auth";
+import { DebugSession } from "./debug-session";
 import { SignInForm } from "./sign-in-form";
 
 export default async function AuthPage() {
@@ -45,6 +46,7 @@ export default async function AuthPage() {
           </Link>
         </div>
       </section>
+      <DebugSession />
     </main>
   );
 }

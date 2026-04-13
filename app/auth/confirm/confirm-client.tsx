@@ -17,7 +17,7 @@ export function ConfirmClient() {
       const code = searchParams.get("code");
       const tokenHash = searchParams.get("token_hash");
       const type = searchParams.get("type");
-      const next = searchParams.get("next") ?? "/auth";
+      const next = searchParams.get("next") ?? "/admin";
       const supabase = createClient();
 
       try {
@@ -48,7 +48,7 @@ export function ConfirmClient() {
 
         if (!cancelled) {
           setMessage("Sign-in confirmed. Redirecting...");
-          router.replace(next);
+          window.location.href = next;
         }
       } catch (error) {
         if (!cancelled) {
