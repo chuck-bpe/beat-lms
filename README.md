@@ -34,3 +34,7 @@ BEAT is a web-based internal LMS for a recruiting team learning to use AI more e
 - `SLACK_BOT_TOKEN` should be a Slack bot token with `chat:write`
 - `SLACK_DEFAULT_CHANNEL` should be the Slack channel or channel ID for BEAT digests
 - `CRON_SECRET` protects the cron routes used for automated digests and nudges
+- `vercel.json` defines the production cron schedule
+- Current schedule:
+- Monday at 16:00 UTC sends the admin digest
+- Wednesday at 17:00 UTC sends overdue learner nudges
