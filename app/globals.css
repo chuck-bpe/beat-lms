@@ -406,6 +406,10 @@ input {
   margin-top: 24px;
 }
 
+.auth-exchange-banner {
+  margin-bottom: 24px;
+}
+
 .review-reviewed {
   background: rgba(15, 118, 110, 0.12);
   color: #0b5954;

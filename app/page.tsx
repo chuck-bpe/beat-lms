@@ -1,8 +1,10 @@
 import Link from "next/link";
+import { Suspense } from "react";
 import { Header } from "@/components/header";
 import { WeekCard } from "@/components/week-card";
 import { productPrinciples, promptLibrary, weeks as fallbackWeeks } from "@/lib/beat-data";
 import { getPublishedWeeks } from "@/lib/beat-db";
+import { CodeExchangeListener } from "@/app/auth/code-exchange-listener";
 
 export default async function HomePage() {
   const weeks = await getPublishedWeeks().catch(() => fallbackWeeks);
@@ -11,6 +13,9 @@ export default async function HomePage() {
   return (
     <main className="page-shell">
       <Header />
+      <Suspense fallback={null}>
+        <CodeExchangeListener />
+      </Suspense>
 
       <section className="hero card">
         <div className="hero-copy">
