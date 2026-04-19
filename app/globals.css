@@ -209,6 +209,19 @@ input {
   border-bottom: 1px solid rgba(61, 51, 43, 0.08);
 }
 
+.tight-list li:last-child,
+.clean-list.tight-list li:last-child {
+  padding-bottom: 0;
+  border-bottom: 0;
+}
+
+.ordered-list {
+  margin: 12px 0 0;
+  padding-left: 20px;
+  display: grid;
+  gap: 10px;
+}
+
 .week-heading,
 .cta-row,
 .asset-row,
@@ -254,6 +267,27 @@ input {
 .timeline-row,
 .notice {
   padding: 16px;
+}
+
+.curriculum-stack {
+  display: grid;
+  gap: 16px;
+}
+
+.curriculum-block {
+  display: grid;
+  gap: 10px;
+}
+
+.assignment-guide {
+  display: grid;
+  gap: 12px;
+  margin-bottom: 16px;
+}
+
+.admin-learning-banner {
+  margin-bottom: 24px;
+  background: linear-gradient(135deg, rgba(15, 118, 110, 0.1), rgba(255, 252, 246, 0.96));
 }
 
 .week-card.compact .lesson-row p:last-child {

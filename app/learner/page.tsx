@@ -2,6 +2,7 @@ import { Header } from "@/components/header";
 import { requireUser } from "@/lib/auth";
 import { WeekCard } from "@/components/week-card";
 import { promptLibrary, weeks as fallbackWeeks } from "@/lib/beat-data";
+import { getCurriculumContent } from "@/lib/curriculum-content";
 import { getPublishedWeeksDetailed, type PublishedWeek } from "@/lib/beat-db";
 import { getLearnerProgressSummary, getLearnerSubmissions } from "@/lib/progress-db";
 import { markLessonComplete, submitAssignment } from "./actions";
@@ -34,10 +35,22 @@ export default async function LearnerPage() {
   const upcomingWeeks = progressSummary.weeks.filter((week) => week.week > currentWeek.week).slice(0, 3);
   const submissions = await getLearnerSubmissions(profile.id).catch(() => []);
   const currentAssignment = currentWeek.lessons.find((lesson) => lesson.format === "assignment");
+  const curriculum = getCurriculumContent(currentWeek.week);
 
   return (
     <main className="page-shell">
       <Header />
+
+      {profile.role === "admin" ? (
+        <section className="card admin-learning-banner">
+          <p className="eyebrow">Admin In Learner Mode</p>
+          <h3>You can complete BEAT here too</h3>
+          <p>
+            Your progress and assignment submissions on this page are saved to your own admin account so you can experience
+            the program exactly like a learner while still keeping admin access.
+          </p>
+        </section>
+      ) : null}
 
       <section className="dashboard-grid">
         <article className="card highlight">
@@ -99,19 +112,65 @@ export default async function LearnerPage() {
 
       <section className="split-grid">
         <article className="card">
+          <p className="eyebrow">Week Guide</p>
+          <h3>What this module is actually teaching</h3>
+          {curriculum ? (
+            <div className="curriculum-stack">
+              <p>{curriculum.summary}</p>
+              <div className="curriculum-block">
+                <strong>Key takeaways</strong>
+                <ul className="clean-list tight-list">
+                  {curriculum.lessonTakeaways.map((item) => (
+                    <li key={item}>{item}</li>
+                  ))}
+                </ul>
+              </div>
+              <div className="curriculum-block">
+                <strong>Demo flow</strong>
+                <ol className="ordered-list">
+                  {curriculum.demoSteps.map((step) => (
+                    <li key={step}>{step}</li>
+                  ))}
+                </ol>
+              </div>
+            </div>
+          ) : (
+            <p className="muted">Detailed curriculum notes for this week are not loaded yet.</p>
+          )}
+        </article>
+
+        <article className="card">
           <p className="eyebrow">Assignment Submission</p>
           <h3>Turn in the work for this week</h3>
           {currentAssignment ? (
             <form action={submitAssignment} className="playground-box">
-              <label htmlFor="assignment">
-                {currentAssignment.title}
-              </label>
+              <label htmlFor="assignment">{currentAssignment.title}</label>
+              {curriculum ? (
+                <div className="assignment-guide">
+                  <p className="muted">
+                    <strong>Deliverable:</strong> {curriculum.assignmentDeliverable}
+                  </p>
+                  <ol className="ordered-list">
+                    {curriculum.assignmentSteps.map((step) => (
+                      <li key={step}>{step}</li>
+                    ))}
+                  </ol>
+                  <div className="curriculum-block">
+                    <strong>Reflection prompts</strong>
+                    <ul className="clean-list tight-list">
+                      {curriculum.reflectionPrompts.map((prompt) => (
+                        <li key={prompt}>{prompt}</li>
+                      ))}
+                    </ul>
+                  </div>
+                </div>
+              ) : null}
               <input type="hidden" name="lessonId" value={currentAssignment.id} />
               <input type="hidden" name="moduleId" value={currentWeek.id} />
               <textarea
                 id="assignment"
                 name="content"
-                placeholder="Paste your sourcing notes, outreach draft, workflow redesign, or reflection here."
+                placeholder="Paste your work, reflection, or structured answer here."
               />
               <div className="cta-row">
                 <button className="button primary" type="submit">
@@ -150,23 +209,30 @@ export default async function LearnerPage() {
 
       <section className="split-grid">
         <article className="card">
-          <p className="eyebrow">Prompt Playground</p>
-          <h3>Train on real recruiting work</h3>
-          <div className="playground-box">
-            <label htmlFor="exercise">Practice prompt</label>
-            <textarea
-              id="exercise"
-              defaultValue="You are helping me plan a sourcing sprint for a VP of Product search. Build a target company list, likely candidate backgrounds, and 5 calibration questions."
-            />
-            <div className="cta-row">
-              <button className="button primary" type="button">
-                Run practice
-              </button>
-              <button className="button secondary" type="button">
-                Compare in Claude vs ChatGPT
-              </button>
+          <p className="eyebrow">Check Yourself</p>
+          <h3>Quick review before you move on</h3>
+          {curriculum ? (
+            <div className="curriculum-stack">
+              <div className="curriculum-block">
+                <strong>Quiz-style questions</strong>
+                <ol className="ordered-list">
+                  {curriculum.quizQuestions.map((question) => (
+                    <li key={question}>{question}</li>
+                  ))}
+                </ol>
+              </div>
+              <div className="curriculum-block">
+                <strong>What counts as done</strong>
+                <ul className="clean-list tight-list">
+                  {curriculum.gradingStandard.map((item) => (
+                    <li key={item}>{item}</li>
+                  ))}
+                </ul>
+              </div>
             </div>
-          </div>
+          ) : (
+            <p className="muted">This module check will appear here once detailed curriculum content is available.</p>
+          )}
         </article>
 
         <article className="card">

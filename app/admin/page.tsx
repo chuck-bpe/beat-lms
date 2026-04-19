@@ -1,4 +1,5 @@
 import { Header } from "@/components/header";
+import Link from "next/link";
 import { requireRole } from "@/lib/auth";
 import { learners, weeks as fallbackWeeks } from "@/lib/beat-data";
 import { getPublishedWeeks } from "@/lib/beat-db";
@@ -81,6 +82,20 @@ export default async function AdminPage() {
 
       <section className="split-grid">
         <article className="card">
+          <p className="eyebrow">Learner Mode</p>
+          <h3>Experience BEAT as a learner</h3>
+          <p>
+            You can open the learner experience with your admin account and complete the weekly work yourself. Your admin
+            access stays intact while your own progress and submissions are tracked on the learner side.
+          </p>
+          <div className="cta-row">
+            <Link className="button primary" href="/learner">
+              Open learner mode
+            </Link>
+          </div>
+        </article>
+
+        <article className="card">
           <p className="eyebrow">Learner Progress</p>
           <h3>Week-over-week visibility</h3>
           <div className="table">
@@ -151,8 +166,8 @@ export default async function AdminPage() {
             <li>Modules release weekly by default</li>
             <li>Admin can unlock future modules early</li>
             <li>Each week includes lesson, demo, assignment, and quiz</li>
-            <li>Week 7 centers on the Lovable recruiting dashboard</li>
-            <li>Week 12 capstone produces a reusable recruiting AI system</li>
+            <li>Weeks 1-6 build terminal, Codex, and Claude Code fluency</li>
+            <li>Weeks 7-12 shift into skills, MCP, delegation, evals, and capstone operating habits</li>
           </ul>
           <div className="mini-timeline">
             {weeks.slice(0, 6).map((week) => (

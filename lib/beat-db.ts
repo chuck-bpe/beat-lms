@@ -1,5 +1,5 @@
 import { createClient } from "@/lib/supabase/server";
-import type { Lesson, Week } from "@/lib/beat-data";
+import { weeks as canonicalWeeks, type Lesson, type Week } from "@/lib/beat-data";
 
 type ModuleRow = {
   id: string;
@@ -68,23 +68,32 @@ export async function getPublishedWeeksDetailed(): Promise<PublishedWeek[]> {
 
   const lessonRows = (lessons ?? []) as LessonRow[];
 
-  return moduleRows.map((module) => ({
-    id: module.id,
-    week: module.week_number,
-    title: module.title,
-    theme: module.theme,
-    outcome: module.outcome,
-    badge: module.badge,
-    focus: [],
-    lessons: lessonRows
+  return moduleRows.map((module) => {
+    const canonicalWeek = canonicalWeeks.find((week) => week.week === module.week_number);
+    const moduleLessons = lessonRows
       .filter((lesson) => lesson.module_id === module.id)
       .sort((a, b) => a.position - b.position)
-      .map((lesson) => ({
-        id: lesson.id,
-        title: lesson.title,
-        duration: lesson.duration,
-        format: lesson.format,
-        description: lesson.description
-      }))
-  }));
+      .map((lesson, index) => {
+        const canonicalLesson = canonicalWeek?.lessons[index];
+
+        return {
+          id: lesson.id,
+          title: canonicalLesson?.title ?? lesson.title,
+          duration: canonicalLesson?.duration ?? lesson.duration,
+          format: canonicalLesson?.format ?? lesson.format,
+          description: canonicalLesson?.description ?? lesson.description
+        };
+      });
+
+    return {
+      id: module.id,
+      week: module.week_number,
+      title: canonicalWeek?.title ?? module.title,
+      theme: canonicalWeek?.theme ?? module.theme,
+      outcome: canonicalWeek?.outcome ?? module.outcome,
+      badge: canonicalWeek?.badge ?? module.badge,
+      focus: canonicalWeek?.focus ?? [],
+      lessons: moduleLessons
+    };
+  });
 }

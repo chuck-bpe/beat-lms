@@ -67,409 +67,409 @@ export const learners: Learner[] = [
 export const weeks: Week[] = [
   {
     week: 1,
-    title: "AI Foundations For Recruiters",
-    theme: "Confidence before complexity",
-    outcome: "Build a shared baseline on what AI can do in recruiting and how to work with it safely.",
-    focus: ["AI literacy", "Prompt anatomy", "Recruiting use cases", "Mindset reset"],
+    title: "Terminal Confidence Bootcamp",
+    theme: "Stop being intimidated by the interface",
+    outcome: "Every learner can open a terminal, move around a repo, inspect files, and run a few safe commands without freezing.",
+    focus: ["Terminal basics", "Filesystem navigation", "Reading logs", "Command confidence"],
     badge: "Momentum",
     lessons: [
       {
-        title: "Why AI matters in modern recruiting",
+        title: "Terminal fluency for non-engineers",
         duration: "20 min",
         format: "lesson",
-        description: "Ground the team in practical wins rather than hype."
+        description: "Explain what a shell is, why coding agents rely on terminal workflows, and how to remove fear from basic command use."
       },
       {
-        title: "Claude vs ChatGPT quickstart",
+        title: "Your first 10 useful commands",
         duration: "20 min",
         format: "demo",
-        description: "Show how the same recruiting task behaves in each tool."
+        description: "Walk through pwd, ls, cd, cat, rg, npm run dev, git status, and stopping a running process."
       },
       {
-        title: "Rewrite one sourcing workflow with AI support",
-        duration: "45 min",
+        title: "Run the repo without fear",
+        duration: "60 min",
         format: "assignment",
-        description: "Document the before, after, and time saved."
+        description: "Navigate the BEAT repo, run key commands, start the app locally, and explain what each command did."
       },
       {
-        title: "Confidence check",
-        duration: "10 min",
+        title: "Terminal command check",
+        duration: "15 min",
         format: "quiz",
-        description: "A lightweight pulse check on concepts and comfort."
+        description: "Quick scenarios that confirm the learner can recognize the purpose of basic terminal commands."
       }
     ]
   },
   {
     week: 2,
-    title: "Prompting That Produces Useful Work",
-    theme: "From vague asks to structured outputs",
-    outcome: "Use repeatable prompt patterns that create higher-signal recruiting outputs.",
-    focus: ["Prompt templates", "Role framing", "Constraints", "Output formatting"],
+    title: "Working With AI Coding Agents",
+    theme: "What Codex and Claude Code actually are",
+    outcome: "Learners understand the difference between chat AI and coding agents and can use one coding agent to investigate a real project question.",
+    focus: ["Agentic coding", "Codebase context", "File edits", "Command execution"],
     badge: "Precision",
     lessons: [
       {
-        title: "The recruiter prompt framework",
+        title: "Codex, Claude Code, ChatGPT, and Claude: what each one is for",
         duration: "25 min",
         format: "lesson",
-        description: "A practical formula for sourcing, outreach, and summaries."
+        description: "Teach when to use chat tools versus coding agents and how repo context changes the quality of output."
       },
       {
-        title: "Prompt upgrade lab",
+        title: "One task, two coding agents",
         duration: "20 min",
         format: "demo",
-        description: "Improve weak prompts into reusable team assets."
+        description: "Compare how Codex and Claude Code inspect a real codebase question and improve with follow-up prompts."
       },
       {
-        title: "Create 3 prompts for the BEAT prompt library",
-        duration: "45 min",
+        title: "Investigate a real repo question with one coding agent",
+        duration: "55 min",
         format: "assignment",
-        description: "Contribute prompts the team can reuse immediately."
+        description: "Use Codex or Claude Code to answer a real project question, ask a follow-up, and judge whether the output was actually useful."
       },
       {
-        title: "Prompt pattern check",
-        duration: "10 min",
+        title: "Pick-the-right-tool scenarios",
+        duration: "15 min",
         format: "quiz",
-        description: "Reinforce the mechanics of good prompting."
+        description: "Short scenarios that force the learner to choose between Codex, Claude Code, or general chat tools."
       }
     ]
   },
   {
     week: 3,
-    title: "AI-Powered Sourcing",
-    theme: "Faster pipelines without lower quality",
-    outcome: "Use AI to sharpen search strategy, research targets, and uncover better candidate angles.",
-    focus: ["Search planning", "Profile interpretation", "Boolean support", "Research synthesis"],
+    title: "Prompting For Code And Action",
+    theme: "Ask for work, not essays",
+    outcome: "Learners can write prompts that produce usable code or structured output instead of vague prose.",
+    focus: ["Task framing", "Constraints", "File references", "Acceptance criteria"],
     badge: "Discovery",
     lessons: [
       {
-        title: "Source smarter, not wider",
-        duration: "25 min",
+        title: "Prompts that produce action, not fluff",
+        duration: "20 min",
         format: "lesson",
-        description: "Use AI to structure searches before opening LinkedIn."
+        description: "Introduce a strong task prompt framework built around task, context, constraints, definition of done, and output format."
       },
       {
-        title: "Live sourcing workflow teardown",
+        title: "Prompt surgery",
         duration: "20 min",
         format: "demo",
-        description: "Move from role brief to target list with AI help."
+        description: "Take weak prompts and rewrite them into usable prompts for chat tools and coding agents."
       },
       {
-        title: "Run one real sourcing sprint",
-        duration: "50 min",
+        title: "Write three prompts worth reusing",
+        duration: "60 min",
         format: "assignment",
-        description: "Use BEAT templates and compare results against your usual method."
+        description: "Create one chat prompt, one coding-agent prompt, and one recruiting workflow prompt with clear structure and expected outputs."
       },
       {
-        title: "Sourcing decisions check",
-        duration: "10 min",
+        title: "Prompt repair check",
+        duration: "15 min",
         format: "quiz",
-        description: "Keep the quiz short and confidence-building."
+        description: "Improve weak prompts by adding the missing task, context, constraints, and output format."
       }
     ]
   },
   {
     week: 4,
-    title: "Outreach That Sounds Human",
-    theme: "Quality over generic personalization",
-    outcome: "Create stronger outreach drafts that preserve judgment and voice.",
-    focus: ["Personalization", "Message quality", "Variation", "Call-to-action discipline"],
+    title: "Reading And Reviewing AI Output",
+    theme: "Never accept the first answer blindly",
+    outcome: "Learners can inspect AI-generated output, spot risky changes, and ask for better revisions.",
+    focus: ["Reading patches", "Checking assumptions", "Spotting hallucinations", "Defining done"],
     badge: "Voice",
     lessons: [
       {
-        title: "What great AI-assisted outreach looks like",
-        duration: "20 min",
+        title: "How to review AI work without becoming paranoid",
+        duration: "25 min",
         format: "lesson",
-        description: "Avoid robotic messaging while still moving faster."
+        description: "Teach a lightweight review checklist for deciding whether AI output is correct, usable, and safe."
       },
       {
-        title: "ChatGPT vs Claude outreach comparison",
+        title: "Reviewing a bad output and making it good",
         duration: "20 min",
         format: "demo",
-        description: "Compare tools on tone, structure, and editability."
+        description: "Walk through an output that looks polished but is wrong or incomplete, then improve it with one better follow-up prompt."
       },
       {
-        title: "Draft a 3-message outreach sequence",
-        duration: "50 min",
+        title: "Critique and revise one AI-generated output",
+        duration: "55 min",
         format: "assignment",
-        description: "Produce a reusable outreach pack for one live search."
+        description: "Generate one output, identify at least three issues, write a revision prompt, and compare the improved result."
       },
       {
-        title: "Outreach quality check",
-        duration: "10 min",
+        title: "Quality triage check",
+        duration: "15 min",
         format: "quiz",
-        description: "Confirm the team can spot weak vs strong AI output."
+        description: "Rank outputs by safety and usefulness, then identify the one follow-up that would improve each."
       }
     ]
   },
   {
     week: 5,
-    title: "Candidate Evaluation And Signal Extraction",
-    theme: "Use AI to see signal faster",
-    outcome: "Summarize candidate backgrounds, identify questions, and improve screening consistency.",
-    focus: ["Resume analysis", "Pattern spotting", "Interview preparation", "Risk flags"],
+    title: "Codex In Practice",
+    theme: "Real workflow with Codex",
+    outcome: "Learners can use Codex to investigate, change, and improve a real working project.",
+    focus: ["Local Codex workflow", "Cloud delegation awareness", "Skills", "Worktrees and parallelism"],
     badge: "Signal",
     lessons: [
       {
-        title: "AI as an evaluation copilot",
+        title: "How modern Codex workflows actually scale work",
         duration: "25 min",
         format: "lesson",
-        description: "Focus on signal extraction without outsourcing judgment."
+        description: "Frame Codex as an agentic coding system for investigation, changes, review, and parallel task execution."
       },
       {
-        title: "Scorecard drafting walkthrough",
+        title: "Ask, code, review, and iterate in Codex",
         duration: "20 min",
         format: "demo",
-        description: "Turn resumes and notes into focused interview prep."
+        description: "Show a real task loop in Codex from investigation through change proposal and review."
       },
       {
-        title: "Create an AI-assisted screening template",
-        duration: "45 min",
+        title: "Complete one real repo improvement using Codex",
+        duration: "55 min",
         format: "assignment",
-        description: "Standardize one part of your evaluation process."
+        description: "Use Codex on a real improvement, then submit a short review of what it did well, poorly, and ambiguously."
       },
       {
-        title: "Signal recognition quiz",
+        title: "Codex workflow judgment check",
         duration: "10 min",
         format: "quiz",
-        description: "Short scenarios with practical choices."
+        description: "Scenario-based questions on when Codex is the right tool and what should be reviewed carefully."
       }
     ]
   },
   {
     week: 6,
-    title: "Recruiting Workflow Design",
-    theme: "From isolated prompts to systems",
-    outcome: "Map repeatable recruiting work and identify where AI meaningfully reduces effort.",
-    focus: ["Workflow mapping", "Bottlenecks", "Decision points", "Automation boundaries"],
+    title: "Claude Code In Practice",
+    theme: "Terminal-native development with Claude Code",
+    outcome: "Learners can install, run, and use Claude Code productively inside a project.",
+    focus: ["Installation", "Project context", "Command execution", "Memory and configuration"],
     badge: "Systems",
     lessons: [
       {
-        title: "What makes a workflow AI-ready",
-        duration: "20 min",
-        format: "lesson",
-        description: "Learn where automation helps and where it hurts."
-      },
-      {
-        title: "Workflow redesign session",
+        title: "What Claude Code is especially good at",
         duration: "25 min",
+        format: "lesson",
+        description: "Explain how Claude Code works as a terminal-first coding workflow with files, commands, memory, and connected tools."
+      },
+      {
+        title: "Terminal-first task execution in Claude Code",
+        duration: "20 min",
         format: "demo",
-        description: "Refactor a recruiting process into clear reusable steps."
+        description: "Run a real project task in Claude Code and show how repo context and terminal actions shape the output."
       },
       {
-        title: "Redesign one repeatable workflow",
-        duration: "50 min",
+        title: "Complete one repo task in Claude Code",
+        duration: "55 min",
         format: "assignment",
-        description: "Choose a workflow that matters to current team output."
+        description: "Use Claude Code on one real task, then compare the experience and output quality with Codex."
       },
       {
-        title: "Workflow map check",
+        title: "Compare-and-choose check",
         duration: "10 min",
         format: "quiz",
-        description: "Validate the logic behind strong workflow design."
+        description: "Decide which tasks belong in Claude Code, Codex, or a normal chat workflow."
       }
     ]
   },
   {
     week: 7,
-    title: "Using The Lovable Recruiting Dashboard",
-    theme: "Adoption of the tools already built",
-    outcome: "Make the Lovable recruiting dashboard part of the team’s normal operating rhythm.",
-    focus: ["Tool adoption", "Operating rhythms", "Best practices", "Contribution mindset"],
-    badge: "Adoption",
+    title: "Skills, Reusable Playbooks, And Team Standards",
+    theme: "Turn repeated prompts into reusable assets",
+    outcome: "Learners can define and use structured skills or standardized playbooks instead of repeating themselves.",
+    focus: ["Skills", "Reusable instructions", "Shared conventions", "Team operating standards"],
+    badge: "Standards",
     lessons: [
       {
-        title: "How the dashboard fits the recruiting motion",
+        title: "What should become a skill vs a prompt vs a checklist",
         duration: "20 min",
         format: "lesson",
-        description: "Connect the internal tool to daily team decisions."
+        description: "Teach the difference between one-off prompting and reusable operating assets for team workflows."
       },
       {
-        title: "Dashboard walkthrough",
+        title: "Create a simple recruiting-oriented skill",
         duration: "20 min",
         format: "demo",
-        description: "Show the most useful workflows and expected team behaviors."
+        description: "Walk through a small reusable skill or playbook that standardizes a recurring workflow."
       },
       {
-        title: "Use the dashboard in one live recruiting cycle",
+        title: "Write one reusable skill or operating playbook",
         duration: "50 min",
         format: "assignment",
-        description: "Capture what worked, what was confusing, and what should improve."
+        description: "Create a reusable artifact the team could use again without needing a fresh explanation every time."
       },
       {
-        title: "Dashboard usage pulse",
+        title: "Artifact classification check",
         duration: "10 min",
         format: "quiz",
-        description: "Keep the check-in supportive and fast."
+        description: "Classify examples correctly as prompts, skills, checklists, or operating playbooks."
       }
     ]
   },
   {
     week: 8,
-    title: "Intro To Agents",
-    theme: "Demystify agent thinking",
-    outcome: "Understand what an agent is, where agents help, and how to design one around a real task.",
-    focus: ["Agent concepts", "Tasks vs workflows", "Inputs and outputs", "Guardrails"],
-    badge: "Builder",
+    title: "MCP And Tool-Connected Workflows",
+    theme: "Connect AI to real systems",
+    outcome: "Learners understand what MCP is, why it matters, and where tool-connected workflows become much more useful.",
+    focus: ["MCP basics", "Remote vs local tools", "Risk management", "Prompt injection awareness"],
+    badge: "Connected",
     lessons: [
       {
-        title: "Agents without the intimidation",
+        title: "MCP in plain English",
         duration: "25 min",
         format: "lesson",
-        description: "Translate agent ideas into recruiting language."
+        description: "Explain how connected tools change what AI systems can do and what risks that introduces."
       },
       {
-        title: "Breaking an agent into steps",
+        title: "Inspect a simple MCP-backed workflow",
         duration: "20 min",
         format: "demo",
-        description: "Turn a recruiting task into a practical agent design."
+        description: "Show how a connected workflow can pull information or actions from external systems."
       },
       {
-        title: "Design your first recruiting agent",
+        title: "Map one recruiting workflow for tool connection",
         duration: "50 min",
         format: "assignment",
-        description: "Define purpose, inputs, outputs, review points, and expected value."
+        description: "Choose one recruiting workflow that should use connected tools instead of copy-paste and define its safe boundaries."
       },
       {
-        title: "Agent basics check",
+        title: "MCP safety check",
         duration: "10 min",
         format: "quiz",
-        description: "Short and encouraging concept review."
+        description: "Identify safe versus unsafe MCP usage scenarios and describe the main risks."
       }
     ]
   },
   {
     week: 9,
-    title: "Building Simple Agents",
-    theme: "From design into execution",
-    outcome: "Create a lightweight recruiting agent or structured automation that solves a real team problem.",
-    focus: ["Agent prompts", "Step chaining", "Review loops", "Practical implementation"],
+    title: "Subagents, Delegation, And Parallel Work",
+    theme: "Stop thinking one-thread-at-a-time",
+    outcome: "Learners understand how to break work into independent tasks and delegate effectively.",
+    focus: ["Subagents", "Parallel work", "Task scoping", "Context control"],
     badge: "Execution",
     lessons: [
       {
-        title: "Minimum viable agent design",
+        title: "What good delegation looks like",
         duration: "20 min",
         format: "lesson",
-        description: "Keep scope tight and useful."
+        description: "Teach how to break larger work into isolated tasks with clear ownership, scope, and expected outputs."
       },
       {
-        title: "Real recruiting agent examples",
+        title: "Split a larger problem into agent tasks",
         duration: "20 min",
         format: "demo",
-        description: "Explore simple use cases that save meaningful time."
+        description: "Show how multi-step work can be decomposed into parallel or staged agent tasks."
       },
       {
-        title: "Build a usable micro-agent",
+        title: "Design a multi-step recruiting automation",
         duration: "55 min",
         format: "assignment",
-        description: "Ship a small workflow that you would actually use."
+        description: "Design a workflow where different agents handle research, drafting, and review without stepping on each other."
       },
       {
-        title: "Execution readiness check",
+        title: "Delegation quality check",
         duration: "10 min",
         format: "quiz",
-        description: "A fast confidence checkpoint."
+        description: "Spot the difference between good task decomposition and sloppy delegation."
       }
     ]
   },
   {
     week: 10,
-    title: "Quality Control And AI Judgment",
-    theme: "Trust but verify",
-    outcome: "Recognize weak outputs, hallucinations, and overreach while keeping speed gains.",
-    focus: ["Verification", "Risk spotting", "Editing discipline", "Human oversight"],
+    title: "Evals, Guardrails, And Reliable Output",
+    theme: "Build trust through measurement",
+    outcome: "Learners can define simple evaluation criteria and guardrails for recurring AI workflows.",
+    focus: ["Evals", "Reproducibility", "Guardrails", "Review loops"],
     badge: "Judgment",
     lessons: [
       {
-        title: "The recruiter’s quality bar",
+        title: "How to know whether an AI workflow is actually good",
         duration: "20 min",
         format: "lesson",
-        description: "Use AI confidently without surrendering standards."
+        description: "Introduce lightweight eval criteria, guardrails, and repeatable review loops for recurring team workflows."
       },
       {
-        title: "Bad output teardown",
+        title: "Create a simple eval rubric",
         duration: "20 min",
         format: "demo",
-        description: "Practice catching subtle quality failures."
+        description: "Build a compact eval for a sourcing, outreach, or summarization workflow and show how it improves quality."
       },
       {
-        title: "Audit one AI-assisted workflow",
+        title: "Build a mini eval for one real workflow",
         duration: "50 min",
         format: "assignment",
-        description: "Review an end-to-end process and tighten the weak spots."
+        description: "Create a practical evaluation rubric and guardrail set for one recurring team workflow."
       },
       {
-        title: "Quality control check",
+        title: "Eval design check",
         duration: "10 min",
         format: "quiz",
-        description: "Short practical scenarios."
+        description: "Identify weak evaluation designs and missing guardrails in short practical scenarios."
       }
     ]
   },
   {
     week: 11,
-    title: "Sharing What Works",
-    theme: "Turn individual learning into team leverage",
-    outcome: "Contribute repeatable prompts, workflows, and agent ideas to the whole team.",
-    focus: ["Knowledge sharing", "Template quality", "Internal contribution", "Operational habits"],
+    title: "Recruiting Automations And Micro-Agents",
+    theme: "Build something small that actually saves time",
+    outcome: "Learners can design and implement a lightweight recruiting automation or agent with clear boundaries.",
+    focus: ["Recruiting-specific implementation", "Automation boundaries", "Review checkpoints", "Value measurement"],
     badge: "Contribution",
     lessons: [
       {
-        title: "How strong teams compound AI wins",
+        title: "What a useful recruiting micro-agent actually looks like",
         duration: "20 min",
         format: "lesson",
-        description: "Make good work reusable instead of isolated."
+        description: "Show how a small, well-bounded recruiting automation creates value without becoming a distraction."
       },
       {
-        title: "Prompt and workflow library review",
+        title: "Build a lightweight recruiting workflow",
         duration: "20 min",
         format: "demo",
-        description: "See how reusable assets should be documented."
+        description: "Walk through a small automation around sourcing, research, outreach prep, or note synthesis."
       },
       {
-        title: "Submit one prompt and one workflow to the gallery",
+        title: "Ship one usable recruiting micro-agent",
         duration: "45 min",
         format: "assignment",
-        description: "Package your best work so others can adopt it easily."
+        description: "Design and deliver one lightweight recruiting automation or micro-agent with clear review points and value measurement."
       },
       {
-        title: "Contribution check",
+        title: "Value and safety review",
         duration: "10 min",
         format: "quiz",
-        description: "Reinforce what makes shared assets useful."
+        description: "Assess whether a proposed micro-agent is useful, safe, and realistic for day-to-day team use."
       }
     ]
   },
   {
     week: 12,
-    title: "Capstone: Build A Recruiting AI System",
-    theme: "Confidence through practical delivery",
-    outcome: "Present one real recruiting workflow, prompt pack, or micro-agent that saves time and improves output.",
-    focus: ["Capstone build", "Presentation", "Reflection", "Next-step plan"],
+    title: "Capstone And Operating Rhythm",
+    theme: "From experimentation to team operating system",
+    outcome: "Each learner delivers a real AI-enabled workflow and explains how they will keep improving it.",
+    focus: ["Capstone delivery", "Measurable gains", "Team adoption", "Next-step plan"],
     badge: "Operator",
     lessons: [
       {
-        title: "What a strong capstone looks like",
+        title: "What a strong operating habit looks like after the bootcamp",
         duration: "20 min",
         format: "lesson",
-        description: "Set the bar for something useful, realistic, and adopted."
+        description: "Define what sustained, high-standard AI work should look like after the curriculum ends."
       },
       {
-        title: "Capstone examples",
+        title: "Capstone examples and critique",
         duration: "20 min",
         format: "demo",
-        description: "Review practical recruiting AI builds from the course lens."
+        description: "Review practical builds and explain why some become team habits while others stay one-off experiments."
       },
       {
-        title: "Deliver your capstone",
+        title: "Present one real build",
         duration: "60 min",
         format: "assignment",
-        description: "Show the workflow, explain value, and share what the team can reuse."
+        description: "Deliver a script, skill, automation, connected workflow, or recruiting agent and explain the value clearly."
       },
       {
-        title: "Program reflection",
+        title: "Reflection and next-step commitment",
         duration: "10 min",
         format: "quiz",
-        description: "Close with reflection and next-step commitments."
+        description: "Commit to one concrete operating habit or workflow improvement the learner will carry forward."
       }
     ]
   }
@@ -477,31 +477,31 @@ export const weeks: Week[] = [
 
 export const productPrinciples = [
   "Keep the tone practical, calm, and motivating.",
-  "Teach with real recruiting workflows before abstract theory.",
-  "Lower intimidation while still building true agent capability.",
+  "Teach terminal and coding-agent fluency before abstract AI theory.",
+  "Build comfort with Codex, Claude Code, and modern tool-connected workflows.",
   "Use lightweight accountability through progress, nudges, and milestones.",
-  "Turn team learning into reusable prompts, workflows, and systems."
+  "Turn team learning into reusable prompts, skills, workflows, and systems."
 ];
 
 export const promptLibrary = [
   {
-    title: "Role Intake Clarifier",
+    title: "Repo Investigation Prompt",
     type: "Prompt",
-    summary: "Turn a hiring brief into a sourcing strategy and candidate hypotheses."
+    summary: "Ask a coding agent to explain a code path, find the relevant files, and summarize what actually controls the behavior."
   },
   {
-    title: "Candidate Snapshot Builder",
+    title: "Terminal Confidence Checklist",
     type: "Workflow",
-    summary: "Convert raw profile notes into a concise high-signal summary."
+    summary: "A repeatable sequence for navigating a repo, searching files, starting the app, and confirming what changed."
   },
   {
-    title: "Outreach Sequence Generator",
+    title: "Prompt Surgery Pack",
     type: "Prompt Pack",
-    summary: "Produce a three-touch outreach sequence with tone variants."
+    summary: "Examples of weak prompts upgraded into clear task prompts with context, constraints, and expected output formats."
   },
   {
-    title: "Search Sprint Agent",
+    title: "Recruiting Research Subagent",
     type: "Agent Concept",
-    summary: "Plan sourcing inputs, generate targets, and surface open questions."
+    summary: "A small delegated worker that gathers candidate or market research, then returns only the high-signal summary."
   }
 ];
