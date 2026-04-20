@@ -69,10 +69,14 @@ export default async function CurriculumPage() {
               <p className="curriculum-outcome">{week.outcome}</p>
 
               <div className="chip-row">
-                {week.focus.map((focus) => (
-                  <span className="chip" key={focus}>
+                {week.focus.map((focus, index) => (
+                  <Link
+                    className="chip"
+                    href={`/curriculum/week/${week.week}/lesson/${Math.min(index + 1, week.lessons.length)}`}
+                    key={focus}
+                  >
                     {focus}
-                  </span>
+                  </Link>
                 ))}
               </div>
 

@@ -254,6 +254,16 @@ input {
   background: rgba(215, 240, 236, 0.55);
 }
 
+a.chip {
+  color: var(--ink);
+  text-decoration: none;
+}
+
+a.chip:hover {
+  border-color: var(--accent);
+  color: var(--accent);
+}
+
 .chip-row,
 .asset-list,
 .lesson-list,

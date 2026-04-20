@@ -20,10 +20,10 @@ export function WeekCard({ week, compact = false }: WeekCardProps) {
       <p>{week.outcome}</p>
       {week.focus.length ? (
         <div className="chip-row">
-          {week.focus.map((item) => (
-            <span className="chip" key={item}>
+          {week.focus.map((item, index) => (
+            <Link className="chip" href={`/curriculum/week/${week.week}/lesson/${Math.min(index + 1, week.lessons.length)}`} key={item}>
               {item}
-            </span>
+            </Link>
           ))}
         </div>
       ) : null}
