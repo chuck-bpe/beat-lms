@@ -1,3 +1,4 @@
+import Link from "next/link";
 import { Week } from "@/lib/beat-data";
 
 type WeekCardProps = {
@@ -27,10 +28,12 @@ export function WeekCard({ week, compact = false }: WeekCardProps) {
         </div>
       ) : null}
       <div className="lesson-list">
-        {week.lessons.map((lesson) => (
+        {week.lessons.map((lesson, index) => (
           <div className="lesson-row" key={lesson.title}>
             <div>
-              <strong>{lesson.title}</strong>
+              <Link className="lesson-link" href={`/curriculum/week/${week.week}/lesson/${index + 1}`}>
+                {lesson.title}
+              </Link>
               <p className="muted">
                 {lesson.format} • {lesson.duration}
               </p>

@@ -1,3 +1,4 @@
+import Link from "next/link";
 import { Header } from "@/components/header";
 import { requireUser } from "@/lib/auth";
 import { WeekCard } from "@/components/week-card";
@@ -80,7 +81,7 @@ export default async function LearnerPage() {
           <p className="eyebrow">This week’s checklist</p>
           <h3>Simple, practical, and trackable</h3>
           <ul className="check-list">
-            {currentWeek.lessons.map((lesson) => (
+            {currentWeek.lessons.map((lesson, index) => (
               <li key={lesson.title}>
                 <span
                   className={`check-circle ${
@@ -88,7 +89,9 @@ export default async function LearnerPage() {
                   }`}
                 />
                 <div>
-                  <strong>{lesson.title}</strong>
+                  <Link className="lesson-link" href={`/curriculum/week/${currentWeek.week}/lesson/${index + 1}`}>
+                    {lesson.title}
+                  </Link>
                   <p>
                     {lesson.format} • {lesson.duration}
                   </p>

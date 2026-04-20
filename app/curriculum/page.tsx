@@ -1,3 +1,4 @@
+import Link from "next/link";
 import { Header } from "@/components/header";
 import { requireUser } from "@/lib/auth";
 import { weeks as fallbackWeeks } from "@/lib/beat-data";
@@ -79,11 +80,13 @@ export default async function CurriculumPage() {
                 <section>
                   <strong>Lesson checklist</strong>
                   <div className="lesson-list">
-                    {week.lessons.map((lesson) => (
+                    {week.lessons.map((lesson, index) => (
                       <div className="lesson-row" key={lesson.title}>
                         <span className="pill">{lesson.format}</span>
                         <div>
-                          <strong>{lesson.title}</strong>
+                          <Link className="lesson-link" href={`/curriculum/week/${week.week}/lesson/${index + 1}`}>
+                            {lesson.title}
+                          </Link>
                           <p className="muted">{lesson.duration}</p>
                           <p>{lesson.description}</p>
                         </div>
