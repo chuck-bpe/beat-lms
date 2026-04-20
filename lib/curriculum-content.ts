@@ -1,5 +1,6 @@
 export type WeekCurriculumContent = {
   summary: string;
+  teachingOverview: string[];
   lessonTakeaways: string[];
   demoSteps: string[];
   assignmentDeliverable: string;
@@ -13,6 +14,10 @@ export const curriculumContentByWeek: Record<number, WeekCurriculumContent> = {
   1: {
     summary:
       "Week 1 removes fear from the terminal. The bar is not technical mastery; the bar is basic control: navigate, inspect, run, stop, and explain what happened.",
+    teachingOverview: [
+      "Most people avoid the terminal because it feels opaque, fragile, and easy to mess up. This week reframes it as a direct, readable interface for doing work. Learners do not need to become engineers; they need enough comfort to know where they are, what they are running, and how to stop when something feels uncertain.",
+      "The core mental model is locate, inspect, run, and stop. If a learner can open the project, search for a term, inspect a file, start the app, stop the app, and explain what happened in plain English, they have crossed the threshold that makes Codex and Claude Code much less intimidating."
+    ],
     lessonTakeaways: [
       "The terminal is a direct interface to your computer, not an engineer-only zone.",
       "Most early terminal work falls into four categories: locate, inspect, run, and stop.",
@@ -57,6 +62,10 @@ export const curriculumContentByWeek: Record<number, WeekCurriculumContent> = {
   2: {
     summary:
       "Week 2 teaches tool selection. Learners should understand the difference between general chat AI and coding agents, then use one coding agent to investigate a real repo question.",
+    teachingOverview: [
+      "This week separates normal chat AI from coding-agent work. ChatGPT and Claude are excellent for drafting, comparing, summarizing, and thinking. Codex and Claude Code become more valuable when the work depends on files, commands, repo context, or changes that need review.",
+      "The teaching goal is not to pick a favorite tool. It is to develop judgment. Learners should be able to say why a task belongs in chat, Codex, or Claude Code, then test whether the answer was grounded in the actual project rather than just sounding confident."
+    ],
     lessonTakeaways: [
       "Chat tools are best for brainstorming, drafting, summarizing, and comparison.",
       "Coding agents are best for file-aware, repo-grounded, command-aware work.",
@@ -100,6 +109,10 @@ export const curriculumContentByWeek: Record<number, WeekCurriculumContent> = {
   3: {
     summary:
       "Week 3 upgrades prompting from vague conversation to task design. The focus is clear asks, real constraints, and output shapes that lead to action.",
+    teachingOverview: [
+      "This week teaches that prompting is really task design. A good prompt does not just ask for help; it defines the task, gives context, states constraints, describes what done means, and specifies the output shape. That is what turns AI output from commentary into usable work.",
+      "Learners practice prompt surgery: taking vague asks and making them operational. The point is not to write fancy prompts. The point is to create prompts that another teammate could reuse and that a coding agent or chat tool can act on without guessing the missing standards."
+    ],
     lessonTakeaways: [
       "Strong prompts are built from task, context, constraints, definition of done, and output format.",
       "Weak prompts usually fail because the ask is vague or the success condition is undefined.",
@@ -143,6 +156,10 @@ export const curriculumContentByWeek: Record<number, WeekCurriculumContent> = {
   4: {
     summary:
       "Week 4 teaches review discipline. The team learns to inspect AI outputs for grounding, usefulness, constraints, and risk instead of rewarding polish alone.",
+    teachingOverview: [
+      "This week builds the habit that separates strong operators from passive AI users: review. Polished output can still be wrong, incomplete, ungrounded, or unsafe. Learners need a simple way to inspect work without becoming slow or paranoid.",
+      "The core practice is a lightweight review loop: check grounding, check completeness, check constraints, check usability, and check risk. Then write a targeted revision prompt. The learner should leave knowing that review and revision are part of the workflow, not a sign that the tool failed."
+    ],
     lessonTakeaways: [
       "Polished bad output is more dangerous than obviously bad output.",
       "A strong reviewer checks grounding, completeness, usability, and risk.",
@@ -187,6 +204,10 @@ export const curriculumContentByWeek: Record<number, WeekCurriculumContent> = {
   5: {
     summary:
       "Week 5 is the first true Codex operator week. Learners scope a real task, use Codex on it, and review what came back like an owner rather than a spectator.",
+    teachingOverview: [
+      "This week moves from concept to real Codex usage. Learners scope one small task, let Codex investigate or change something, and then inspect the result. The main lesson is that Codex is not a magic button; it is a workflow for asking, reviewing, iterating, and deciding.",
+      "The teaching standard is ownership. A learner should know what they asked Codex to do, what files or behavior were involved, what changed, what remains uncertain, and what they would verify before trusting the result."
+    ],
     lessonTakeaways: [
       "Codex is most valuable as a workflow for investigation, change, review, and delegation.",
       "Well-scoped tasks are bounded, reviewable, and tied to a real artifact.",
@@ -230,6 +251,10 @@ export const curriculumContentByWeek: Record<number, WeekCurriculumContent> = {
   6: {
     summary:
       "Week 6 makes Claude Code concrete as a terminal-native operating environment. Learners use it on a real task and compare the fit honestly against Codex.",
+    teachingOverview: [
+      "This week introduces Claude Code as a terminal-native way to work inside a project. The goal is for learners to experience how file context, command output, and project structure change the quality of AI help.",
+      "Learners should compare tools by fit, not by hype. Claude Code may feel strongest when terminal context and project navigation matter. Codex may feel stronger for other agentic workflows. The durable skill is knowing how to choose, supervise, and review the tool for the task."
+    ],
     lessonTakeaways: [
       "Claude Code is strongest when actual project files, commands, and context matter.",
       "Terminal-native context changes trust because the tool is grounded in the project itself.",
@@ -273,6 +298,10 @@ export const curriculumContentByWeek: Record<number, WeekCurriculumContent> = {
   7: {
     summary:
       "Week 7 is about compounding. The team learns how to convert repeated work into reusable prompts, checklists, skills, or operating playbooks instead of starting fresh every time.",
+    teachingOverview: [
+      "This week shifts the team from one-off AI wins to reusable operating assets. If someone writes the same prompt three times, explains the same process repeatedly, or uses the same review checklist often, that pattern should probably become a shared asset.",
+      "Learners practice deciding whether something should be a prompt, checklist, skill, or playbook. The best assets are narrow, named, clear about inputs and outputs, and easy for another teammate to use without extra explanation."
+    ],
     lessonTakeaways: [
       "Reusable assets reduce ambiguity, inconsistency, and wasted time.",
       "Prompts, checklists, skills, and playbooks solve different levels of repeated work.",
@@ -316,6 +345,10 @@ export const curriculumContentByWeek: Record<number, WeekCurriculumContent> = {
   8: {
     summary:
       "Week 8 introduces MCP and connected workflows in plain English. The goal is not protocol mastery; it is understanding value, risk, and review boundaries when AI touches real systems.",
+    teachingOverview: [
+      "This week explains connected workflows without turning the program into a protocol class. Learners need to understand why AI becomes more useful when it can access real tools and data, and why that also raises the stakes.",
+      "The practical distinction is copy-paste versus connected work. Connected workflows can reduce friction and improve grounding, but they require clear boundaries, read/write awareness, and human review points. The goal is confident caution, not fear."
+    ],
     lessonTakeaways: [
       "Connected workflows reduce copy-paste and improve grounding.",
       "MCP matters because it connects AI systems to tools and services in structured ways.",
@@ -359,6 +392,10 @@ export const curriculumContentByWeek: Record<number, WeekCurriculumContent> = {
   9: {
     summary:
       "Week 9 teaches delegation and parallel work. Learners learn to break bigger workflows into sensible agent tasks with clear inputs, outputs, and review boundaries.",
+    teachingOverview: [
+      "This week teaches learners how to stop overloading a single prompt or agent with an entire messy workflow. Strong delegation starts by breaking work into pieces that are small enough to execute, review, and combine.",
+      "Learners practice identifying which steps can run in parallel and which must remain sequential. The operator's job becomes context control: define the task, specify inputs and outputs, preserve review boundaries, and synthesize the final result."
+    ],
     lessonTakeaways: [
       "Bad delegation usually fails because the work was badly scoped, not because agents are useless.",
       "Large workflows should be decomposed into reviewable tasks with clear outputs.",
@@ -402,6 +439,10 @@ export const curriculumContentByWeek: Record<number, WeekCurriculumContent> = {
   10: {
     summary:
       "Week 10 introduces evals and guardrails as practical quality systems. The team learns to measure workflows with something stronger than intuition.",
+    teachingOverview: [
+      "This week teaches that reliable AI work needs a quality system. If a team cannot evaluate a workflow, it cannot improve it reliably. Evals do not need to be complicated; they need to be repeatable enough to reveal whether the output is good.",
+      "Learners build a mini rubric and guardrails for one workflow. The aim is to make judgment visible: what counts as correct, useful, constrained, clear, and reviewable. That makes future automation safer and easier to improve."
+    ],
     lessonTakeaways: [
       "If a workflow cannot be evaluated, it cannot be improved reliably.",
       "Evals do not need to be fancy; they need to be repeatable.",
@@ -445,6 +486,10 @@ export const curriculumContentByWeek: Record<number, WeekCurriculumContent> = {
   11: {
     summary:
       "Week 11 is the first true build week for recruiting micro-agents. Learners design something small, bounded, reviewable, and visibly useful.",
+    teachingOverview: [
+      "This week turns the previous skills into a small practical build. The best first micro-agent is not the most impressive one; it is the one that solves a real recurring problem with clear inputs, outputs, review, and value.",
+      "Learners should keep scope tight. A useful sourcing helper, research summarizer, outreach prep workflow, or note synthesis assistant is better than a sprawling agent nobody trusts. The standard is usefulness, reviewability, and adoption."
+    ],
     lessonTakeaways: [
       "The best first agent is small, reviewable, and tied to a real workflow.",
       "Useful beats impressive in early agent design.",
@@ -488,6 +533,10 @@ export const curriculumContentByWeek: Record<number, WeekCurriculumContent> = {
   12: {
     summary:
       "Week 12 turns the program into an operating rhythm. Learners present one real build and identify what habit or system they will actually carry forward.",
+    teachingOverview: [
+      "This week closes the program by turning learning into operating behavior. Learners present one real build or workflow, explain why it matters, show how it should be reviewed, and identify what should continue after the bootcamp.",
+      "The final standard is not spectacle. A strong capstone is useful, bounded, explainable, reusable, and honest about limitations. The best outcome is a team that keeps shipping small, reviewed, AI-enabled improvements after the formal curriculum ends."
+    ],
     lessonTakeaways: [
       "A capstone should be useful, bounded, explainable, and reusable.",
       "The strongest finish is one real build plus one real workflow improvement.",

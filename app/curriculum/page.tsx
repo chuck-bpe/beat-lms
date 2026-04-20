@@ -99,6 +99,12 @@ export default async function CurriculumPage() {
                       <p>{curriculum.summary}</p>
                     </div>
                     <div className="curriculum-block">
+                      <strong>Teaching overview</strong>
+                      {curriculum.teachingOverview.map((paragraph) => (
+                        <p key={paragraph}>{paragraph}</p>
+                      ))}
+                    </div>
+                    <div className="curriculum-block">
                       <strong>Key takeaways</strong>
                       <ul className="clean-list tight-list">
                         {curriculum.lessonTakeaways.map((item) => (
