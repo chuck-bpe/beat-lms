@@ -5,7 +5,7 @@ import { getPublishedWeeksDetailed, type PublishedWeek } from "@/lib/beat-db";
 import { getCurriculumContent } from "@/lib/curriculum-content";
 
 export default async function CurriculumPage() {
-  await requireUser();
+  const profile = await requireUser();
 
   const weeks: PublishedWeek[] = await getPublishedWeeksDetailed().catch(() =>
     fallbackWeeks.map((week) => ({
@@ -99,6 +99,14 @@ export default async function CurriculumPage() {
                       <p>{curriculum.summary}</p>
                     </div>
                     <div className="curriculum-block">
+                      <strong>Learning objectives</strong>
+                      <ul className="clean-list tight-list">
+                        {curriculum.learningObjectives.map((objective) => (
+                          <li key={objective}>{objective}</li>
+                        ))}
+                      </ul>
+                    </div>
+                    <div className="curriculum-block">
                       <strong>Teaching overview</strong>
                       {curriculum.teachingOverview.map((paragraph) => (
                         <p key={paragraph}>{paragraph}</p>
@@ -128,10 +136,24 @@ export default async function CurriculumPage() {
                   </section>
 
                   <section className="curriculum-block">
+                    <strong>Learn by example</strong>
+                    <p>{curriculum.workedExample}</p>
+                  </section>
+
+                  <section className="curriculum-block">
                     <strong>Assignment deliverable</strong>
                     <p>{curriculum.assignmentDeliverable}</p>
                     <ol className="ordered-list">
                       {curriculum.assignmentSteps.map((step) => (
+                        <li key={step}>{step}</li>
+                      ))}
+                    </ol>
+                  </section>
+
+                  <section className="curriculum-block">
+                    <strong>Guided practice</strong>
+                    <ol className="ordered-list">
+                      {curriculum.guidedPractice.map((step) => (
                         <li key={step}>{step}</li>
                       ))}
                     </ol>
@@ -163,6 +185,26 @@ export default async function CurriculumPage() {
                       ))}
                     </ul>
                   </section>
+
+                  <section className="curriculum-block">
+                    <strong>Common mistakes to avoid</strong>
+                    <ul className="clean-list tight-list">
+                      {curriculum.commonMistakes.map((item) => (
+                        <li key={item}>{item}</li>
+                      ))}
+                    </ul>
+                  </section>
+
+                  {profile.role === "admin" ? (
+                    <section className="curriculum-block">
+                      <strong>Facilitator notes</strong>
+                      <ul className="clean-list tight-list">
+                        {curriculum.facilitatorNotes.map((item) => (
+                          <li key={item}>{item}</li>
+                        ))}
+                      </ul>
+                    </section>
+                  ) : null}
                 </div>
               ) : null}
             </article>

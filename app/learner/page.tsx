@@ -118,6 +118,14 @@ export default async function LearnerPage() {
             <div className="curriculum-stack">
               <p>{curriculum.summary}</p>
               <div className="curriculum-block">
+                <strong>Learning objectives</strong>
+                <ul className="clean-list tight-list">
+                  {curriculum.learningObjectives.map((objective) => (
+                    <li key={objective}>{objective}</li>
+                  ))}
+                </ul>
+              </div>
+              <div className="curriculum-block">
                 <strong>Teaching overview</strong>
                 {curriculum.teachingOverview.map((paragraph) => (
                   <p key={paragraph}>{paragraph}</p>
@@ -138,6 +146,10 @@ export default async function LearnerPage() {
                     <li key={step}>{step}</li>
                   ))}
                 </ol>
+              </div>
+              <div className="curriculum-block">
+                <strong>Learn by example</strong>
+                <p>{curriculum.workedExample}</p>
               </div>
             </div>
           ) : (
@@ -161,6 +173,14 @@ export default async function LearnerPage() {
                       <li key={step}>{step}</li>
                     ))}
                   </ol>
+                  <div className="curriculum-block">
+                    <strong>Guided practice</strong>
+                    <ol className="ordered-list">
+                      {curriculum.guidedPractice.map((step) => (
+                        <li key={step}>{step}</li>
+                      ))}
+                    </ol>
+                  </div>
                   <div className="curriculum-block">
                     <strong>Reflection prompts</strong>
                     <ul className="clean-list tight-list">
@@ -235,6 +255,24 @@ export default async function LearnerPage() {
                   ))}
                 </ul>
               </div>
+              <div className="curriculum-block">
+                <strong>Common mistakes to avoid</strong>
+                <ul className="clean-list tight-list">
+                  {curriculum.commonMistakes.map((item) => (
+                    <li key={item}>{item}</li>
+                  ))}
+                </ul>
+              </div>
+              {profile.role === "admin" ? (
+                <div className="curriculum-block">
+                  <strong>Facilitator notes</strong>
+                  <ul className="clean-list tight-list">
+                    {curriculum.facilitatorNotes.map((item) => (
+                      <li key={item}>{item}</li>
+                    ))}
+                  </ul>
+                </div>
+              ) : null}
             </div>
           ) : (
             <p className="muted">This module check will appear here once detailed curriculum content is available.</p>

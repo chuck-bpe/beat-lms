@@ -1,4 +1,4 @@
-export type WeekCurriculumContent = {
+type BaseWeekCurriculumContent = {
   summary: string;
   teachingOverview: string[];
   lessonTakeaways: string[];
@@ -10,7 +10,17 @@ export type WeekCurriculumContent = {
   gradingStandard: string[];
 };
 
-export const curriculumContentByWeek: Record<number, WeekCurriculumContent> = {
+type WeekCurriculumEnhancement = {
+  learningObjectives: string[];
+  workedExample: string;
+  guidedPractice: string[];
+  commonMistakes: string[];
+  facilitatorNotes: string[];
+};
+
+export type WeekCurriculumContent = BaseWeekCurriculumContent & WeekCurriculumEnhancement;
+
+const baseCurriculumContentByWeek: Record<number, BaseWeekCurriculumContent> = {
   1: {
     summary:
       "Week 1 removes fear from the terminal. The bar is not technical mastery; the bar is basic control: navigate, inspect, run, stop, and explain what happened.",
@@ -578,6 +588,307 @@ export const curriculumContentByWeek: Record<number, WeekCurriculumContent> = {
     ]
   }
 };
+
+const curriculumEnhancementsByWeek: Record<number, WeekCurriculumEnhancement> = {
+  1: {
+    learningObjectives: [
+      "Explain what the terminal is and why coding agents use it.",
+      "Run at least six safe terminal commands and explain each one in plain English.",
+      "Start and stop the BEAT app locally without panic."
+    ],
+    workedExample:
+      "Example session: `pwd` shows `/Users/charlesbrotman/Codex/recruiting-ai-lms`; `ls` confirms files like `app`, `lib`, and `package.json`; `rg Slack` finds Slack-related code; `npm run dev` starts the app; `Control + C` stops it. A strong learner explanation says what each command did, not just that they copied it.",
+    guidedPractice: [
+      "Run `pwd`, `ls`, and `git status`; write one sentence explaining each output.",
+      "Use `rg` to find the word `auth`; name one file it appears in.",
+      "Start the app and stop it cleanly, then describe what changed in the terminal."
+    ],
+    commonMistakes: [
+      "Thinking every line of terminal output is an error.",
+      "Copying commands without checking which folder they are in.",
+      "Forgetting that `Control + C` is the normal way to stop a running process."
+    ],
+    facilitatorNotes: [
+      "Do not over-teach shell theory; confidence matters more than coverage.",
+      "Normalize messy output by narrating what can safely be ignored.",
+      "Ask learners to explain commands aloud in plain English."
+    ]
+  },
+  2: {
+    learningObjectives: [
+      "Distinguish chat AI tasks from coding-agent tasks.",
+      "Use Codex or Claude Code to answer one real codebase question.",
+      "Evaluate whether an agent answer is grounded in actual project evidence."
+    ],
+    workedExample:
+      "Example question: `Where does BEAT send Slack messages?` A weak answer gives a generic Slack explanation. A strong agent answer points to `lib/slack.ts`, explains `chat.postMessage`, and names the admin action that calls it.",
+    guidedPractice: [
+      "Write one question that belongs in ChatGPT or Claude chat.",
+      "Write one question that requires Codex or Claude Code because it needs repo context.",
+      "Ask a coding agent one repo question and require it to cite files or commands it used."
+    ],
+    commonMistakes: [
+      "Using a general chat tool when the answer depends on repository files.",
+      "Trusting a confident answer that does not cite project evidence.",
+      "Choosing tools by preference instead of task fit."
+    ],
+    facilitatorNotes: [
+      "Keep the comparison grounded in actual tasks, not model debate.",
+      "Reward learners for identifying uncertainty.",
+      "Push for file references whenever a claim depends on the repo."
+    ]
+  },
+  3: {
+    learningObjectives: [
+      "Write prompts with task, context, constraints, definition of done, and output format.",
+      "Rewrite vague prompts into operational prompts.",
+      "Create prompts that can be reused by teammates."
+    ],
+    workedExample:
+      "Weak prompt: `Make this better.` Strong prompt: `Review this assignment prompt for a non-technical recruiting teammate. Keep it under 2 hours, identify unclear instructions, rewrite it in learner-friendly language, and return: issues, revised prompt, and grading checklist.`",
+    guidedPractice: [
+      "Take one vague prompt and label what is missing.",
+      "Rewrite it with a clear output format.",
+      "Add one constraint that prevents a predictable bad answer."
+    ],
+    commonMistakes: [
+      "Asking for quality without defining what quality means.",
+      "Forgetting to specify the audience or context.",
+      "Using long prompts that still lack a clear deliverable."
+    ],
+    facilitatorNotes: [
+      "Use before/after examples heavily.",
+      "Treat prompt writing as operational design, not wordsmithing.",
+      "Ask learners what the AI would have to guess."
+    ]
+  },
+  4: {
+    learningObjectives: [
+      "Apply a review checklist to AI-generated output.",
+      "Identify grounding, completeness, constraint, usability, and risk issues.",
+      "Write a revision prompt that improves a flawed output."
+    ],
+    workedExample:
+      "Example review: An AI-generated candidate summary sounds polished but invents seniority, omits evidence, and ignores the scorecard. A good reviewer marks those issues, asks for evidence-backed bullets only, and requires unknowns to be labeled explicitly.",
+    guidedPractice: [
+      "Review one AI output and mark three flaws.",
+      "Classify each flaw as grounding, completeness, constraint, usability, or risk.",
+      "Write one revision prompt that targets those flaws directly."
+    ],
+    commonMistakes: [
+      "Mistaking polished tone for correctness.",
+      "Only fixing grammar instead of substance.",
+      "Failing to preserve human judgment on risky decisions."
+    ],
+    facilitatorNotes: [
+      "Show at least one deceptively good bad answer.",
+      "Make learners name the evidence behind their critique.",
+      "Keep review lightweight enough to become a habit."
+    ]
+  },
+  5: {
+    learningObjectives: [
+      "Scope a Codex task small enough to review.",
+      "Use Codex for investigation or implementation on a real repo task.",
+      "Inspect changed files, assumptions, and verification needs."
+    ],
+    workedExample:
+      "Example Codex task: `Find where assignment submissions are created and explain the data flow without editing files.` A strong result names the learner action, server action, `submissions` table insert, and revalidation path.",
+    guidedPractice: [
+      "Convert a broad task into a one-sentence bounded Codex task.",
+      "Ask Codex to investigate before making changes.",
+      "Review its answer for files touched, assumptions, and next verification step."
+    ],
+    commonMistakes: [
+      "Giving Codex a task too broad to review.",
+      "Skipping the investigation step.",
+      "Accepting changes without checking the diff or test output."
+    ],
+    facilitatorNotes: [
+      "Force small scopes this week.",
+      "Ask learners to separate what Codex did from what they verified.",
+      "Make review behavior the graded skill, not just task completion."
+    ]
+  },
+  6: {
+    learningObjectives: [
+      "Describe what makes Claude Code terminal-native.",
+      "Use Claude Code on one project task with file and command context.",
+      "Compare Claude Code and Codex by task fit."
+    ],
+    workedExample:
+      "Example Claude Code task: `Inspect the learner page and explain how progress is calculated. Do not edit files.` A good answer uses actual files, explains the data path, and identifies what would need testing before changing it.",
+    guidedPractice: [
+      "Choose a repo question that needs file context.",
+      "Ask Claude Code to investigate it inside the project.",
+      "Write a compare note explaining whether Codex would have been similar, better, or worse."
+    ],
+    commonMistakes: [
+      "Treating Claude Code like ordinary chat.",
+      "Ignoring terminal output that should affect the answer.",
+      "Comparing tools by vibes instead of task fit."
+    ],
+    facilitatorNotes: [
+      "Emphasize terminal context as the differentiator.",
+      "Ask for concrete examples of files or commands that mattered.",
+      "Keep the comparison practical and non-tribal."
+    ]
+  },
+  7: {
+    learningObjectives: [
+      "Identify repeated work that deserves a reusable asset.",
+      "Choose between prompt, checklist, skill, and playbook.",
+      "Define inputs, outputs, and quality standards for reuse."
+    ],
+    workedExample:
+      "Example reusable asset: A `candidate-research-brief` playbook that takes a LinkedIn profile, role context, and company notes, then returns evidence-backed strengths, risks, questions, and unknowns. It includes a rule to label uncertainty instead of guessing.",
+    guidedPractice: [
+      "List one repeated workflow from your week.",
+      "Classify it as a prompt, checklist, skill, or playbook.",
+      "Write its input requirements and output format."
+    ],
+    commonMistakes: [
+      "Making the asset too broad to reuse.",
+      "Skipping input expectations.",
+      "Creating a prompt when the workflow really needs a checklist or playbook."
+    ],
+    facilitatorNotes: [
+      "Favor narrow reusable assets over ambitious ones.",
+      "Ask whether another teammate could use it without explanation.",
+      "Tie reuse to consistency, not just speed."
+    ]
+  },
+  8: {
+    learningObjectives: [
+      "Explain MCP and connected workflows in plain English.",
+      "Identify when connected context improves AI work.",
+      "Define risk boundaries and review checkpoints for tool-connected workflows."
+    ],
+    workedExample:
+      "Example workflow: Instead of copying candidate notes into chat, a connected workflow retrieves approved notes from a source system, drafts a summary, and requires human review before anything is written back.",
+    guidedPractice: [
+      "Pick one copy-paste workflow.",
+      "Map which system or data source would make it more grounded.",
+      "Mark whether the AI should be read-only or allowed to write."
+    ],
+    commonMistakes: [
+      "Assuming connected means automatically safe.",
+      "Forgetting that write access changes risk.",
+      "Connecting tools before defining review boundaries."
+    ],
+    facilitatorNotes: [
+      "Keep MCP conceptual unless learners are ready for implementation.",
+      "Use read-only versus write-capable as the main safety distinction.",
+      "Make prompt injection and data boundaries concrete."
+    ]
+  },
+  9: {
+    learningObjectives: [
+      "Break a large workflow into smaller delegated tasks.",
+      "Decide which tasks can run in parallel and which must be sequential.",
+      "Define review ownership for each delegated output."
+    ],
+    workedExample:
+      "Example decomposition: For a market-mapping workflow, one agent researches target companies, one drafts outreach angles, one checks quality against criteria, and the human owner approves the final strategy.",
+    guidedPractice: [
+      "Choose a messy workflow and list every step.",
+      "Group steps into three reviewable tasks.",
+      "Label each task as parallel or sequential and assign a reviewer."
+    ],
+    commonMistakes: [
+      "Delegating an entire workflow as one vague task.",
+      "Letting agents share too much irrelevant context.",
+      "Forgetting to define who reviews the final output."
+    ],
+    facilitatorNotes: [
+      "Teach decomposition before tool mechanics.",
+      "Ask learners to name inputs and outputs for every delegated step.",
+      "Reward clean coordination over complexity."
+    ]
+  },
+  10: {
+    learningObjectives: [
+      "Create simple evaluation criteria for an AI workflow.",
+      "Define guardrails that prevent predictable failure modes.",
+      "Use a rubric to judge whether output is ready, needs revision, or should be rejected."
+    ],
+    workedExample:
+      "Example eval: Outreach draft criteria include role relevance, evidence-backed personalization, clear ask, concise length, and no invented facts. Guardrails include no unsupported claims and no personal data beyond approved sources.",
+    guidedPractice: [
+      "Choose one recurring AI output.",
+      "Write four criteria for a good result.",
+      "Add two guardrails and one reject condition."
+    ],
+    commonMistakes: [
+      "Using vague criteria like `good` or `professional`.",
+      "Measuring speed while ignoring correctness.",
+      "Writing guardrails that are too broad to apply."
+    ],
+    facilitatorNotes: [
+      "Keep evals lightweight and reusable.",
+      "Ask learners to test their rubric against one bad example.",
+      "Make reject conditions explicit."
+    ]
+  },
+  11: {
+    learningObjectives: [
+      "Design a small recruiting micro-agent or automation.",
+      "Define inputs, outputs, review steps, value, and risk.",
+      "Keep scope small enough for real adoption."
+    ],
+    workedExample:
+      "Example micro-agent: A sourcing-intake assistant that turns a role brief into target titles, company archetypes, exclusion criteria, and first-pass search strings, then asks a human to approve before sourcing begins.",
+    guidedPractice: [
+      "Name one recurring recruiting problem.",
+      "Define the smallest useful automation for it.",
+      "Write the review step and value measure before describing implementation."
+    ],
+    commonMistakes: [
+      "Trying to build an end-to-end recruiter replacement.",
+      "Skipping the human review step.",
+      "Claiming value without a measurable time or quality improvement."
+    ],
+    facilitatorNotes: [
+      "Push learners toward micro, not mega.",
+      "Require honest risk language.",
+      "Prioritize adoption over impressiveness."
+    ]
+  },
+  12: {
+    learningObjectives: [
+      "Present one useful AI-enabled workflow or build.",
+      "Explain value, limitations, review boundaries, and next version.",
+      "Commit to one durable operating habit after the program."
+    ],
+    workedExample:
+      "Example capstone: A candidate-screening prep workflow that takes approved resume notes, generates evidence-backed questions, flags unknowns, and includes a reviewer checklist. The learner presents time saved, risks, and what version two should improve.",
+    guidedPractice: [
+      "Write a one-paragraph capstone summary.",
+      "List the input, output, review boundary, and value measure.",
+      "Practice explaining one limitation honestly."
+    ],
+    commonMistakes: [
+      "Presenting a flashy demo without a real workflow.",
+      "Ignoring adoption and maintenance.",
+      "Hiding limitations instead of building trust."
+    ],
+    facilitatorNotes: [
+      "Grade clarity and usefulness over sophistication.",
+      "Ask each learner what the team can reuse.",
+      "End with operating habits, not applause."
+    ]
+  }
+};
+
+export const curriculumContentByWeek = Object.fromEntries(
+  Object.entries(baseCurriculumContentByWeek).map(([week, content]) => [
+    Number(week),
+    {
+      ...content,
+      ...curriculumEnhancementsByWeek[Number(week)]
+    }
+  ])
+) as Record<number, WeekCurriculumContent>;
 
 export function getCurriculumContent(week: number) {
   return curriculumContentByWeek[week] ?? null;
