@@ -11,6 +11,7 @@ export function Header() {
       <nav className="top-nav" aria-label="Primary">
         <Link href="/">Overview</Link>
         <Link href="/auth">Sign in</Link>
+        <Link href="/curriculum">Curriculum</Link>
         <Link href="/learner">Learner</Link>
         <Link href="/admin">Admin</Link>
         <SignOutButton />
