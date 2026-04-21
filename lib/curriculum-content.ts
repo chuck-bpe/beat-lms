@@ -48,22 +48,25 @@ const baseCurriculumContentByWeek: Record<number, BaseWeekCurriculumContent> = {
       "Terminal fluency matters because coding agents rely on files, commands, and process output."
     ],
     demoSteps: [
-      "Create a new folder: `mkdir ~/projects/my-first-repo`.",
-      "Move into it: `cd ~/projects/my-first-repo`.",
-      "Initialize a Git repo: `git init`.",
-      "Create a file: `touch README.md`.",
+      "Create the workspace: `mkdir ~/recruiting-workspace && cd ~/recruiting-workspace`.",
+      "Initialize Git: `git init`, then confirm with `git status`.",
+      "Create a file: `touch README.md`, then confirm with `ls`.",
       "Stage and commit: `git add README.md` then `git commit -m 'first commit'`.",
       "Review the history: `git log --oneline`.",
-      "Use `pwd`, `ls`, and `git status` at each step to see the state change."
+      "Open in VS Code: `code .` — show how files appear visually.",
+      "Go to github.com → New repository → name it `recruiting-workspace` → copy the URL.",
+      "Push to GitHub: `git remote add origin [url]` then `git push -u origin main`.",
+      "Confirm: open the GitHub URL in a browser and see the repo live."
     ],
     assignmentDeliverable:
       "A submission with the commands you ran, one terminal screenshot showing `git log`, and a short reflection on what feels less intimidating now.",
     assignmentSteps: [
-      "Open Terminal and create a new project folder.",
-      "Initialize a Git repository inside it.",
-      "Create a README file, stage it, and commit it.",
-      "Run `git log` to confirm your commit exists.",
-      "Write 4–6 sentences explaining what each command did in plain English."
+      "Open Terminal and create a folder called `recruiting-workspace`.",
+      "Run `git init` inside it, create `README.md`, stage and commit it.",
+      "Run `git log --oneline` and take a screenshot showing your commit.",
+      "Open the folder in VS Code with `code .` and confirm you can see the README.",
+      "Create a new GitHub repo named `recruiting-workspace` and push your local repo to it.",
+      "Paste the live GitHub URL in your submission and write 4–6 sentences explaining what each command did."
     ],
     reflectionPrompts: [
       "Which command felt most intuitive?",
@@ -119,18 +122,19 @@ const baseCurriculumContentByWeek: Record<number, BaseWeekCurriculumContent> = {
       "A strong operator evaluates whether the answer was grounded, not just whether it sounded smart."
     ],
     demoSteps: [
-      "Ask both Codex and Claude Code a real BEAT repo question.",
-      "Compare whether each tool references real files and handles uncertainty honestly.",
-      "Ask one follow-up that improves grounding or usefulness.",
+      "Open your recruiting-workspace repo on github.com — this is the project Codex will investigate.",
+      "Ask Codex: 'What files exist in this repo and what does the README contain?'",
+      "Compare: ask Claude chat the same question without the repo — notice the difference in grounding.",
+      "Ask a follow-up in Codex: 'What would make this README more useful for a recruiting team?'",
       "Discuss what each tool did well and where review is still needed."
     ],
     assignmentDeliverable:
-      "A repo-investigation submission with the original prompt, a follow-up prompt, the answer, and a short quality judgment.",
+      "A repo-investigation submission: the original Codex prompt, the answer it gave, a follow-up prompt, and a short judgment on whether the result was grounded in your actual repo.",
     assignmentSteps: [
-      "Choose one real project question about the app.",
-      "Use either Codex or Claude Code to investigate it.",
-      "Ask at least one follow-up prompt.",
-      "Submit the prompts, the answer, and a short note on whether the result was complete, incomplete, or misleading."
+      "Open your recruiting-workspace repo in Codex on platform.openai.com.",
+      "Ask one question about what the repo contains or how it could be improved.",
+      "Ask at least one follow-up that pushes for more specificity.",
+      "Submit both prompts, the answers, and a short note on whether the result was complete, incomplete, or misleading."
     ],
     reflectionPrompts: [
       "Why did you choose that tool?",
@@ -297,10 +301,10 @@ const baseCurriculumContentByWeek: Record<number, BaseWeekCurriculumContent> = {
       "The core practice is a lightweight review loop: check grounding, check completeness, check constraints, check usability, and check risk. Then write a targeted revision prompt. The learner should leave knowing that review and revision are part of the workflow, not a sign that the tool failed."
     ],
     lessonTakeaways: [
-      "Polished bad output is more dangerous than obviously bad output.",
-      "A strong reviewer checks grounding, completeness, usability, and risk.",
-      "The five-question checklist creates consistent review habits.",
-      "Revision is a core skill: reviewers should know how to ask for a better next pass."
+      "Polished bad output is more dangerous than obviously bad output because it passes a quick scan.",
+      "The five-question checklist: grounded? complete? constraints followed? usable? what is the risk?",
+      "These five questions take under two minutes to run and catch the majority of real problems.",
+      "Revision is a core skill: a targeted revision prompt fixes specific weaknesses, not everything at once."
     ],
     demoSteps: [
       "Generate an output that looks polished but contains real flaws.",
@@ -660,36 +664,40 @@ const baseCurriculumContentByWeek: Record<number, BaseWeekCurriculumContent> = {
   },
   8: {
     summary:
-      "Week 8 introduces MCP and connected workflows in plain English. The goal is not protocol mastery; it is understanding value, risk, and review boundaries when AI touches real systems.",
+      "Week 8 moves from MCP theory to actual installation. Learners install the GitHub MCP server, connect it to Claude Code, and run a real recruiting task through it. By the end of this week you have a live connected workflow, not a diagram.",
     teachingOverview: [
-      "This week explains connected workflows without turning the program into a protocol class. Learners need to understand why AI becomes more useful when it can access real tools and data, and why that also raises the stakes.",
-      "The practical distinction is copy-paste versus connected work. Connected workflows can reduce friction and improve grounding, but they require clear boundaries, read/write awareness, and human review points. The goal is confident caution, not fear."
+      "This week draws a hard line between describing MCP and using it. Every learner installs the GitHub MCP server — a free, open-source tool that lets Claude Code read and search your GitHub repos directly. No copy-pasting. No switching tabs. The AI reads your actual repo and answers based on real content.",
+      "The practical lesson is that connected workflows are not harder than copy-paste — they are easier once set up. The risk conversation is equally important: when AI can read a system, it is grounded. When it can write, the stakes rise. This week is read-only, which is the right place to start."
     ],
     lessonTakeaways: [
-      "Connected workflows reduce copy-paste and improve grounding.",
-      "MCP matters because it connects AI systems to tools and services in structured ways.",
-      "When AI can read or write external systems, the risk profile changes.",
-      "Review checkpoints become more important, not less."
+      "MCP servers are installed in minutes with a single terminal command — no coding required.",
+      "The GitHub MCP lets Claude Code search and read your repos without you copying anything.",
+      "Read-only connections improve grounding. Write-capable connections require tighter review.",
+      "Once you have one MCP server running, adding others follows the exact same pattern."
     ],
     demoSteps: [
-      "Describe a manual copy-paste workflow and its limitations.",
-      "Describe the connected version of the same workflow.",
-      "Show what gets better when the tool can access real context.",
-      "Identify where the main risks and review boundaries appear."
+      "Get a GitHub Personal Access Token: github.com → Settings → Developer Settings → Personal Access Tokens → Tokens (classic) → Generate new token → check 'repo' scope → copy the token.",
+      "Install the GitHub MCP in Claude Code: run `claude mcp add github -e GITHUB_PERSONAL_ACCESS_TOKEN=[your-token] -- npx -y @modelcontextprotocol/server-github`",
+      "Verify: run `claude mcp list` and confirm `github` appears.",
+      "Launch Claude Code from inside your recruiting-workspace repo and ask: 'List all files in this repo and summarize what each one contains.'",
+      "Ask a follow-up: 'Based on what you see in this repo, what would make it more useful as a recruiting workspace?'",
+      "Notice: Claude Code is reading your actual GitHub repo, not guessing."
     ],
     assignmentDeliverable:
-      "A mapped workflow showing the current manual version, where connection would help, what systems or data would be involved, and what review step must remain.",
+      "A screenshot of `claude mcp list` showing the GitHub MCP connected, plus a screenshot of Claude Code answering a question that required reading your actual repo, plus a one-paragraph reflection on what changed when AI had real access.",
     assignmentSteps: [
-      "Choose one repeated workflow.",
-      "Describe its current manual version.",
-      "Describe where connected tools would improve it.",
-      "Identify the main risks and the required human review checkpoint."
+      "Generate a GitHub Personal Access Token with 'repo' scope at github.com/settings/tokens.",
+      "Run the install command: `claude mcp add github -e GITHUB_PERSONAL_ACCESS_TOKEN=[your-token] -- npx -y @modelcontextprotocol/server-github`",
+      "Run `claude mcp list` and take a screenshot confirming the connection.",
+      "Launch Claude Code inside your recruiting-workspace repo and ask it a question that requires reading your files.",
+      "Take a screenshot of the grounded answer.",
+      "Write a one-paragraph reflection: what was different about the answer compared to a chat tool with no repo access?"
     ],
     reflectionPrompts: [
-      "What part of the workflow feels most worth connecting?",
-      "What risk worries you most?",
-      "What should remain human-controlled?",
-      "What would make you trust a connected workflow more?"
+      "What was different about the answer when Claude Code had real access to your repo?",
+      "What would you want to connect next — and would it be read-only or write-capable?",
+      "What review step would you want before any write-capable MCP goes live?",
+      "What other MCP servers do you think would be most useful for your recruiting work?"
     ],
     quizQuestions: [
       {
@@ -770,12 +778,12 @@ const baseCurriculumContentByWeek: Record<number, BaseWeekCurriculumContent> = {
       "Show where the final human reviewer still owns the decision."
     ],
     assignmentDeliverable:
-      "A multi-step recruiting automation design with at least three steps, each defined by task, input, output, sequencing, and review owner.",
+      "A screenshot of Claude Code running at least two parallel subagent tasks in your recruiting-workspace repo, plus a one-paragraph reflection on what each agent found and what still required your human review.",
     assignmentSteps: [
-      "Choose a bigger workflow worth decomposing.",
-      "Define at least three steps with clear roles.",
-      "Specify inputs and outputs for each step.",
-      "Label each as parallel or sequential and define who reviews it."
+      "Open Claude Code in your recruiting-workspace repo.",
+      "Type a prompt asking Claude Code to run two tasks in parallel — for example: 'Use the Task tool to run these two tasks in parallel: Task 1 — summarize every file in this repo. Task 2 — review my CLAUDE.md and suggest three improvements. Report both results together.'",
+      "Take a screenshot of the combined subagent output.",
+      "Write a one-paragraph reflection: what did each task find, and what would you still need to verify or decide yourself before acting on either result?"
     ],
     reflectionPrompts: [
       "Where did the original workflow feel overloaded?",
@@ -836,10 +844,10 @@ const baseCurriculumContentByWeek: Record<number, BaseWeekCurriculumContent> = {
       }
     ],
     gradingStandard: [
-      "Decomposes a workflow into sensible steps.",
-      "Defines inputs and outputs clearly.",
-      "Identifies review boundaries.",
-      "Distinguishes parallel from sequential work."
+      "Screenshot shows Claude Code running at least two tasks using the Task tool.",
+      "Reflection accurately describes what each subagent returned.",
+      "Identifies at least one thing that still required human judgment.",
+      "Distinguishes what the agents did from what the learner verified."
     ]
   },
   10: {
@@ -954,12 +962,15 @@ const baseCurriculumContentByWeek: Record<number, BaseWeekCurriculumContent> = {
       "Explain what version two would improve once the first version works."
     ],
     assignmentDeliverable:
-      "A recruiting micro-agent design with the problem, inputs, outputs, review step, value created, and remaining risks clearly described.",
+      "A working Claude Code skill file committed to your recruiting-workspace repo, with a screenshot showing it running successfully inside Claude Code.",
     assignmentSteps: [
-      "Choose one small recurring recruiting problem.",
-      "Define what the automation or micro-agent will do.",
-      "Specify the inputs, outputs, and review point.",
-      "Explain the value and the biggest remaining risk."
+      "Identify one small recurring recruiting workflow you want to automate (sourcing intake, candidate brief, outreach review, etc.).",
+      "Write a skill file as a Markdown file with: a one-sentence description, what input it needs ($ARGUMENTS), and what it should return.",
+      "Save it to `~/.claude/commands/[your-skill-name].md`.",
+      "Test it by running `/[your-skill-name]` inside Claude Code with a real example and take a screenshot.",
+      "Copy it into your recruiting-workspace repo: `cp ~/.claude/commands/[name].md ~/recruiting-workspace/playbooks/[name].md`.",
+      "Commit it: `git add playbooks/[name].md && git commit -m 'add [name] skill'`.",
+      "Submit the skill file contents, the screenshot of it running, and one sentence about the recruiting problem it solves."
     ],
     reflectionPrompts: [
       "Why did you keep the scope this size?",
@@ -1020,10 +1031,10 @@ const baseCurriculumContentByWeek: Record<number, BaseWeekCurriculumContent> = {
       }
     ],
     gradingStandard: [
-      "Defines a small useful scope.",
-      "Specifies inputs and outputs clearly.",
-      "Defines a review step.",
-      "Explains value and risk honestly."
+      "A working skill file is committed to the recruiting-workspace repo.",
+      "Screenshot shows the skill running successfully inside Claude Code.",
+      "The skill file includes what input it takes and what it returns.",
+      "The submitted reflection names the recruiting problem it solves."
     ]
   },
   12: {
@@ -1123,16 +1134,18 @@ const baseCurriculumContentByWeek: Record<number, BaseWeekCurriculumContent> = {
 const curriculumEnhancementsByWeek: Record<number, WeekCurriculumEnhancement> = {
   1: {
     whatThisIs:
-      "The terminal is a text-based way to control your computer. Instead of clicking through folders and apps, you type short commands. In this program, learners use it only for safe basics: finding where they are, seeing what files exist, searching a project, starting a local app, and stopping it.",
+      "The terminal is a text-based way to control your computer. Instead of clicking through folders and apps, you type short commands. In this program, learners use it for safe basics: finding where they are, seeing what files exist, creating a Git repository, and pushing it to GitHub.\n\nWhat you will need before starting this program: (1) A Mac or PC — Mac Terminal is built in; Windows users install Git Bash free at gitforwindows.org. (2) A free GitHub account at github.com. (3) Node.js installed — free at nodejs.org (this also installs npm, which you need for Claude Code). (4) VS Code installed — free at code.visualstudio.com. (5) An Anthropic API key from console.anthropic.com — you will need this in Week 6 for Claude Code; it costs roughly $5–20/month based on usage, not a flat subscription. The only paid tools in this program are Claude.ai and Codex, which you already have.",
     whyThisComesNow:
       "We start here because Codex, Claude Code, and most serious AI coding workflows live around files, commands, and project output. If the terminal feels mysterious, every later week feels harder than it needs to. Week 1 gives learners basic control before asking them to supervise AI.",
     howThisConnectsToAI:
       "AI coding agents do not just chat. They inspect files, run commands, read errors, and propose changes. Learners need enough terminal fluency to understand what the agent is doing and avoid either freezing or trusting it blindly.",
     whatYouWillDoNext: [
-      "Open Terminal and create a new project folder with `mkdir`.",
-      "Run safe commands: `pwd`, `ls`, `cd`, `touch`, `git init`, `git add`, `git commit`, and `git log`.",
-      "Initialize your own Git repository and make your first commit.",
-      "Submit a short reflection explaining what each command did in plain English."
+      "Confirm your setup: Node.js installed (`node -v`), VS Code installed (`code --version`), GitHub account created.",
+      "Open Terminal, create a folder called `recruiting-workspace`, and move into it.",
+      "Run: `git init`, `touch README.md`, `git add README.md`, `git commit -m 'first commit'`, `git log --oneline`.",
+      "Open the folder in VS Code with `code .` — this is how you'll view files visually throughout the course.",
+      "Create a new repo on github.com named `recruiting-workspace`, then push: `git remote add origin [your-url]` and `git push -u origin main`.",
+      "Confirm your repo is live at github.com/[your-username]/recruiting-workspace."
     ],
     plainEnglishVocabulary: [
       "Terminal: the text box where you type commands.",
@@ -1150,15 +1163,18 @@ const curriculumEnhancementsByWeek: Record<number, WeekCurriculumEnhancement> = 
     ],
     learningObjectives: [
       "Explain what the terminal is and why coding agents use it.",
-      "Run at least six safe terminal commands and explain each one in plain English.",
-      "Create a new Git repository, make a first commit, and confirm with `git log`."
+      "Run at least eight safe terminal commands and explain each one in plain English.",
+      "Create a new Git repository, make a first commit, and confirm with `git log`.",
+      "Push your recruiting-workspace repo to GitHub so it is live and ready for Codex in Week 2."
     ],
     workedExample:
-      "Example session: `mkdir ~/projects/my-first-repo` creates the folder; `cd ~/projects/my-first-repo` moves into it; `git init` sets up version control; `touch README.md` creates a file; `git add README.md` stages it; `git commit -m 'first commit'` saves it; `git log --oneline` confirms the history. A strong learner explanation says what each command did, not just that they copied it.",
+      "Full session: `mkdir ~/recruiting-workspace` creates the folder; `cd ~/recruiting-workspace` enters it; `git init` activates version control; `touch README.md` creates a file; `ls` confirms it exists; `git add README.md` stages it; `git commit -m 'first commit'` saves a snapshot; `git log --oneline` shows the history; `code .` opens VS Code; on github.com create a new repo named `recruiting-workspace`, copy the URL, then run `git remote add origin [url]` and `git push -u origin main`. Open the URL in a browser — your repo is now live. This is the repo you will build on for the entire 12-week program.",
     guidedPractice: [
-      "Run `pwd` and `ls` in a new folder; write one sentence explaining each output.",
-      "Run `git init` and confirm with `git status`; describe what changed.",
-      "Create a file, commit it, and confirm it appears in `git log`."
+      "Run `pwd` and `ls` in your new folder; write one sentence explaining each output.",
+      "Run `git init` then `git status`; describe what changed in the output.",
+      "Create a file, commit it, and confirm it appears in `git log`.",
+      "Run `code .` and confirm VS Code opens showing your folder.",
+      "Push to GitHub and confirm the repo is visible at your profile URL."
     ],
     commonMistakes: [
       "Thinking every line of terminal output is an error.",
@@ -1208,12 +1224,12 @@ const curriculumEnhancementsByWeek: Record<number, WeekCurriculumEnhancement> = 
       "Evaluate whether an agent answer is grounded in actual project evidence."
     ],
     workedExample:
-      "Example question: `Where does BEAT send Slack messages?` A weak answer gives a generic Slack explanation. A strong agent answer points to `lib/slack.ts`, explains `chat.postMessage`, and names the admin action that calls it.",
+      "Example: open your recruiting-workspace repo in Codex and ask 'What is in this repo and what is it for?' A weak answer makes something up. A strong answer reads the actual README and file list, reports what it finds, and says 'I only see a README with no content yet — here is what I would suggest adding.' That specificity is what grounded means.",
     guidedPractice: [
-      "Open platform.openai.com, sign in, and navigate to the Codex section — confirm you can see the prompt interface.",
-      "Write one question that belongs in ChatGPT or Claude chat.",
-      "Write one question that requires Codex because it needs repo context.",
-      "Ask Codex one repo question and require it to cite files or commands it used."
+      "Open platform.openai.com, connect your recruiting-workspace repo in Codex, and confirm it can see your files.",
+      "Write one question you could answer with ChatGPT chat (no repo needed).",
+      "Write one question that only Codex can answer well because it requires reading your actual repo.",
+      "Ask Codex that repo question and require it to quote or reference specific file contents."
     ],
     commonMistakes: [
       "Using a general chat tool when the answer depends on repository files.",
@@ -1281,7 +1297,7 @@ const curriculumEnhancementsByWeek: Record<number, WeekCurriculumEnhancement> = 
   },
   4: {
     whatThisIs:
-      "This week is about reviewing AI output. Review means checking whether the answer is grounded, complete, useful, safe, and aligned with the task before you use it.",
+      "This week is about reviewing AI output using a five-question checklist you will keep and use for the rest of the program. The five questions are: (1) Is it grounded — does the answer cite real evidence or files, or is it guessing? (2) Is it complete — does it actually answer what was asked, or does it stop short? (3) Does it follow constraints — did the AI honor the rules you gave it, or did it quietly ignore them? (4) Is it usable — can you act on this without major rework? (5) What is the risk — what could go wrong if this answer is wrong or incomplete? Run these five questions on every significant AI output before you use it.",
     whyThisComesNow:
       "After learners can ask better questions, they need to know how to judge the answers. AI often sounds confident even when it is wrong or incomplete. Review discipline prevents speed from turning into sloppy work.",
     howThisConnectsToAI:
@@ -1311,7 +1327,7 @@ const curriculumEnhancementsByWeek: Record<number, WeekCurriculumEnhancement> = 
       "Write a revision prompt that improves a flawed output."
     ],
     workedExample:
-      "Example review: An AI-generated candidate summary sounds polished but invents seniority, omits evidence, and ignores the scorecard. A good reviewer marks those issues, asks for evidence-backed bullets only, and requires unknowns to be labeled explicitly.",
+      "Apply the checklist to a candidate summary that sounds polished: (1) Grounded? No — it invents seniority that isn't in the resume. (2) Complete? No — it omits three scorecard criteria entirely. (3) Constraints followed? No — you asked for evidence-backed bullets and got prose. (4) Usable? No — you cannot send this to a hiring manager as-is. (5) Risk? High — a hiring manager could make a decision on invented information. Revision prompt: 'Rewrite this using only facts from the resume. Use bullet format. Label anything you cannot confirm as unknown.' That is a targeted fix — not 'make this better.'",
     guidedPractice: [
       "Review one AI output and mark three flaws.",
       "Classify each flaw as grounding, completeness, constraint, usability, or risk.",
@@ -1390,15 +1406,16 @@ const curriculumEnhancementsByWeek: Record<number, WeekCurriculumEnhancement> = 
       "Claude Code shows how AI becomes more useful when it is close to the working environment. Instead of pasting snippets into chat, learners can ask for help inside the project context.",
     whatYouWillDoNext: [
       "Install Claude Code: run `npm install -g @anthropic-ai/claude-code` in your terminal.",
-      "Launch it with `claude` and authenticate using your Anthropic API key from console.anthropic.com.",
-      "Use Claude Code on one real project question or task inside your repo.",
-      "Notice which files, commands, or context mattered.",
+      "Launch with `claude` and authenticate using your Anthropic API key from console.anthropic.com.",
+      "Navigate into your recruiting-workspace repo and ask Claude Code one question about it.",
+      "Create a CLAUDE.md file in your repo root — this gives Claude Code persistent context about your work and preferences.",
+      "Add at least three lines to CLAUDE.md: what this repo is for, your role, and one rule you always want followed.",
       "Compare whether Codex or Claude Code felt better suited and submit a short task-fit judgment."
     ],
     plainEnglishVocabulary: [
       "Terminal-native: designed to work from the command line.",
       "Project context: the files, commands, and structure around the task.",
-      "Memory: persistent instructions or notes a tool can use later.",
+      "CLAUDE.md: a plain text file in your repo root that Claude Code reads before every session — your persistent instructions, context, and rules.",
       "Slash command: a command inside Claude Code that controls or triggers a workflow.",
       "Task fit: whether a tool is well suited to a specific job."
     ],
@@ -1418,12 +1435,13 @@ const curriculumEnhancementsByWeek: Record<number, WeekCurriculumEnhancement> = 
       "Compare Claude Code and Codex by task fit."
     ],
     workedExample:
-      "Installation walkthrough: run `npm install -g @anthropic-ai/claude-code`, then `claude` to launch. On first run it asks for your Anthropic API key — get one at console.anthropic.com. Once authenticated, type a project question like `Explain how progress is calculated in this repo without editing files.` A good answer uses actual files, explains the data path, and identifies what would need testing before changing it.",
+      "Installation walkthrough: run `npm install -g @anthropic-ai/claude-code`, then `claude` to launch. On first run it asks for your Anthropic API key — get one at console.anthropic.com. Navigate to your recruiting-workspace repo with `cd ~/recruiting-workspace` then run `claude`. Ask: 'What is in this repo and how is it structured?' Now create a CLAUDE.md in the repo root. A good CLAUDE.md for a recruiter might read: '# Recruiting Workspace\\n\\nThis is a personal AI productivity repo for a senior GTM recruiter. I use this to store prompts, playbooks, and automation scripts.\\n\\nRules:\\n- Always write prompts in plain English, not code\\n- Label any uncertain output as [UNVERIFIED]\\n- Prefer bullet points over paragraphs in all outputs'. Now ask Claude Code the same question — it reads CLAUDE.md first and shapes every response around your context.",
     guidedPractice: [
-      "Run `npm install -g @anthropic-ai/claude-code` and confirm installation with `claude --version`.",
-      "Launch `claude`, complete authentication with your Anthropic API key, and confirm you can send a message.",
-      "Choose a repo question that needs file context and ask Claude Code to investigate it inside the project.",
-      "Write a compare note explaining whether Codex would have been similar, better, or worse."
+      "Run `npm install -g @anthropic-ai/claude-code` and confirm with `claude --version`.",
+      "Launch `claude`, authenticate with your Anthropic API key, and confirm you can send a message.",
+      "Navigate into your recruiting-workspace repo and ask Claude Code to describe what it sees.",
+      "Create a CLAUDE.md file: run `touch CLAUDE.md`, open it in VS Code with `code .`, and write three lines: what the repo is for, your role, and one rule.",
+      "Ask the same question again and notice how Claude Code's response changes with CLAUDE.md in place."
     ],
     commonMistakes: [
       "Treating Claude Code like ordinary chat.",
@@ -1444,10 +1462,11 @@ const curriculumEnhancementsByWeek: Record<number, WeekCurriculumEnhancement> = 
     howThisConnectsToAI:
       "AI quality improves when instructions, examples, and standards are reusable. Skills and playbooks help the team get more consistent outputs with less repeated explanation.",
     whatYouWillDoNext: [
-      "Identify one repeated workflow.",
-      "Decide whether it should become a prompt, checklist, skill, or playbook.",
-      "Define inputs, outputs, quality standard, and review boundary.",
-      "Submit one reusable operating asset."
+      "Identify one recruiting workflow you repeat at least weekly.",
+      "Decide whether it should be a prompt, checklist, skill, or playbook.",
+      "Create the asset as a Markdown file in your recruiting-workspace repo under a `/playbooks` or `/.claude/commands` folder.",
+      "For a Claude Code skill specifically: create a `.md` file in `~/.claude/commands/` — Claude Code will expose it as a slash command you can invoke with `/filename`.",
+      "Commit the file to your repo and test invoking it."
     ],
     plainEnglishVocabulary: [
       "Reusable asset: a prompt, checklist, or playbook the team can use again.",
@@ -1468,11 +1487,12 @@ const curriculumEnhancementsByWeek: Record<number, WeekCurriculumEnhancement> = 
       "Define inputs, outputs, and quality standards for reuse."
     ],
     workedExample:
-      "Example reusable asset: A `candidate-research-brief` playbook that takes a LinkedIn profile, role context, and company notes, then returns evidence-backed strengths, risks, questions, and unknowns. It includes a rule to label uncertainty instead of guessing.",
+      "Example Claude Code skill — create a file at `~/.claude/commands/candidate-brief.md` with this content: '# Candidate Research Brief\\n\\nGiven: $ARGUMENTS (paste a LinkedIn URL or candidate name and role)\\n\\nResearch this candidate and return:\\n- Evidence-backed strengths (cite sources)\\n- Potential risks or gaps\\n- 3 interview questions based on their background\\n- Anything you cannot confirm labeled as [UNKNOWN]\\n\\nDo not invent information. If you are unsure, say so.' Save the file. Now in Claude Code, type `/candidate-brief Sarah Chen, Senior AE at Salesforce, applying for VP Sales` and it runs the full brief. That is a working skill — not a concept, a real invokable command.",
     guidedPractice: [
-      "List one repeated workflow from your week.",
-      "Classify it as a prompt, checklist, skill, or playbook.",
-      "Write its input requirements and output format."
+      "List one workflow you repeat at least weekly in your recruiting work.",
+      "Classify it: is it a prompt (one-time ask), a checklist (steps to follow), a skill (invokable command), or a playbook (multi-step guide)?",
+      "Write it as a Markdown file and save it to your recruiting-workspace repo under `/playbooks/`.",
+      "If you want it as a Claude Code slash command: save it to `~/.claude/commands/[name].md` and invoke it with `/name` inside Claude Code."
     ],
     commonMistakes: [
       "Making the asset too broad to reuse.",
@@ -1487,16 +1507,16 @@ const curriculumEnhancementsByWeek: Record<number, WeekCurriculumEnhancement> = 
   },
   8: {
     whatThisIs:
-      "This week explains MCP and connected workflows. MCP is a way for AI tools to connect to external tools, services, or data sources in a structured way.",
+      "MCP stands for Model Context Protocol — a standard way to connect AI tools like Claude Code to external systems like GitHub, Slack, Notion, or your ATS. An MCP server is a small program that runs in the background and gives Claude Code live access to a real system. This week you install one for the first time.",
     whyThisComesNow:
-      "Learners first need to understand AI tasks, review, and reusable workflows. Only then does it make sense to discuss connecting AI to real systems, because connected tools increase both usefulness and risk.",
+      "You now know terminal basics, tool selection, prompting, review, Codex, Claude Code, and reusable skills. MCP is the next layer: instead of manually pasting information into AI, the AI reads it directly. This is only safe to introduce now that you have review habits in place.",
     howThisConnectsToAI:
-      "Connected workflows let AI work with real context instead of copy-pasted fragments. That can improve quality, but it also requires permission boundaries, data awareness, and human review.",
+      "Every AI answer is only as good as its context. MCP removes the bottleneck of copy-pasting by giving the AI a live connection to the real information it needs. GitHub MCP means Claude Code can read your repos. A Slack MCP would mean it could read channel history. A Notion MCP would mean it could read your notes.",
     whatYouWillDoNext: [
-      "Choose one manual copy-paste workflow.",
-      "Map where a connected tool would help.",
-      "Identify what data or systems would be involved.",
-      "Define what must remain human-reviewed."
+      "Get a GitHub Personal Access Token at github.com/settings/tokens (takes 2 minutes, free).",
+      "Install the GitHub MCP server with one terminal command using `claude mcp add`.",
+      "Run `claude mcp list` to confirm the connection.",
+      "Ask Claude Code a question that requires reading your actual GitHub repo and verify the answer is grounded."
     ],
     plainEnglishVocabulary: [
       "MCP: Model Context Protocol, a standard way to connect AI tools to external systems.",
@@ -1512,16 +1532,18 @@ const curriculumEnhancementsByWeek: Record<number, WeekCurriculumEnhancement> = 
       }
     ],
     learningObjectives: [
-      "Explain MCP and connected workflows in plain English.",
-      "Identify when connected context improves AI work.",
-      "Define risk boundaries and review checkpoints for tool-connected workflows."
+      "Install the GitHub MCP server using a single terminal command.",
+      "Verify the connection with `claude mcp list` and confirm Claude Code can read your repo.",
+      "Describe the difference between read-only and write-capable MCP access."
     ],
     workedExample:
-      "Example workflow: Instead of copying candidate notes into chat, a connected workflow retrieves approved notes from a source system, drafts a summary, and requires human review before anything is written back.",
+      "Full MCP installation: Go to github.com/settings/tokens → Generate new token (classic) → check the 'repo' scope → copy the token. Then run: `claude mcp add github -e GITHUB_PERSONAL_ACCESS_TOKEN=[your-token] -- npx -y @modelcontextprotocol/server-github`. Verify: run `claude mcp list` and confirm 'github' appears. Now open Claude Code inside your recruiting-workspace repo and ask: 'List all files in this repo and summarize what each one is for.' The answer is grounded in your actual files — not generic advice. That is the difference between chat AI and connected AI.",
     guidedPractice: [
-      "Pick one copy-paste workflow.",
-      "Map which system or data source would make it more grounded.",
-      "Mark whether the AI should be read-only or allowed to write."
+      "Go to github.com/settings/tokens → Generate new token (classic) → check 'repo' scope → copy the token.",
+      "Run the MCP install command in your terminal, substituting your actual token.",
+      "Run `claude mcp list` and confirm `github` appears in the list.",
+      "Launch Claude Code inside your recruiting-workspace repo and ask it to list and describe all your files.",
+      "Compare this grounded answer to what a chat tool would say with no repo access."
     ],
     commonMistakes: [
       "Assuming connected means automatically safe.",
@@ -1529,9 +1551,9 @@ const curriculumEnhancementsByWeek: Record<number, WeekCurriculumEnhancement> = 
       "Connecting tools before defining review boundaries."
     ],
     facilitatorNotes: [
-      "Keep MCP conceptual unless learners are ready for implementation.",
+      "Confirm every learner runs the install command — this is hands-on, not just conceptual.",
       "Use read-only versus write-capable as the main safety distinction.",
-      "Make prompt injection and data boundaries concrete."
+      "Ask learners to describe what was different about the answer when Claude Code had real repo access."
     ]
   },
   9: {
@@ -1542,10 +1564,10 @@ const curriculumEnhancementsByWeek: Record<number, WeekCurriculumEnhancement> = 
     howThisConnectsToAI:
       "Modern AI work often involves parallel research, drafting, checking, and synthesis. The human operator coordinates context, assigns tasks, and owns final judgment.",
     whatYouWillDoNext: [
-      "Choose a messy workflow.",
-      "Break it into at least three smaller tasks.",
-      "Mark which tasks can run in parallel and which must happen in order.",
-      "Define who reviews each output."
+      "Open Claude Code in your recruiting-workspace repo.",
+      "Run a parallel subagent prompt: 'Use the Task tool to run these two tasks in parallel: Task 1 — summarize all files in this repo. Task 2 — review my CLAUDE.md and suggest three improvements. Report both results together.'",
+      "Review the combined output and identify what each subagent found.",
+      "Submit a screenshot of the output and a short reflection on what still required your judgment."
     ],
     plainEnglishVocabulary: [
       "Delegation: assigning a defined piece of work to a person or agent.",
@@ -1561,16 +1583,17 @@ const curriculumEnhancementsByWeek: Record<number, WeekCurriculumEnhancement> = 
       }
     ],
     learningObjectives: [
-      "Break a large workflow into smaller delegated tasks.",
-      "Decide which tasks can run in parallel and which must be sequential.",
-      "Define review ownership for each delegated output."
+      "Run a multi-step task using Claude Code's Task tool to execute parallel subagents.",
+      "Describe the difference between sequential and parallel task execution.",
+      "Review combined subagent output and identify where human judgment is still required."
     ],
     workedExample:
-      "Example decomposition: For a market-mapping workflow, one agent researches target companies, one drafts outreach angles, one checks quality against criteria, and the human owner approves the final strategy.",
+      "Actual subagent execution: Open Claude Code in your recruiting-workspace repo and type: 'Use the Task tool to run these two tasks in parallel: Task 1 — read every file in this repo and list what each one contains. Task 2 — review the CLAUDE.md file and suggest three improvements. Report both results together.' Claude Code spawns two subagents simultaneously. Within seconds it reports back: a file inventory from Task 1 and improvement suggestions from Task 2. You defined the tasks, reviewed the output, and decided what to act on. That is delegation in practice — not a design document.",
     guidedPractice: [
-      "Choose a messy workflow and list every step.",
-      "Group steps into three reviewable tasks.",
-      "Label each task as parallel or sequential and assign a reviewer."
+      "Open Claude Code in your recruiting-workspace repo.",
+      "Write a parallel task prompt using 'Task 1' and 'Task 2' format and send it.",
+      "Review the combined output — identify which task's answer you trust most and why.",
+      "Write one sentence describing what a human must still verify before acting on the output."
     ],
     commonMistakes: [
       "Delegating an entire workflow as one vague task.",
@@ -1640,10 +1663,11 @@ const curriculumEnhancementsByWeek: Record<number, WeekCurriculumEnhancement> = 
     howThisConnectsToAI:
       "AI becomes operational when it is embedded into a real workflow with clear inputs, outputs, review, and value. The best first build is small enough to trust and improve.",
     whatYouWillDoNext: [
-      "Choose one repeated recruiting problem.",
-      "Design a small helper workflow or micro-agent.",
-      "Define inputs, outputs, review boundary, and value measure.",
-      "Submit the design and explain the risk."
+      "Identify one small recurring workflow you want to automate (sourcing intake, candidate brief, outreach review, etc.).",
+      "Write a skill file as a Markdown file with: a one-sentence description, what input it needs, and what it should return.",
+      "Save it to `~/.claude/commands/[your-skill-name].md` and test it with `/[your-skill-name]` inside Claude Code.",
+      "Copy it into your recruiting-workspace repo under `/playbooks/` and commit it.",
+      "Submit the skill file, a screenshot of it running, and one sentence about what recruiting problem it solves."
     ],
     plainEnglishVocabulary: [
       "Micro-agent: a small AI helper for a narrow workflow.",
@@ -1664,11 +1688,12 @@ const curriculumEnhancementsByWeek: Record<number, WeekCurriculumEnhancement> = 
       "Keep scope small enough for real adoption."
     ],
     workedExample:
-      "Example micro-agent: A sourcing-intake assistant that turns a role brief into target titles, company archetypes, exclusion criteria, and first-pass search strings, then asks a human to approve before sourcing begins.",
+      "Working skill file — save this to `~/.claude/commands/intake.md`:\n\n# Intake Brief\n\nGiven: $ARGUMENTS (paste the job title, hiring manager, and 2-3 sentences about the role)\n\nReturn:\n- Target job titles (3-5 variations)\n- Company archetypes to source from\n- Must-have and nice-to-have criteria\n- Exclusion criteria\n- 3 initial Boolean search strings\n\nDo not invent criteria. If the brief is unclear, ask one clarifying question before outputting.\n\nRun it: inside Claude Code type `/intake VP of Sales, SaaS startup, Series B, must have closed $500k+ enterprise deals`. Claude Code reads the skill file and executes it. Then commit it: `cp ~/.claude/commands/intake.md ~/recruiting-workspace/playbooks/intake.md && git add playbooks/intake.md && git commit -m 'add intake skill'`. That is a working, committed, reusable skill — not a design.",
     guidedPractice: [
-      "Name one recurring recruiting problem.",
-      "Define the smallest useful automation for it.",
-      "Write the review step and value measure before describing implementation."
+      "Write your skill file: start with a one-sentence description, then list what input it takes and what it returns.",
+      "Save it to `~/.claude/commands/[your-skill-name].md`.",
+      "Run it inside Claude Code with `/[your-skill-name]` and a real recruiting example.",
+      "Copy it into your recruiting-workspace repo and commit it with `git add` and `git commit`."
     ],
     commonMistakes: [
       "Trying to build an end-to-end recruiter replacement.",

@@ -307,27 +307,27 @@ export const weeks: Week[] = [
     week: 8,
     title: "MCP And Tool-Connected Workflows",
     theme: "Connect AI to real systems",
-    outcome: "Learners understand what MCP is, why it matters, and where tool-connected workflows become much more useful.",
-    focus: ["MCP basics", "Remote vs local tools", "Risk management", "Prompt injection awareness"],
+    outcome: "Learners install and configure the GitHub MCP server and run a real connected workflow through Claude Code.",
+    focus: ["MCP installation", "GitHub MCP", "Connected workflows", "Read-only vs write-capable access"],
     badge: "Connected",
     lessons: [
       {
         title: "MCP in plain English",
         duration: "25 min",
         format: "lesson",
-        description: "Explain how connected tools change what AI systems can do and what risks that introduces."
+        description: "Explain how MCP connects AI to external systems, and why read-only versus write-capable access matters."
       },
       {
-        title: "Inspect a simple MCP-backed workflow",
+        title: "Install and configure the GitHub MCP server",
         duration: "20 min",
         format: "demo",
-        description: "Show how a connected workflow can pull information or actions from external systems."
+        description: "Step-by-step: get a GitHub Personal Access Token, run the MCP install command, and verify the connection with `claude mcp list`."
       },
       {
-        title: "Map one recruiting workflow for tool connection",
+        title: "Connect Claude Code to your GitHub repo via MCP",
         duration: "50 min",
         format: "assignment",
-        description: "Choose one recruiting workflow that should use connected tools instead of copy-paste and define its safe boundaries."
+        description: "Install the GitHub MCP, verify it with `claude mcp list`, and ask Claude Code a question that requires reading your actual repo — with screenshot proof."
       },
       {
         title: "MCP safety check",
@@ -341,7 +341,7 @@ export const weeks: Week[] = [
     week: 9,
     title: "Subagents, Delegation, And Parallel Work",
     theme: "Stop thinking one-thread-at-a-time",
-    outcome: "Learners understand how to break work into independent tasks and delegate effectively.",
+    outcome: "Learners run real parallel subagents in Claude Code and review the combined output.",
     focus: ["Subagents", "Parallel work", "Task scoping", "Context control"],
     badge: "Execution",
     lessons: [
@@ -352,16 +352,16 @@ export const weeks: Week[] = [
         description: "Teach how to break larger work into isolated tasks with clear ownership, scope, and expected outputs."
       },
       {
-        title: "Split a larger problem into agent tasks",
+        title: "Run parallel subagents in Claude Code",
         duration: "20 min",
         format: "demo",
-        description: "Show how multi-step work can be decomposed into parallel or staged agent tasks."
+        description: "Use Claude Code's Task tool to run two tasks in parallel and show how the combined output differs from a single sequential prompt."
       },
       {
-        title: "Design a multi-step recruiting automation",
+        title: "Run and review parallel subagents in your repo",
         duration: "55 min",
         format: "assignment",
-        description: "Design a workflow where different agents handle research, drafting, and review without stepping on each other."
+        description: "Use Claude Code to run at least two parallel subagent tasks in your recruiting-workspace repo and submit a screenshot with a reflection on what required human review."
       },
       {
         title: "Delegation quality check",
@@ -409,27 +409,27 @@ export const weeks: Week[] = [
     week: 11,
     title: "Recruiting Automations And Micro-Agents",
     theme: "Build something small that actually saves time",
-    outcome: "Learners can design and implement a lightweight recruiting automation or agent with clear boundaries.",
-    focus: ["Recruiting-specific implementation", "Automation boundaries", "Review checkpoints", "Value measurement"],
+    outcome: "Learners build and commit a working Claude Code skill file that automates one recruiting workflow.",
+    focus: ["Skill file creation", "Claude Code slash commands", "Automation boundaries", "Committing working artifacts"],
     badge: "Contribution",
     lessons: [
       {
         title: "What a useful recruiting micro-agent actually looks like",
         duration: "20 min",
         format: "lesson",
-        description: "Show how a small, well-bounded recruiting automation creates value without becoming a distraction."
+        description: "Show how a small, well-bounded Claude Code skill file creates reusable value for a recruiting workflow."
       },
       {
-        title: "Build a lightweight recruiting workflow",
+        title: "Build and invoke a Claude Code skill file",
         duration: "20 min",
         format: "demo",
-        description: "Walk through a small automation around sourcing, research, outreach prep, or note synthesis."
+        description: "Create a Markdown skill file in `~/.claude/commands/`, invoke it with a slash command, and commit it to the repo."
       },
       {
-        title: "Ship one usable recruiting micro-agent",
+        title: "Ship one working recruiting skill file",
         duration: "45 min",
         format: "assignment",
-        description: "Design and deliver one lightweight recruiting automation or micro-agent with clear review points and value measurement."
+        description: "Build a Claude Code skill file for one recruiting workflow, test it with a real example, and commit it to your recruiting-workspace repo — with screenshot proof."
       },
       {
         title: "Value and safety review",
