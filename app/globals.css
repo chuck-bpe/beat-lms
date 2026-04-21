@@ -292,6 +292,20 @@ a.chip:hover {
   border-color: var(--accent);
 }
 
+.beginner-brief {
+  margin-bottom: 24px;
+  background: linear-gradient(135deg, rgba(245, 187, 101, 0.12), rgba(255, 252, 246, 0.98));
+}
+
+.resource-link {
+  color: var(--ink);
+  text-decoration: none;
+}
+
+.resource-link:hover strong {
+  color: var(--accent);
+}
+
 .lesson-action-note {
   margin: 16px 0;
 }

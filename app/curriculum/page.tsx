@@ -106,6 +106,18 @@ export default async function CurriculumPage() {
                       <p>{curriculum.summary}</p>
                     </div>
                     <div className="curriculum-block">
+                      <strong>Start here</strong>
+                      <p>
+                        <strong>What this is:</strong> {curriculum.whatThisIs}
+                      </p>
+                      <p>
+                        <strong>Why now:</strong> {curriculum.whyThisComesNow}
+                      </p>
+                      <p>
+                        <strong>AI connection:</strong> {curriculum.howThisConnectsToAI}
+                      </p>
+                    </div>
+                    <div className="curriculum-block">
                       <strong>Learning objectives</strong>
                       <ul className="clean-list tight-list">
                         {curriculum.learningObjectives.map((objective) => (
@@ -162,6 +174,15 @@ export default async function CurriculumPage() {
                     <ol className="ordered-list">
                       {curriculum.guidedPractice.map((step) => (
                         <li key={step}>{step}</li>
+                      ))}
+                    </ol>
+                  </section>
+
+                  <section className="curriculum-block">
+                    <strong>What learners will do next</strong>
+                    <ol className="ordered-list">
+                      {curriculum.whatYouWillDoNext.map((item) => (
+                        <li key={item}>{item}</li>
                       ))}
                     </ol>
                   </section>

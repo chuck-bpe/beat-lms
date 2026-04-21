@@ -82,6 +82,33 @@ export default async function LessonPage({ params }: LessonPageProps) {
         </div>
       </section>
 
+      <section className="card beginner-brief">
+        <p className="eyebrow">Start Here</p>
+        <h3>Before you begin this lesson</h3>
+        <div className="curriculum-detail-grid">
+          <div className="curriculum-block">
+            <strong>What is this?</strong>
+            <p>{curriculum.whatThisIs}</p>
+          </div>
+          <div className="curriculum-block">
+            <strong>Why are we starting here?</strong>
+            <p>{curriculum.whyThisComesNow}</p>
+          </div>
+          <div className="curriculum-block">
+            <strong>How does this relate to AI?</strong>
+            <p>{curriculum.howThisConnectsToAI}</p>
+          </div>
+          <div className="curriculum-block">
+            <strong>What will you be asked to do next?</strong>
+            <ol className="ordered-list">
+              {curriculum.whatYouWillDoNext.map((item) => (
+                <li key={item}>{item}</li>
+              ))}
+            </ol>
+          </div>
+        </div>
+      </section>
+
       <section className="split-grid">
         <article className="card">
           <p className="eyebrow">Learning Objectives</p>
@@ -193,6 +220,34 @@ export default async function LessonPage({ params }: LessonPageProps) {
               <li key={item}>{item}</li>
             ))}
           </ul>
+        </article>
+      </section>
+
+      <section className="split-grid">
+        <article className="card">
+          <p className="eyebrow">Plain English Vocabulary</p>
+          <h3>Terms you should know</h3>
+          <ul className="clean-list tight-list">
+            {curriculum.plainEnglishVocabulary.map((item) => (
+              <li key={item}>{item}</li>
+            ))}
+          </ul>
+        </article>
+
+        <article className="card">
+          <p className="eyebrow">Optional Resources</p>
+          <h3>If you want more context</h3>
+          <div className="asset-list">
+            {curriculum.recommendedResources.map((resource) => (
+              <a className="asset-row resource-link" href={resource.url} key={resource.url} rel="noreferrer" target="_blank">
+                <span className="pill">Resource</span>
+                <div>
+                  <strong>{resource.label}</strong>
+                  <p>{resource.url}</p>
+                </div>
+              </a>
+            ))}
+          </div>
         </article>
       </section>
 

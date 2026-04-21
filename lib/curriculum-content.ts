@@ -11,6 +11,15 @@ type BaseWeekCurriculumContent = {
 };
 
 type WeekCurriculumEnhancement = {
+  whatThisIs: string;
+  whyThisComesNow: string;
+  howThisConnectsToAI: string;
+  whatYouWillDoNext: string[];
+  plainEnglishVocabulary: string[];
+  recommendedResources: {
+    label: string;
+    url: string;
+  }[];
   learningObjectives: string[];
   workedExample: string;
   guidedPractice: string[];
@@ -591,6 +600,32 @@ const baseCurriculumContentByWeek: Record<number, BaseWeekCurriculumContent> = {
 
 const curriculumEnhancementsByWeek: Record<number, WeekCurriculumEnhancement> = {
   1: {
+    whatThisIs:
+      "The terminal is a text-based way to control your computer. Instead of clicking through folders and apps, you type short commands. In this program, learners use it only for safe basics: finding where they are, seeing what files exist, searching a project, starting a local app, and stopping it.",
+    whyThisComesNow:
+      "We start here because Codex, Claude Code, and most serious AI coding workflows live around files, commands, and project output. If the terminal feels mysterious, every later week feels harder than it needs to. Week 1 gives learners basic control before asking them to supervise AI.",
+    howThisConnectsToAI:
+      "AI coding agents do not just chat. They inspect files, run commands, read errors, and propose changes. Learners need enough terminal fluency to understand what the agent is doing and avoid either freezing or trusting it blindly.",
+    whatYouWillDoNext: [
+      "Open Terminal and get oriented in a project folder.",
+      "Run safe commands like `pwd`, `ls`, `cd`, `cat`, `rg`, `npm run dev`, and `git status`.",
+      "Start and stop the BEAT app locally.",
+      "Submit a short reflection explaining what each command did in plain English."
+    ],
+    plainEnglishVocabulary: [
+      "Terminal: the text box where you type commands.",
+      "Command: an instruction you type, like `ls` or `git status`.",
+      "Directory: another word for folder.",
+      "Path: the location of a file or folder.",
+      "Process: a program currently running, like a local web app.",
+      "Output: what the computer prints back after a command."
+    ],
+    recommendedResources: [
+      {
+        label: "GitHub Docs: About Git",
+        url: "https://docs.github.com/en/get-started/using-git/about-git"
+      }
+    ],
     learningObjectives: [
       "Explain what the terminal is and why coding agents use it.",
       "Run at least six safe terminal commands and explain each one in plain English.",
@@ -615,6 +650,35 @@ const curriculumEnhancementsByWeek: Record<number, WeekCurriculumEnhancement> = 
     ]
   },
   2: {
+    whatThisIs:
+      "This week is about choosing the right AI tool for the job. ChatGPT and Claude are conversational tools. Codex and Claude Code are coding agents that can work with actual project files, commands, and codebase context.",
+    whyThisComesNow:
+      "After learners understand the terminal at a basic level, they can understand why coding agents are different from ordinary chat. This prevents the common mistake of using one AI tool for every task.",
+    howThisConnectsToAI:
+      "Modern AI work is increasingly tool-specific. The skill is not just asking AI a question; it is deciding whether the task needs general reasoning, file awareness, command execution, or code changes.",
+    whatYouWillDoNext: [
+      "Compare a chat-style task with a coding-agent task.",
+      "Use Codex or Claude Code to investigate one real project question.",
+      "Ask a follow-up that forces the answer to become more grounded.",
+      "Submit a short judgment on whether the answer was useful, incomplete, or misleading."
+    ],
+    plainEnglishVocabulary: [
+      "Chat tool: an AI conversation tool for drafting, explaining, summarizing, or brainstorming.",
+      "Coding agent: an AI tool that can inspect files, run commands, and help change code.",
+      "Repo: short for repository, the folder/project where code lives.",
+      "Grounded answer: an answer based on real project evidence instead of generic guessing.",
+      "Follow-up prompt: a second instruction that improves or narrows the first answer."
+    ],
+    recommendedResources: [
+      {
+        label: "OpenAI Codex cloud docs",
+        url: "https://platform.openai.com/docs/codex"
+      },
+      {
+        label: "Claude Code overview",
+        url: "https://docs.anthropic.com/en/docs/claude-code/overview"
+      }
+    ],
     learningObjectives: [
       "Distinguish chat AI tasks from coding-agent tasks.",
       "Use Codex or Claude Code to answer one real codebase question.",
@@ -639,6 +703,35 @@ const curriculumEnhancementsByWeek: Record<number, WeekCurriculumEnhancement> = 
     ]
   },
   3: {
+    whatThisIs:
+      "Prompting is the practice of giving AI a clear task. In this course, prompting is not about clever wording. It is about defining the work well enough that the AI can produce something usable.",
+    whyThisComesNow:
+      "Once learners know which tool to use, the next skill is giving that tool a good task. Weak prompts create vague outputs. Strong prompts make the expected work, context, constraints, and output format clear.",
+    howThisConnectsToAI:
+      "AI tools are powerful but literal in the wrong ways. If learners leave out the audience, constraints, source material, definition of done, or output format, the model fills gaps with assumptions.",
+    whatYouWillDoNext: [
+      "Look at weak prompts and identify what is missing.",
+      "Rewrite prompts with task, context, constraints, definition of done, and output format.",
+      "Create prompts for chat, coding-agent, and recruiting workflows.",
+      "Submit prompts that another teammate could reuse."
+    ],
+    plainEnglishVocabulary: [
+      "Task: what you want the AI to do.",
+      "Context: background the AI needs to do the task well.",
+      "Constraint: a rule or boundary the AI must follow.",
+      "Definition of done: how you know the answer is complete.",
+      "Output format: the shape of the answer, such as bullets, table, checklist, or JSON."
+    ],
+    recommendedResources: [
+      {
+        label: "OpenAI prompt engineering guide",
+        url: "https://platform.openai.com/docs/guides/prompt-engineering"
+      },
+      {
+        label: "Anthropic prompt engineering overview",
+        url: "https://docs.anthropic.com/en/docs/build-with-claude/prompt-engineering/overview"
+      }
+    ],
     learningObjectives: [
       "Write prompts with task, context, constraints, definition of done, and output format.",
       "Rewrite vague prompts into operational prompts.",
@@ -663,6 +756,31 @@ const curriculumEnhancementsByWeek: Record<number, WeekCurriculumEnhancement> = 
     ]
   },
   4: {
+    whatThisIs:
+      "This week is about reviewing AI output. Review means checking whether the answer is grounded, complete, useful, safe, and aligned with the task before you use it.",
+    whyThisComesNow:
+      "After learners can ask better questions, they need to know how to judge the answers. AI often sounds confident even when it is wrong or incomplete. Review discipline prevents speed from turning into sloppy work.",
+    howThisConnectsToAI:
+      "The most valuable AI users are not the ones who accept answers fastest. They are the ones who can quickly spot weak assumptions, missing evidence, hallucinations, and risky recommendations.",
+    whatYouWillDoNext: [
+      "Generate one AI output.",
+      "Review it using a simple quality checklist.",
+      "Identify at least three meaningful issues.",
+      "Write a revision prompt and compare the improved result."
+    ],
+    plainEnglishVocabulary: [
+      "Grounding: whether the answer is based on real evidence.",
+      "Hallucination: when AI invents or states something unsupported.",
+      "Constraint check: confirming the answer followed the rules you gave it.",
+      "Revision prompt: an instruction that asks the AI to improve a specific weakness.",
+      "Human judgment: the decision-making responsibility that stays with the person."
+    ],
+    recommendedResources: [
+      {
+        label: "OpenAI text generation guide",
+        url: "https://platform.openai.com/docs/guides/text"
+      }
+    ],
     learningObjectives: [
       "Apply a review checklist to AI-generated output.",
       "Identify grounding, completeness, constraint, usability, and risk issues.",
@@ -687,6 +805,35 @@ const curriculumEnhancementsByWeek: Record<number, WeekCurriculumEnhancement> = 
     ]
   },
   5: {
+    whatThisIs:
+      "This week introduces Codex as a coding-agent workflow. Codex can help investigate code, explain behavior, propose changes, and support real project work when the task is scoped clearly.",
+    whyThisComesNow:
+      "Learners first needed terminal confidence, tool selection, prompting, and review discipline. Now they are ready to ask Codex to do real project work without treating it like magic.",
+    howThisConnectsToAI:
+      "Codex represents the shift from AI as a writing assistant to AI as a supervised worker. The learner's job is to define the task, inspect the work, and decide what is safe to accept.",
+    whatYouWillDoNext: [
+      "Choose one small project task.",
+      "Ask Codex to investigate or improve it.",
+      "Review what Codex did and what it assumed.",
+      "Submit the prompt, result, strengths, weaknesses, and one verification step."
+    ],
+    plainEnglishVocabulary: [
+      "Task scope: the boundary of what Codex should do.",
+      "Diff: the set of file changes proposed or made.",
+      "Verification: checking whether the result actually works.",
+      "Assumption: something the agent treated as true without full proof.",
+      "Review item: something a human should inspect before trusting the output."
+    ],
+    recommendedResources: [
+      {
+        label: "OpenAI Codex cloud docs",
+        url: "https://platform.openai.com/docs/codex"
+      },
+      {
+        label: "OpenAI Codex announcement",
+        url: "https://openai.com/index/introducing-codex/"
+      }
+    ],
     learningObjectives: [
       "Scope a Codex task small enough to review.",
       "Use Codex for investigation or implementation on a real repo task.",
@@ -711,6 +858,35 @@ const curriculumEnhancementsByWeek: Record<number, WeekCurriculumEnhancement> = 
     ]
   },
   6: {
+    whatThisIs:
+      "This week introduces Claude Code as a terminal-native coding agent. It works inside a project and can use files, commands, context, memory, and tool connections to help complete coding tasks.",
+    whyThisComesNow:
+      "Claude Code makes more sense after learners understand terminal basics and Codex-style agent supervision. This week gives them a second serious coding-agent workflow and teaches comparison by task fit.",
+    howThisConnectsToAI:
+      "Claude Code shows how AI becomes more useful when it is close to the working environment. Instead of pasting snippets into chat, learners can ask for help inside the project context.",
+    whatYouWillDoNext: [
+      "Use Claude Code on one real project question or task.",
+      "Notice which files, commands, or context mattered.",
+      "Compare whether Codex or Claude Code felt better suited.",
+      "Submit a short task-fit judgment."
+    ],
+    plainEnglishVocabulary: [
+      "Terminal-native: designed to work from the command line.",
+      "Project context: the files, commands, and structure around the task.",
+      "Memory: persistent instructions or notes a tool can use later.",
+      "Slash command: a command inside Claude Code that controls or triggers a workflow.",
+      "Task fit: whether a tool is well suited to a specific job."
+    ],
+    recommendedResources: [
+      {
+        label: "Claude Code overview",
+        url: "https://docs.anthropic.com/en/docs/claude-code/overview"
+      },
+      {
+        label: "Claude Code slash commands",
+        url: "https://docs.anthropic.com/en/docs/claude-code/slash-commands"
+      }
+    ],
     learningObjectives: [
       "Describe what makes Claude Code terminal-native.",
       "Use Claude Code on one project task with file and command context.",
@@ -735,6 +911,31 @@ const curriculumEnhancementsByWeek: Record<number, WeekCurriculumEnhancement> = 
     ]
   },
   7: {
+    whatThisIs:
+      "This week is about turning repeated AI work into reusable team assets. A reusable asset might be a prompt, checklist, skill, playbook, or standard operating pattern.",
+    whyThisComesNow:
+      "After learners can use AI for individual tasks, the next step is making good work repeatable. This prevents every teammate from reinventing the same prompt or process.",
+    howThisConnectsToAI:
+      "AI quality improves when instructions, examples, and standards are reusable. Skills and playbooks help the team get more consistent outputs with less repeated explanation.",
+    whatYouWillDoNext: [
+      "Identify one repeated workflow.",
+      "Decide whether it should become a prompt, checklist, skill, or playbook.",
+      "Define inputs, outputs, quality standard, and review boundary.",
+      "Submit one reusable operating asset."
+    ],
+    plainEnglishVocabulary: [
+      "Reusable asset: a prompt, checklist, or playbook the team can use again.",
+      "Skill: a packaged instruction set for a repeated type of work.",
+      "Playbook: a step-by-step operating guide.",
+      "Input: what the workflow needs before it starts.",
+      "Output: what the workflow should produce."
+    ],
+    recommendedResources: [
+      {
+        label: "Claude Code slash commands and custom commands",
+        url: "https://docs.anthropic.com/en/docs/claude-code/slash-commands"
+      }
+    ],
     learningObjectives: [
       "Identify repeated work that deserves a reusable asset.",
       "Choose between prompt, checklist, skill, and playbook.",
@@ -759,6 +960,31 @@ const curriculumEnhancementsByWeek: Record<number, WeekCurriculumEnhancement> = 
     ]
   },
   8: {
+    whatThisIs:
+      "This week explains MCP and connected workflows. MCP is a way for AI tools to connect to external tools, services, or data sources in a structured way.",
+    whyThisComesNow:
+      "Learners first need to understand AI tasks, review, and reusable workflows. Only then does it make sense to discuss connecting AI to real systems, because connected tools increase both usefulness and risk.",
+    howThisConnectsToAI:
+      "Connected workflows let AI work with real context instead of copy-pasted fragments. That can improve quality, but it also requires permission boundaries, data awareness, and human review.",
+    whatYouWillDoNext: [
+      "Choose one manual copy-paste workflow.",
+      "Map where a connected tool would help.",
+      "Identify what data or systems would be involved.",
+      "Define what must remain human-reviewed."
+    ],
+    plainEnglishVocabulary: [
+      "MCP: Model Context Protocol, a standard way to connect AI tools to external systems.",
+      "Connected workflow: an AI workflow that can access a tool or data source.",
+      "Read-only: the AI can view information but not change it.",
+      "Write-capable: the AI can create or change something.",
+      "Review checkpoint: the point where a human approves or rejects the output."
+    ],
+    recommendedResources: [
+      {
+        label: "Claude Code MCP docs",
+        url: "https://docs.anthropic.com/en/docs/claude-code/mcp"
+      }
+    ],
     learningObjectives: [
       "Explain MCP and connected workflows in plain English.",
       "Identify when connected context improves AI work.",
@@ -783,6 +1009,31 @@ const curriculumEnhancementsByWeek: Record<number, WeekCurriculumEnhancement> = 
     ]
   },
   9: {
+    whatThisIs:
+      "This week is about delegation: breaking bigger workflows into smaller AI-assisted tasks. Instead of asking one agent to do everything, learners define smaller jobs with clear inputs and outputs.",
+    whyThisComesNow:
+      "Once learners understand tools and connected workflows, they can start coordinating work across steps. Delegation is the bridge from using one AI tool to designing an AI-enabled workflow.",
+    howThisConnectsToAI:
+      "Modern AI work often involves parallel research, drafting, checking, and synthesis. The human operator coordinates context, assigns tasks, and owns final judgment.",
+    whatYouWillDoNext: [
+      "Choose a messy workflow.",
+      "Break it into at least three smaller tasks.",
+      "Mark which tasks can run in parallel and which must happen in order.",
+      "Define who reviews each output."
+    ],
+    plainEnglishVocabulary: [
+      "Delegation: assigning a defined piece of work to a person or agent.",
+      "Parallel work: tasks that can happen at the same time.",
+      "Sequential work: tasks that must happen in order.",
+      "Context boundary: the information a task needs and the information it does not need.",
+      "Synthesis: combining multiple outputs into one final answer."
+    ],
+    recommendedResources: [
+      {
+        label: "Claude Code subagents",
+        url: "https://docs.anthropic.com/en/docs/claude-code/sub-agents"
+      }
+    ],
     learningObjectives: [
       "Break a large workflow into smaller delegated tasks.",
       "Decide which tasks can run in parallel and which must be sequential.",
@@ -807,6 +1058,31 @@ const curriculumEnhancementsByWeek: Record<number, WeekCurriculumEnhancement> = 
     ]
   },
   10: {
+    whatThisIs:
+      "This week introduces evals and guardrails. An eval is a repeatable way to judge output quality. A guardrail is a rule that prevents predictable failure.",
+    whyThisComesNow:
+      "Before learners design more serious automations, they need a way to measure whether outputs are good. Without evals, teams rely on vibes, speed, or confidence.",
+    howThisConnectsToAI:
+      "AI workflows improve when the team can test them against clear standards. Evals and guardrails make the difference between experimenting and operating reliably.",
+    whatYouWillDoNext: [
+      "Choose one recurring AI output.",
+      "Define four or five criteria for a good result.",
+      "Add two guardrails and one reject condition.",
+      "Submit a mini eval pack."
+    ],
+    plainEnglishVocabulary: [
+      "Eval: a repeatable test or rubric for judging output.",
+      "Guardrail: a rule that prevents a known failure.",
+      "Criterion: one quality standard in a rubric.",
+      "Reject condition: a failure that means the output should not be used.",
+      "Reliability: whether the workflow produces acceptable output consistently."
+    ],
+    recommendedResources: [
+      {
+        label: "OpenAI agent evals guide",
+        url: "https://platform.openai.com/docs/guides/agent-evals"
+      }
+    ],
     learningObjectives: [
       "Create simple evaluation criteria for an AI workflow.",
       "Define guardrails that prevent predictable failure modes.",
@@ -831,6 +1107,31 @@ const curriculumEnhancementsByWeek: Record<number, WeekCurriculumEnhancement> = 
     ]
   },
   11: {
+    whatThisIs:
+      "This week is about designing a small recruiting micro-agent or automation. A micro-agent is a narrow helper that improves one repeated workflow without pretending to replace human judgment.",
+    whyThisComesNow:
+      "Learners now have enough foundation: terminal comfort, tool selection, prompting, review, reusable assets, connected workflows, delegation, and evals. That is the minimum base for building something useful safely.",
+    howThisConnectsToAI:
+      "AI becomes operational when it is embedded into a real workflow with clear inputs, outputs, review, and value. The best first build is small enough to trust and improve.",
+    whatYouWillDoNext: [
+      "Choose one repeated recruiting problem.",
+      "Design a small helper workflow or micro-agent.",
+      "Define inputs, outputs, review boundary, and value measure.",
+      "Submit the design and explain the risk."
+    ],
+    plainEnglishVocabulary: [
+      "Micro-agent: a small AI helper for a narrow workflow.",
+      "Automation boundary: what the workflow does and does not do.",
+      "Value measure: how you know the workflow helped.",
+      "Review boundary: where a human must inspect or approve.",
+      "Version two: the next improvement after the first version works."
+    ],
+    recommendedResources: [
+      {
+        label: "OpenAI Agents guide",
+        url: "https://platform.openai.com/docs/guides/agents"
+      }
+    ],
     learningObjectives: [
       "Design a small recruiting micro-agent or automation.",
       "Define inputs, outputs, review steps, value, and risk.",
@@ -855,6 +1156,35 @@ const curriculumEnhancementsByWeek: Record<number, WeekCurriculumEnhancement> = 
     ]
   },
   12: {
+    whatThisIs:
+      "This week is the capstone. Learners present one useful workflow, build, playbook, prompt set, or micro-agent and explain how it should become part of the team’s operating rhythm.",
+    whyThisComesNow:
+      "The final week turns learning into adoption. The point is not to show off. The point is to prove that each learner can use AI responsibly to improve real work.",
+    howThisConnectsToAI:
+      "AI capability only matters if it changes how the team works. The capstone connects tools, judgment, review, and workflow design into one practical artifact.",
+    whatYouWillDoNext: [
+      "Choose one real workflow or build from the program.",
+      "Prepare a short explanation of the problem, solution, value, and limits.",
+      "Define what the team can reuse.",
+      "Commit to one operating habit going forward."
+    ],
+    plainEnglishVocabulary: [
+      "Capstone: the final practical project.",
+      "Operating rhythm: the repeatable way the team works after training.",
+      "Adoption: whether people actually use the workflow.",
+      "Limitation: what the workflow does not solve yet.",
+      "Reusable artifact: something another teammate can use without starting over."
+    ],
+    recommendedResources: [
+      {
+        label: "OpenAI Codex cloud docs",
+        url: "https://platform.openai.com/docs/codex"
+      },
+      {
+        label: "Claude Code overview",
+        url: "https://docs.anthropic.com/en/docs/claude-code/overview"
+      }
+    ],
     learningObjectives: [
       "Present one useful AI-enabled workflow or build.",
       "Explain value, limitations, review boundaries, and next version.",
