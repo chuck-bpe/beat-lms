@@ -1,13 +1,11 @@
 import Link from "next/link";
 import { Header } from "@/components/header";
-import { QuizForm } from "@/components/quiz-form";
 import { requireUser } from "@/lib/auth";
 import { WeekCard } from "@/components/week-card";
 import { promptLibrary, weeks as fallbackWeeks } from "@/lib/beat-data";
 import { getCurriculumContent } from "@/lib/curriculum-content";
 import { getPublishedWeeksDetailed, type PublishedWeek } from "@/lib/beat-db";
 import { getLearnerProgressSummary, getLearnerSubmissions } from "@/lib/progress-db";
-import { getQuizResponse } from "@/lib/quiz-db";
 import { markLessonComplete } from "./actions";
 
 export default async function LearnerPage() {
@@ -38,7 +36,6 @@ export default async function LearnerPage() {
   const upcomingWeeks = progressSummary.weeks.filter((week) => week.week > currentWeek.week).slice(0, 3);
   const submissions = await getLearnerSubmissions(profile.id).catch(() => []);
   const curriculum = getCurriculumContent(currentWeek.week);
-  const existingQuizResponse = await getQuizResponse(profile.id, currentWeek.week).catch(() => null);
 
   return (
     <main className="page-shell">
@@ -120,31 +117,7 @@ export default async function LearnerPage() {
           <p className="eyebrow">Week Guide</p>
           <h3>What this module is actually teaching</h3>
           {curriculum ? (
-            <div className="curriculum-stack">
-              <p>{curriculum.summary}</p>
-              <div className="curriculum-block">
-                <strong>Learning objectives</strong>
-                <ul className="clean-list tight-list">
-                  {curriculum.learningObjectives.map((objective) => (
-                    <li key={objective}>{objective}</li>
-                  ))}
-                </ul>
-              </div>
-              <div className="curriculum-block">
-                <strong>Teaching overview</strong>
-                {curriculum.teachingOverview.map((paragraph) => (
-                  <p key={paragraph}>{paragraph}</p>
-                ))}
-              </div>
-              <div className="curriculum-block">
-                <strong>Key takeaways</strong>
-                <ul className="clean-list tight-list">
-                  {curriculum.lessonTakeaways.map((item) => (
-                    <li key={item}>{item}</li>
-                  ))}
-                </ul>
-              </div>
-            </div>
+            <p>{curriculum.summary}</p>
           ) : (
             <p className="muted">Detailed curriculum notes for this week are not loaded yet.</p>
           )}
@@ -174,68 +147,20 @@ export default async function LearnerPage() {
         </article>
       </section>
 
-      <section className="split-grid">
-        <article className="card">
-          <p className="eyebrow">Check Yourself</p>
-          <h3>Quick review before you move on</h3>
-          {curriculum ? (
-            <div className="curriculum-stack">
-              <div className="curriculum-block">
-                <strong>Quiz</strong>
-                <QuizForm
-                  userId={profile.id}
-                  weekNumber={currentWeek.week}
-                  questions={curriculum.quizQuestions}
-                  existingResponse={existingQuizResponse}
-                />
+      <section className="card">
+        <p className="eyebrow">Shared Library</p>
+        <h3>Borrow what already works</h3>
+        <div className="asset-list">
+          {promptLibrary.map((asset) => (
+            <div className="asset-row" key={asset.title}>
+              <span className="pill">{asset.type}</span>
+              <div>
+                <strong>{asset.title}</strong>
+                <p>{asset.summary}</p>
               </div>
-              <div className="curriculum-block">
-                <strong>What counts as done</strong>
-                <ul className="clean-list tight-list">
-                  {curriculum.gradingStandard.map((item) => (
-                    <li key={item}>{item}</li>
-                  ))}
-                </ul>
-              </div>
-              <div className="curriculum-block">
-                <strong>Common mistakes to avoid</strong>
-                <ul className="clean-list tight-list">
-                  {curriculum.commonMistakes.map((item) => (
-                    <li key={item}>{item}</li>
-                  ))}
-                </ul>
-              </div>
-              {profile.role === "admin" ? (
-                <div className="curriculum-block">
-                  <strong>Facilitator notes</strong>
-                  <ul className="clean-list tight-list">
-                    {curriculum.facilitatorNotes.map((item) => (
-                      <li key={item}>{item}</li>
-                    ))}
-                  </ul>
-                </div>
-              ) : null}
             </div>
-          ) : (
-            <p className="muted">This module check will appear here once detailed curriculum content is available.</p>
-          )}
-        </article>
-
-        <article className="card">
-          <p className="eyebrow">Shared Library</p>
-          <h3>Borrow what already works</h3>
-          <div className="asset-list">
-            {promptLibrary.map((asset) => (
-              <div className="asset-row" key={asset.title}>
-                <span className="pill">{asset.type}</span>
-                <div>
-                  <strong>{asset.title}</strong>
-                  <p>{asset.summary}</p>
-                </div>
-              </div>
-            ))}
-          </div>
-        </article>
+          ))}
+        </div>
       </section>
 
       <section className="section-heading">
