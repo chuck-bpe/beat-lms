@@ -8,7 +8,7 @@ import { getCurriculumContent } from "@/lib/curriculum-content";
 import { getPublishedWeeksDetailed, type PublishedWeek } from "@/lib/beat-db";
 import { getLearnerProgressSummary, getLearnerSubmissions } from "@/lib/progress-db";
 import { getQuizResponse } from "@/lib/quiz-db";
-import { markLessonComplete, submitAssignment } from "./actions";
+import { markLessonComplete } from "./actions";
 
 export default async function LearnerPage() {
   const profile = await requireUser();
@@ -37,7 +37,6 @@ export default async function LearnerPage() {
     progressSummary.weeks.find((week) => week.week === progressSummary.currentWeekNumber) ?? progressSummary.weeks[0];
   const upcomingWeeks = progressSummary.weeks.filter((week) => week.week > currentWeek.week).slice(0, 3);
   const submissions = await getLearnerSubmissions(profile.id).catch(() => []);
-  const currentAssignment = currentWeek.lessons.find((lesson) => lesson.format === "assignment");
   const curriculum = getCurriculumContent(currentWeek.week);
   const existingQuizResponse = await getQuizResponse(profile.id, currentWeek.week).catch(() => null);
 
@@ -145,73 +144,9 @@ export default async function LearnerPage() {
                   ))}
                 </ul>
               </div>
-              <div className="curriculum-block">
-                <strong>Demo flow</strong>
-                <ol className="ordered-list">
-                  {curriculum.demoSteps.map((step) => (
-                    <li key={step}>{step}</li>
-                  ))}
-                </ol>
-              </div>
-              <div className="curriculum-block">
-                <strong>Learn by example</strong>
-                <p>{curriculum.workedExample}</p>
-              </div>
             </div>
           ) : (
             <p className="muted">Detailed curriculum notes for this week are not loaded yet.</p>
-          )}
-        </article>
-
-        <article className="card">
-          <p className="eyebrow">Assignment Submission</p>
-          <h3>Turn in the work for this week</h3>
-          {currentAssignment ? (
-            <form action={submitAssignment} className="playground-box">
-              <label htmlFor="assignment">{currentAssignment.title}</label>
-              {curriculum ? (
-                <div className="assignment-guide">
-                  <p className="muted">
-                    <strong>Deliverable:</strong> {curriculum.assignmentDeliverable}
-                  </p>
-                  <ol className="ordered-list">
-                    {curriculum.assignmentSteps.map((step) => (
-                      <li key={step}>{step}</li>
-                    ))}
-                  </ol>
-                  <div className="curriculum-block">
-                    <strong>Guided practice</strong>
-                    <ol className="ordered-list">
-                      {curriculum.guidedPractice.map((step) => (
-                        <li key={step}>{step}</li>
-                      ))}
-                    </ol>
-                  </div>
-                  <div className="curriculum-block">
-                    <strong>Reflection prompts</strong>
-                    <ul className="clean-list tight-list">
-                      {curriculum.reflectionPrompts.map((prompt) => (
-                        <li key={prompt}>{prompt}</li>
-                      ))}
-                    </ul>
-                  </div>
-                </div>
-              ) : null}
-              <input type="hidden" name="lessonId" value={currentAssignment.id} />
-              <input type="hidden" name="moduleId" value={currentWeek.id} />
-              <textarea
-                id="assignment"
-                name="content"
-                placeholder="Paste your work, reflection, or structured answer here."
-              />
-              <div className="cta-row">
-                <button className="button primary" type="submit">
-                  Submit assignment
-                </button>
-              </div>
-            </form>
-          ) : (
-            <p>No assignment is available for this module yet.</p>
           )}
         </article>
 

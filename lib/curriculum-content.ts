@@ -1059,6 +1059,7 @@ const baseCurriculumContentByWeek: Record<number, BaseWeekCurriculumContent> = {
     assignmentDeliverable:
       "A capstone presentation covering the build, the problem it solves, inputs and outputs, review boundary, value created, and the next version to pursue.",
     assignmentSteps: [
+      "Your capstone deliverable is your Week 11 skill file plus a short written explanation covering four things: the recruiting problem it solves, the value it creates (time saved, quality improved, or friction removed), its current limits (what it cannot do or gets wrong), and what you would improve in the next version.",
       "Choose one real build or workflow from the program.",
       "Prepare a clear explanation of what it does and why it matters.",
       "Explain what still requires review and what the next version would improve.",
@@ -1229,6 +1230,7 @@ const curriculumEnhancementsByWeek: Record<number, WeekCurriculumEnhancement> = 
       "Open platform.openai.com, connect your recruiting-workspace repo in Codex, and confirm it can see your files.",
       "Write one question you could answer with ChatGPT chat (no repo needed).",
       "Write one question that only Codex can answer well because it requires reading your actual repo.",
+      "Before moving on, ask yourself: Does this answer mention specific files in your repo? Could the exact same answer apply to any repo? Did it answer what you actually asked?",
       "Ask Codex that repo question and require it to quote or reference specific file contents."
     ],
     commonMistakes: [
@@ -1280,7 +1282,7 @@ const curriculumEnhancementsByWeek: Record<number, WeekCurriculumEnhancement> = 
     workedExample:
       "Weak prompt: `Make this better.` Strong prompt: `Review this assignment prompt for a non-technical recruiting teammate. Keep it under 2 hours, identify unclear instructions, rewrite it in learner-friendly language, and return: issues, revised prompt, and grading checklist.`",
     guidedPractice: [
-      "Take one vague prompt and label what is missing.",
+      "Take this vague prompt: 'Find me good VP Sales candidates.' Rewrite it with: task (screen candidates for VP Sales), context (SaaS company, Series B, must have closed enterprise deals), constraints (no candidates from direct competitors, max 5 results), definition of done (ranked list with evidence), output format (table with name, match score, evidence).",
       "Rewrite it with a clear output format.",
       "Add one constraint that prevents a predictable bad answer."
     ],
@@ -1380,9 +1382,9 @@ const curriculumEnhancementsByWeek: Record<number, WeekCurriculumEnhancement> = 
       "Inspect changed files, assumptions, and verification needs."
     ],
     workedExample:
-      "Example Codex task: `Find where assignment submissions are created and explain the data flow without editing files.` A strong result names the learner action, server action, `submissions` table insert, and revalidation path.",
+      "Ask Codex: 'Walk me through how a new job req moves from approval to posting in our typical process — what steps, who owns each, and where do things usually get stuck?' That is a scoped investigation task. Codex reads your project files and traces the workflow rather than guessing.",
     guidedPractice: [
-      "Convert a broad task into a one-sentence bounded Codex task.",
+      "Convert a broad recruiting task (like 'improve our hiring process') into a one-sentence bounded Codex task (like 'explain the steps between job approval and job posting in my repo's workflow files').",
       "Ask Codex to investigate before making changes.",
       "Review its answer for files touched, assumptions, and next verification step."
     ],
@@ -1489,7 +1491,7 @@ const curriculumEnhancementsByWeek: Record<number, WeekCurriculumEnhancement> = 
     workedExample:
       "Example Claude Code skill — create a file at `~/.claude/commands/candidate-brief.md` with this content: '# Candidate Research Brief\\n\\nGiven: $ARGUMENTS (paste a LinkedIn URL or candidate name and role)\\n\\nResearch this candidate and return:\\n- Evidence-backed strengths (cite sources)\\n- Potential risks or gaps\\n- 3 interview questions based on their background\\n- Anything you cannot confirm labeled as [UNKNOWN]\\n\\nDo not invent information. If you are unsure, say so.' Save the file. Now in Claude Code, type `/candidate-brief Sarah Chen, Senior AE at Salesforce, applying for VP Sales` and it runs the full brief. That is a working skill — not a concept, a real invokable command.",
     guidedPractice: [
-      "List one workflow you repeat at least weekly in your recruiting work.",
+      "List one workflow you repeat at least weekly in your recruiting work. A skill file looks like this:\n\n# [Skill Name]\n\nGiven: $ARGUMENTS ([description of what to paste or type])\n\nReturn:\n- [what it should output, item by item]\n\nDo not invent information. If unclear, ask one clarifying question.\n\nUse this as your starting template.",
       "Classify it: is it a prompt (one-time ask), a checklist (steps to follow), a skill (invokable command), or a playbook (multi-step guide)?",
       "Write it as a Markdown file and save it to your recruiting-workspace repo under `/playbooks/`.",
       "If you want it as a Claude Code slash command: save it to `~/.claude/commands/[name].md` and invoke it with `/name` inside Claude Code."
@@ -1539,7 +1541,7 @@ const curriculumEnhancementsByWeek: Record<number, WeekCurriculumEnhancement> = 
     workedExample:
       "Full MCP installation: Go to github.com/settings/tokens → Generate new token (classic) → check the 'repo' scope → copy the token. Then run: `claude mcp add github -e GITHUB_PERSONAL_ACCESS_TOKEN=[your-token] -- npx -y @modelcontextprotocol/server-github`. Verify: run `claude mcp list` and confirm 'github' appears. Now open Claude Code inside your recruiting-workspace repo and ask: 'List all files in this repo and summarize what each one is for.' The answer is grounded in your actual files — not generic advice. That is the difference between chat AI and connected AI.",
     guidedPractice: [
-      "Go to github.com/settings/tokens → Generate new token (classic) → check 'repo' scope → copy the token.",
+      "Go to github.com/settings/tokens → Generate new token (classic) → check 'repo' scope → copy the token. A Personal Access Token is like a secure password you create just for Claude Code — the 'repo' scope means it will only be able to read and search your GitHub repositories, not your account settings or billing.",
       "Run the MCP install command in your terminal, substituting your actual token.",
       "Run `claude mcp list` and confirm `github` appears in the list.",
       "Launch Claude Code inside your recruiting-workspace repo and ask it to list and describe all your files.",
@@ -1588,7 +1590,7 @@ const curriculumEnhancementsByWeek: Record<number, WeekCurriculumEnhancement> = 
       "Review combined subagent output and identify where human judgment is still required."
     ],
     workedExample:
-      "Actual subagent execution: Open Claude Code in your recruiting-workspace repo and type: 'Use the Task tool to run these two tasks in parallel: Task 1 — read every file in this repo and list what each one contains. Task 2 — review the CLAUDE.md file and suggest three improvements. Report both results together.' Claude Code spawns two subagents simultaneously. Within seconds it reports back: a file inventory from Task 1 and improvement suggestions from Task 2. You defined the tasks, reviewed the output, and decided what to act on. That is delegation in practice — not a design document.",
+      "Actual subagent execution: Open Claude Code in your recruiting-workspace repo and type: 'Use the Task tool to run these two tasks in parallel: Task 1 — read every file in this repo and list what each one contains. Task 2 — review the CLAUDE.md file and suggest three improvements. Report both results together.' Claude Code spawns two subagents simultaneously. Within seconds it reports back: a file inventory from Task 1 and improvement suggestions from Task 2. You defined the tasks, reviewed the output, and decided what to act on. That is delegation in practice — not a design document. Some tasks must go in order: research the company first, then draft outreach based on that research — these cannot run in parallel because step 2 depends on step 1.",
     guidedPractice: [
       "Open Claude Code in your recruiting-workspace repo.",
       "Write a parallel task prompt using 'Task 1' and 'Task 2' format and send it.",
@@ -1638,7 +1640,7 @@ const curriculumEnhancementsByWeek: Record<number, WeekCurriculumEnhancement> = 
       "Use a rubric to judge whether output is ready, needs revision, or should be rejected."
     ],
     workedExample:
-      "Example eval: Outreach draft criteria include role relevance, evidence-backed personalization, clear ask, concise length, and no invented facts. Guardrails include no unsupported claims and no personal data beyond approved sources.",
+      "Example eval: Outreach draft criteria include role relevance, evidence-backed personalization, clear ask, concise length, and no invented facts. Guardrails include no unsupported claims and no personal data beyond approved sources. Here is exactly how to write one criterion — Role relevance: Does the draft specifically reference the candidate's current role or company? Pass = yes, with quote. Fail = generic opener with no personalization.",
     guidedPractice: [
       "Choose one recurring AI output.",
       "Write four criteria for a good result.",
@@ -1690,7 +1692,7 @@ const curriculumEnhancementsByWeek: Record<number, WeekCurriculumEnhancement> = 
     workedExample:
       "Working skill file — save this to `~/.claude/commands/intake.md`:\n\n# Intake Brief\n\nGiven: $ARGUMENTS (paste the job title, hiring manager, and 2-3 sentences about the role)\n\nReturn:\n- Target job titles (3-5 variations)\n- Company archetypes to source from\n- Must-have and nice-to-have criteria\n- Exclusion criteria\n- 3 initial Boolean search strings\n\nDo not invent criteria. If the brief is unclear, ask one clarifying question before outputting.\n\nRun it: inside Claude Code type `/intake VP of Sales, SaaS startup, Series B, must have closed $500k+ enterprise deals`. Claude Code reads the skill file and executes it. Then commit it: `cp ~/.claude/commands/intake.md ~/recruiting-workspace/playbooks/intake.md && git add playbooks/intake.md && git commit -m 'add intake skill'`. That is a working, committed, reusable skill — not a design.",
     guidedPractice: [
-      "Write your skill file: start with a one-sentence description, then list what input it takes and what it returns.",
+      "Write your skill file: start with a one-sentence description, then list what input it takes and what it returns. $ARGUMENTS is replaced with whatever you type after the slash command — `/intake VP Sales at Acme` means $ARGUMENTS = 'VP Sales at Acme'.",
       "Save it to `~/.claude/commands/[your-skill-name].md`.",
       "Run it inside Claude Code with `/[your-skill-name]` and a real recruiting example.",
       "Copy it into your recruiting-workspace repo and commit it with `git add` and `git commit`."
@@ -1708,7 +1710,7 @@ const curriculumEnhancementsByWeek: Record<number, WeekCurriculumEnhancement> = 
   },
   12: {
     whatThisIs:
-      "This week is the capstone. Learners present one useful workflow, build, playbook, prompt set, or micro-agent and explain how it should become part of the team’s operating rhythm.",
+      "This week is the capstone. Learners present one useful workflow, build, playbook, prompt set, or micro-agent and explain how it should become part of the team’s operating rhythm. An operating habit is something you actually do every time — not a best practice on a slide. Three examples: running your /intake slash command every time a new req opens instead of starting from scratch, checking AI output with the 5-question checklist before forwarding it to a hiring manager, and updating CLAUDE.md with new rules whenever the team agrees on a new standard. The goal of the capstone is to commit to one habit like these that survives after the program ends.",
     whyThisComesNow:
       "The final week turns learning into adoption. The point is not to show off. The point is to prove that each learner can use AI responsibly to improve real work.",
     howThisConnectsToAI:

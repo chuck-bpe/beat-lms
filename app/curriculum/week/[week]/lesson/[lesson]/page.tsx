@@ -7,6 +7,7 @@ import { weeks as fallbackWeeks } from "@/lib/beat-data";
 import { getPublishedWeeksDetailed, type PublishedWeek } from "@/lib/beat-db";
 import { getCurriculumContent } from "@/lib/curriculum-content";
 import { getQuizResponse } from "@/lib/quiz-db";
+import { submitAssignment } from "@/app/learner/actions";
 
 type LessonPageProps = {
   params: Promise<{
@@ -51,103 +52,130 @@ export default async function LessonPage({ params }: LessonPageProps) {
       ? await getQuizResponse(profile.id, weekNumber).catch(() => null)
       : null;
 
-  return (
-    <main className="page-shell">
-      <Header />
-
-      <section className="hero card">
-        <div className="hero-copy">
-          <p className="eyebrow">Week {week.week} Lesson {lessonNumber}</p>
-          <h2>{lesson.title}</h2>
-          <p>{lesson.description}</p>
-          <div className="cta-row">
-            <Link className="button secondary" href="/curriculum">
-              Back to full curriculum
-            </Link>
-            <Link className="button secondary" href="/learner">
-              Back to learner mode
-            </Link>
+  const hero = (
+    <section className="hero card">
+      <div className="hero-copy">
+        <p className="eyebrow">Week {week.week} Lesson {lessonNumber}</p>
+        <h2>{lesson.title}</h2>
+        <p>{lesson.description}</p>
+        <div className="cta-row">
+          <Link className="button secondary" href="/curriculum">
+            Back to full curriculum
+          </Link>
+          <Link className="button secondary" href="/learner">
+            Back to learner mode
+          </Link>
+        </div>
+      </div>
+      <div className="hero-panel">
+        <div className="metric-grid">
+          <div className="metric-tile">
+            <span>Format</span>
+            <strong>{lesson.format}</strong>
+          </div>
+          <div className="metric-tile">
+            <span>Time</span>
+            <strong>{lesson.duration}</strong>
+          </div>
+          <div className="metric-tile">
+            <span>Week</span>
+            <strong>{week.title}</strong>
+          </div>
+          <div className="metric-tile">
+            <span>Badge</span>
+            <strong>{week.badge}</strong>
           </div>
         </div>
-        <div className="hero-panel">
-          <div className="metric-grid">
-            <div className="metric-tile">
-              <span>Format</span>
-              <strong>{lesson.format}</strong>
-            </div>
-            <div className="metric-tile">
-              <span>Time</span>
-              <strong>{lesson.duration}</strong>
-            </div>
-            <div className="metric-tile">
-              <span>Week</span>
-              <strong>{week.title}</strong>
-            </div>
-            <div className="metric-tile">
-              <span>Badge</span>
-              <strong>{week.badge}</strong>
-            </div>
-          </div>
-        </div>
-      </section>
+      </div>
+    </section>
+  );
 
-      <section className="card beginner-brief">
-        <p className="eyebrow">Start Here</p>
-        <h3>Before you begin this lesson</h3>
-        <div className="curriculum-detail-grid">
-          <div className="curriculum-block">
-            <strong>What is this?</strong>
-            <p>{curriculum.whatThisIs}</p>
+  const nav = (
+    <section className="card lesson-navigation">
+      <div>
+        <p className="eyebrow">Lesson Navigation</p>
+        <h3>Keep moving through Week {week.week}</h3>
+      </div>
+      <div className="cta-row">
+        {previousLesson ? (
+          <Link className="button secondary" href={`/curriculum/week/${week.week}/lesson/${previousLesson}`}>
+            Previous lesson
+          </Link>
+        ) : null}
+        {nextLesson ? (
+          <Link className="button primary" href={`/curriculum/week/${week.week}/lesson/${nextLesson}`}>
+            Next lesson
+          </Link>
+        ) : nextWeek ? (
+          <Link className="button primary" href={`/curriculum/week/${nextWeek.week}/lesson/1`}>
+            Start Week {nextWeek.week}
+          </Link>
+        ) : (
+          <Link className="button primary" href="/learner">
+            Complete week in learner mode
+          </Link>
+        )}
+      </div>
+    </section>
+  );
+
+  if (lesson.format === "lesson") {
+    return (
+      <main className="page-shell">
+        <Header />
+
+        {hero}
+
+        <section className="card beginner-brief">
+          <p className="eyebrow">Start Here</p>
+          <h3>Before you begin this lesson</h3>
+          <div className="curriculum-detail-grid">
+            <div className="curriculum-block">
+              <strong>What is this?</strong>
+              <p>{curriculum.whatThisIs}</p>
+            </div>
+            <div className="curriculum-block">
+              <strong>Why are we starting here?</strong>
+              <p>{curriculum.whyThisComesNow}</p>
+            </div>
+            <div className="curriculum-block">
+              <strong>How does this relate to AI?</strong>
+              <p>{curriculum.howThisConnectsToAI}</p>
+            </div>
+            <div className="curriculum-block">
+              <strong>What will you be asked to do next?</strong>
+              <ol className="ordered-list">
+                {curriculum.whatYouWillDoNext.map((item) => (
+                  <li key={item}>{item}</li>
+                ))}
+              </ol>
+            </div>
           </div>
-          <div className="curriculum-block">
-            <strong>Why are we starting here?</strong>
-            <p>{curriculum.whyThisComesNow}</p>
-          </div>
-          <div className="curriculum-block">
-            <strong>How does this relate to AI?</strong>
-            <p>{curriculum.howThisConnectsToAI}</p>
-          </div>
-          <div className="curriculum-block">
-            <strong>What will you be asked to do next?</strong>
-            <ol className="ordered-list">
-              {curriculum.whatYouWillDoNext.map((item) => (
-                <li key={item}>{item}</li>
+        </section>
+
+        <section className="split-grid">
+          <article className="card">
+            <p className="eyebrow">Learning Objectives</p>
+            <h3>What you should be able to do</h3>
+            <ul className="clean-list tight-list">
+              {curriculum.learningObjectives.map((objective) => (
+                <li key={objective}>{objective}</li>
               ))}
-            </ol>
-          </div>
-        </div>
-      </section>
+            </ul>
+          </article>
 
-      <section className="split-grid">
-        <article className="card">
-          <p className="eyebrow">Learning Objectives</p>
-          <h3>What you should be able to do</h3>
-          <ul className="clean-list tight-list">
-            {curriculum.learningObjectives.map((objective) => (
-              <li key={objective}>{objective}</li>
-            ))}
-          </ul>
-        </article>
+          <article className="card">
+            <p className="eyebrow">Teaching</p>
+            <h3>The idea behind this lesson</h3>
+            <div className="curriculum-stack">
+              {curriculum.teachingOverview.map((paragraph) => (
+                <p key={paragraph}>{paragraph}</p>
+              ))}
+            </div>
+          </article>
+        </section>
 
-        <article className="card">
-          <p className="eyebrow">Teaching</p>
-          <h3>The idea behind this lesson</h3>
-          <div className="curriculum-stack">
-            {curriculum.teachingOverview.map((paragraph) => (
-              <p key={paragraph}>{paragraph}</p>
-            ))}
-          </div>
-        </article>
-      </section>
-
-      <section className="split-grid">
-        <article className="card">
-          <p className="eyebrow">Learn By Example</p>
-          <h3>What good looks like</h3>
-          <p>{curriculum.workedExample}</p>
-        </article>
-
-        <article className="card">
+        <section className="card">
           <p className="eyebrow">Key Takeaways</p>
           <h3>What to remember</h3>
           <ul className="clean-list tight-list">
@@ -155,21 +183,61 @@ export default async function LessonPage({ params }: LessonPageProps) {
               <li key={item}>{item}</li>
             ))}
           </ul>
-        </article>
-      </section>
+        </section>
 
-      <section className="split-grid">
-        <article className="card">
-          <p className="eyebrow">Guided Practice</p>
-          <h3>Do this before the main assignment</h3>
-          <ol className="ordered-list">
-            {curriculum.guidedPractice.map((step) => (
-              <li key={step}>{step}</li>
-            ))}
-          </ol>
-        </article>
+        <section className="split-grid">
+          <article className="card">
+            <p className="eyebrow">Plain English Vocabulary</p>
+            <h3>Terms you should know</h3>
+            <ul className="clean-list tight-list">
+              {curriculum.plainEnglishVocabulary.map((item) => (
+                <li key={item}>{item}</li>
+              ))}
+            </ul>
+          </article>
 
-        <article className="card">
+          <article className="card">
+            <p className="eyebrow">Optional Resources</p>
+            <h3>If you want more context</h3>
+            <div className="asset-list">
+              {curriculum.recommendedResources.map((resource) => (
+                <a className="asset-row resource-link" href={resource.url} key={resource.url} rel="noreferrer" target="_blank">
+                  <span className="pill">Resource</span>
+                  <div>
+                    <strong>{resource.label}</strong>
+                    <p>{resource.url}</p>
+                  </div>
+                </a>
+              ))}
+            </div>
+          </article>
+        </section>
+
+        {profile.role === "admin" ? (
+          <section className="card">
+            <p className="eyebrow">Facilitator Notes</p>
+            <h3>How to teach or coach this lesson</h3>
+            <ul className="clean-list tight-list">
+              {curriculum.facilitatorNotes.map((item) => (
+                <li key={item}>{item}</li>
+              ))}
+            </ul>
+          </section>
+        ) : null}
+
+        {nav}
+      </main>
+    );
+  }
+
+  if (lesson.format === "demo") {
+    return (
+      <main className="page-shell">
+        <Header />
+
+        {hero}
+
+        <section className="card">
           <p className="eyebrow">Demo Flow</p>
           <h3>How the concept is demonstrated</h3>
           <ol className="ordered-list">
@@ -177,10 +245,48 @@ export default async function LessonPage({ params }: LessonPageProps) {
               <li key={step}>{step}</li>
             ))}
           </ol>
-        </article>
-      </section>
+        </section>
 
-      {lesson.format === "assignment" ? (
+        <section className="card">
+          <p className="eyebrow">Learn By Example</p>
+          <h3>What good looks like</h3>
+          <p>{curriculum.workedExample}</p>
+        </section>
+
+        <section className="split-grid">
+          <article className="card">
+            <p className="eyebrow">Key Takeaways</p>
+            <h3>What to remember</h3>
+            <ul className="clean-list tight-list">
+              {curriculum.lessonTakeaways.map((item) => (
+                <li key={item}>{item}</li>
+              ))}
+            </ul>
+          </article>
+
+          <article className="card">
+            <p className="eyebrow">Common Mistakes</p>
+            <h3>What to avoid</h3>
+            <ul className="clean-list tight-list">
+              {curriculum.commonMistakes.map((item) => (
+                <li key={item}>{item}</li>
+              ))}
+            </ul>
+          </article>
+        </section>
+
+        {nav}
+      </main>
+    );
+  }
+
+  if (lesson.format === "assignment") {
+    return (
+      <main className="page-shell">
+        <Header />
+
+        {hero}
+
         <section className="card">
           <p className="eyebrow">Assignment</p>
           <h3>{curriculum.assignmentDeliverable}</h3>
@@ -189,27 +295,81 @@ export default async function LessonPage({ params }: LessonPageProps) {
               <li key={step}>{step}</li>
             ))}
           </ol>
-          <p className="muted lesson-action-note">
-            Submit this work from learner mode so it is saved to your BEAT progress.
-          </p>
-          <Link className="button primary" href="/learner">
-            Submit in learner mode
-          </Link>
         </section>
-      ) : null}
 
-      {lesson.format === "quiz" ? (
         <section className="card">
-          <p className="eyebrow">Check Yourself</p>
-          <h3>Use these questions to confirm the lesson landed</h3>
-          <QuizForm
-            userId={profile.id}
-            weekNumber={weekNumber}
-            questions={curriculum.quizQuestions}
-            existingResponse={existingQuizResponse}
-          />
+          <p className="eyebrow">Guided Practice</p>
+          <h3>Do this before the main assignment</h3>
+          <ol className="ordered-list">
+            {curriculum.guidedPractice.map((step) => (
+              <li key={step}>{step}</li>
+            ))}
+          </ol>
         </section>
-      ) : null}
+
+        <section className="split-grid">
+          <article className="card">
+            <p className="eyebrow">Reflection Prompts</p>
+            <h3>Think about your work</h3>
+            <ul className="clean-list tight-list">
+              {curriculum.reflectionPrompts.map((prompt) => (
+                <li key={prompt}>{prompt}</li>
+              ))}
+            </ul>
+          </article>
+
+          <article className="card">
+            <p className="eyebrow">Done Standard</p>
+            <h3>What counts as complete</h3>
+            <ul className="clean-list tight-list">
+              {curriculum.gradingStandard.map((item) => (
+                <li key={item}>{item}</li>
+              ))}
+            </ul>
+          </article>
+        </section>
+
+        <section className="card">
+          <p className="eyebrow">Submit Your Work</p>
+          <h3>Turn in this week's assignment</h3>
+          <form action={submitAssignment} className="playground-box">
+            <input type="hidden" name="lessonId" value={lesson.id} />
+            <input type="hidden" name="moduleId" value={week.id} />
+            <textarea
+              id="assignment"
+              name="content"
+              placeholder="Paste your work, reflection, or structured answer here."
+            />
+            <div className="cta-row">
+              <button className="button primary" type="submit">
+                Submit assignment
+              </button>
+            </div>
+          </form>
+        </section>
+
+        {nav}
+      </main>
+    );
+  }
+
+  // quiz format (default)
+  return (
+    <main className="page-shell">
+      <Header />
+
+      {hero}
+
+      <section className="card">
+        <p className="eyebrow">Check Yourself</p>
+        <h3>Use these questions to confirm the lesson landed</h3>
+        <QuizForm
+          userId={profile.id}
+          weekNumber={weekNumber}
+          questions={curriculum.quizQuestions}
+          existingResponse={existingQuizResponse}
+        />
+      </section>
 
       <section className="split-grid">
         <article className="card">
@@ -233,72 +393,7 @@ export default async function LessonPage({ params }: LessonPageProps) {
         </article>
       </section>
 
-      <section className="split-grid">
-        <article className="card">
-          <p className="eyebrow">Plain English Vocabulary</p>
-          <h3>Terms you should know</h3>
-          <ul className="clean-list tight-list">
-            {curriculum.plainEnglishVocabulary.map((item) => (
-              <li key={item}>{item}</li>
-            ))}
-          </ul>
-        </article>
-
-        <article className="card">
-          <p className="eyebrow">Optional Resources</p>
-          <h3>If you want more context</h3>
-          <div className="asset-list">
-            {curriculum.recommendedResources.map((resource) => (
-              <a className="asset-row resource-link" href={resource.url} key={resource.url} rel="noreferrer" target="_blank">
-                <span className="pill">Resource</span>
-                <div>
-                  <strong>{resource.label}</strong>
-                  <p>{resource.url}</p>
-                </div>
-              </a>
-            ))}
-          </div>
-        </article>
-      </section>
-
-      {profile.role === "admin" ? (
-        <section className="card">
-          <p className="eyebrow">Facilitator Notes</p>
-          <h3>How to teach or coach this lesson</h3>
-          <ul className="clean-list tight-list">
-            {curriculum.facilitatorNotes.map((item) => (
-              <li key={item}>{item}</li>
-            ))}
-          </ul>
-        </section>
-      ) : null}
-
-      <section className="card lesson-navigation">
-        <div>
-          <p className="eyebrow">Lesson Navigation</p>
-          <h3>Keep moving through Week {week.week}</h3>
-        </div>
-        <div className="cta-row">
-          {previousLesson ? (
-            <Link className="button secondary" href={`/curriculum/week/${week.week}/lesson/${previousLesson}`}>
-              Previous lesson
-            </Link>
-          ) : null}
-          {nextLesson ? (
-            <Link className="button primary" href={`/curriculum/week/${week.week}/lesson/${nextLesson}`}>
-              Next lesson
-            </Link>
-          ) : nextWeek ? (
-            <Link className="button primary" href={`/curriculum/week/${nextWeek.week}/lesson/1`}>
-              Start Week {nextWeek.week}
-            </Link>
-          ) : (
-            <Link className="button primary" href="/learner">
-              Complete week in learner mode
-            </Link>
-          )}
-        </div>
-      </section>
+      {nav}
     </main>
   );
 }
