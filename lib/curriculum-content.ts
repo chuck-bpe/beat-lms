@@ -76,28 +76,53 @@ const baseCurriculumContentByWeek: Record<number, BaseWeekCurriculumContent> = {
     ],
     quizQuestions: [
       {
-        question: "Which command shows you which folder you're currently in?",
-        options: ["ls", "pwd", "cd", "cat"],
+        question: "You run `ls` inside your recruiting-workspace folder and see nothing. You know a README.md file should be there. What is the most likely explanation?",
+        options: [
+          "The `ls` command only shows hidden files",
+          "You are probably in a different folder than you think — run `pwd` to confirm your location",
+          "The file was automatically deleted by git init",
+          "You need administrator privileges to list files"
+        ],
         correctIndex: 1
       },
       {
-        question: "Which command lists the files in the current folder?",
-        options: ["pwd", "cat", "ls", "rg"],
+        question: "You run `git commit -m 'first commit'` and then `git log` shows no commits at all. What most likely went wrong?",
+        options: [
+          "The commit message was too short",
+          "You forgot to run `git add` first — git only commits files that have been staged",
+          "You need to push before git log shows anything",
+          "git log only shows commits after the second commit"
+        ],
+        correctIndex: 1
+      },
+      {
+        question: "After running `git init`, you create README.md and immediately run `git status`. What will the output show?",
+        options: [
+          "README.md listed as a committed file",
+          "README.md listed as staged and ready to commit",
+          "README.md listed as an untracked file — not yet staged or committed",
+          "No output — git status only shows errors"
+        ],
         correctIndex: 2
       },
       {
-        question: "How do you stop a running process in the terminal?",
-        options: ["Ctrl+Z", "Ctrl+C", "Ctrl+X", "Ctrl+Q"],
-        correctIndex: 1
+        question: "Why does git require `git add` before `git commit`?",
+        options: [
+          "It compresses the file before saving to save disk space",
+          "It is a GitHub policy that cannot be changed",
+          "It lets you choose exactly which changes to include in a commit rather than saving everything at once",
+          "It uploads the file to GitHub before committing"
+        ],
+        correctIndex: 2
       },
       {
-        question: "Which command searches a project for a word or phrase?",
-        options: ["cat", "ls", "find", "rg"],
-        correctIndex: 3
-      },
-      {
-        question: "What does `git status` show you?",
-        options: ["The git log", "The last commit", "Which files have changed", "Remote branches"],
+        question: "A command in your terminal has been running for two minutes with no output and no sign of finishing. What is the correct action?",
+        options: [
+          "Wait — terminal commands always finish eventually",
+          "Close and reopen the terminal window",
+          "Press Ctrl+C to stop the running process",
+          "Press Ctrl+Z to save your progress and exit"
+        ],
         correctIndex: 2
       }
     ],
@@ -144,52 +169,52 @@ const baseCurriculumContentByWeek: Record<number, BaseWeekCurriculumContent> = {
     ],
     quizQuestions: [
       {
-        question: "When is a general chat tool the better choice?",
+        question: "A hiring manager asks: 'Which files in our recruiting-workspace repo define our sourcing process?' Which tool gives the most reliable answer?",
         options: [
-          "When the answer depends on project files",
-          "When you need to brainstorm or draft without file context",
-          "When editing code directly",
-          "When running terminal commands"
+          "ChatGPT with a written description of your repo",
+          "A coding agent like Codex connected directly to the repo — it reads actual files",
+          "Claude in general chat without any repo access",
+          "Any tool equally — AI always gives the same quality answer regardless of file access"
         ],
         correctIndex: 1
       },
       {
-        question: "When is a coding agent the better choice?",
+        question: "You are brainstorming 10 creative sourcing strategies for a niche fintech compliance role. No repo files are involved. Which tool fits best?",
         options: [
-          "For casual conversation",
-          "For any writing task",
-          "When the task depends on real project files and commands",
-          "When internet access is needed"
+          "Codex — it has the most powerful reasoning model",
+          "Claude Code — it is better at creative brainstorming",
+          "General chat AI — this is a drafting and reasoning task with no file dependency",
+          "Neither — AI cannot help with sourcing strategy"
         ],
         correctIndex: 2
       },
       {
-        question: "Why does repo context matter?",
+        question: "Codex returns: 'Your repo contains a well-structured hiring process with clear ownership.' Your repo only has a blank README. What is happening?",
         options: [
-          "It makes AI responses faster",
-          "It grounds the answer in actual project evidence",
-          "It reduces token count",
-          "It improves spelling"
+          "Codex correctly inferred the process from the README filename",
+          "Codex is reading a cached version of a similar repo it has seen before",
+          "The answer is not grounded — Codex produced a confident-sounding response without reading actual file content",
+          "Codex summarized what a typical recruiting repo usually contains"
         ],
-        correctIndex: 1
+        correctIndex: 2
       },
       {
-        question: "What is one sign that an answer is not well grounded?",
+        question: "A Codex answer is 'grounded' when it:",
         options: [
-          "The answer is long",
-          "The answer cites no files or specific evidence",
-          "The answer uses technical jargon",
-          "The answer mentions the project name"
+          "Uses formal, professional language and well-structured paragraphs",
+          "Was generated quickly without errors",
+          "Cites specific file names, file contents, or direct evidence from the actual project",
+          "Matches what you expected to see before asking"
         ],
-        correctIndex: 1
+        correctIndex: 2
       },
       {
-        question: "What should a good follow-up prompt do?",
+        question: "When is a follow-up prompt most valuable?",
         options: [
-          "Ask the same question again",
-          "Narrow or deepen the answer with more specificity",
-          "Request a shorter answer",
-          "Switch to a different tool"
+          "When the first answer was perfect and you want written confirmation",
+          "When the first answer was vague, missed specifics you need, or made claims you cannot trace to evidence",
+          "When you want a shorter version of the same answer",
+          "When you want to switch to a different AI tool entirely"
         ],
         correctIndex: 1
       }
@@ -236,54 +261,54 @@ const baseCurriculumContentByWeek: Record<number, BaseWeekCurriculumContent> = {
     ],
     quizQuestions: [
       {
-        question: "What is the difference between task and context?",
+        question: "A recruiter writes: 'Help me with outreach.' What is the single most important element missing from this prompt?",
         options: [
-          "Task is always longer than context",
-          "Task says what to do; context gives background for doing it well",
-          "They are the same thing",
-          "Context is optional"
+          "A polite opening phrase to set the right tone",
+          "A clear task — what kind of outreach, for what role, sent to whom, in what format, and with what tone",
+          "The candidate's LinkedIn URL so the AI can research them",
+          "A request to generate multiple versions to choose from"
         ],
         correctIndex: 1
       },
       {
-        question: "Why are constraints important?",
+        question: "Which of these prompts will produce the most immediately usable result?",
         options: [
-          "They make prompts shorter",
-          "They prevent the AI from ignoring the rules you care about",
-          "They speed up responses",
-          "They set the tone"
-        ],
-        correctIndex: 1
-      },
-      {
-        question: "What does a definition of done do?",
-        options: [
-          "Sets a word count limit",
-          "Describes the audience",
-          "Tells the AI when the answer is complete",
-          "Replaces the task"
+          "Write outreach for a VP Sales candidate",
+          "Make my recruiting message better and more professional",
+          "Write a 3-sentence LinkedIn message to a VP Sales candidate currently at a Salesforce competitor, referencing their current title. Tone: warm and direct, not salesy. Do not mention compensation. Return the message only.",
+          "Create professional recruiting outreach for my open VP Sales role"
         ],
         correctIndex: 2
       },
       {
-        question: "Why does output format matter?",
+        question: "What does a constraint do in a prompt?",
         options: [
-          "It changes what the AI knows",
-          "It makes the result directly usable instead of requiring reformatting",
-          "It reduces cost",
-          "It shortens the prompt"
+          "It replaces the task description and tells the AI what to focus on",
+          "It makes the prompt shorter and easier to read",
+          "It prevents the AI from taking approaches or returning output you explicitly do not want",
+          "It speeds up the response by narrowing the model's search space"
         ],
-        correctIndex: 1
+        correctIndex: 2
       },
       {
-        question: "Why is 'better' usually a weak instruction by itself?",
+        question: "In the prompt 'Return your answer as a table with columns: Name, Match Score, Evidence,' what part of prompt structure does 'table with columns' represent?",
         options: [
-          "It is too formal",
-          "It gives the AI no standard to measure against",
-          "It implies the original was good",
-          "It is too long"
+          "Task — it describes what you want done",
+          "Context — it gives background for the answer",
+          "Constraint — it limits what the AI can include",
+          "Output format — it defines the shape of the result"
         ],
-        correctIndex: 1
+        correctIndex: 3
+      },
+      {
+        question: "After writing a prompt, the most reliable internal test is to ask yourself:",
+        options: [
+          "Is this prompt long enough to cover all the details?",
+          "Does this prompt sound professional and well-written?",
+          "What would the AI have to guess or invent if it only had this prompt and nothing else?",
+          "Have I included all five standard prompt elements?"
+        ],
+        correctIndex: 2
       }
     ],
     gradingStandard: [
@@ -329,54 +354,54 @@ const baseCurriculumContentByWeek: Record<number, BaseWeekCurriculumContent> = {
     ],
     quizQuestions: [
       {
-        question: "Why is polished output sometimes more dangerous than obviously bad output?",
+        question: "A polished AI output is potentially more dangerous than an obviously bad one because:",
         options: [
-          "It uses more tokens",
-          "It passes a quick scan and goes unchecked",
-          "It is always longer",
-          "It contains more facts"
+          "It uses more tokens and takes longer to generate",
+          "Polished formatting can cause a reviewer to skip the grounding and accuracy check that a messy output would trigger",
+          "It always contains more factual errors per paragraph",
+          "It is harder to edit once you have accepted it"
         ],
         correctIndex: 1
       },
       {
-        question: "What is one sign that an answer may not be grounded?",
+        question: "A candidate summary says: 'Sarah has 8 years of SaaS sales experience.' Her resume shows 5 years in SaaS and 3 years in on-premise software. Which review question catches this flaw?",
         options: [
-          "It is formatted as a list",
-          "It mentions the AI tool",
-          "It cites no specific files or evidence",
-          "It directly answers the question"
+          "Is it complete — does it cover all the scorecard criteria?",
+          "Did it follow constraints — did it honor the format you specified?",
+          "Is it grounded — are the specific claims traceable to actual evidence in the source material?",
+          "Is it usable — can you act on this without rework?"
         ],
         correctIndex: 2
       },
       {
-        question: "What does it mean for output to be usable?",
+        question: "An AI output follows your formatting instructions perfectly but leaves out three of the five scorecard criteria you care about. Which review question catches this?",
         options: [
-          "It is well-formatted",
-          "It meets the task requirements and can be acted on without major rework",
-          "It is short",
-          "It contains no jargon"
+          "Is it grounded — does it cite evidence?",
+          "Is it complete — does it actually answer everything that was asked?",
+          "Did it follow constraints — did it honor your rules?",
+          "What is the risk — what could go wrong?"
         ],
         correctIndex: 1
       },
       {
-        question: "Why should a reviewer check constraints explicitly?",
+        question: "You receive an AI-generated outreach message. It is well-written but could apply to any candidate with a sales background — no mention of the specific person's company, title, or background. This fails on:",
         options: [
-          "To improve formatting",
-          "The AI may have quietly ignored rules the reviewer cares about",
-          "To measure response speed",
-          "Constraints only apply to chat tools"
+          "Output format — it was not returned in the right structure",
+          "Length — it is too short to be convincing",
+          "Grounding — it is not personalized to real evidence about this specific candidate",
+          "Completeness — it is missing required sections"
         ],
-        correctIndex: 1
+        correctIndex: 2
       },
       {
-        question: "What makes a strong revision prompt?",
+        question: "A strong revision prompt does which of the following?",
         options: [
-          "It repeats the original question",
-          "It specifically names the weakness and asks for a targeted fix",
-          "It is shorter than the original",
-          "It switches to a different tool"
+          "Repeats the original question with 'please' added for politeness",
+          "Asks the AI to 'improve it' or 'make it better' without specifying how",
+          "Names the specific weakness and asks for a targeted fix — for example, 'rewrite using only facts from the resume, in bullet format, labeling anything unconfirmed as [UNKNOWN]'",
+          "Switches to a different AI tool for a fresh perspective"
         ],
-        correctIndex: 1
+        correctIndex: 2
       }
     ],
     gradingStandard: [
@@ -421,54 +446,54 @@ const baseCurriculumContentByWeek: Record<number, BaseWeekCurriculumContent> = {
     ],
     quizQuestions: [
       {
-        question: "What makes a Codex task well scoped?",
+        question: "What makes a Codex task 'well scoped'?",
         options: [
-          "It involves multiple files",
-          "It is bounded, reviewable, and tied to a specific artifact",
-          "It runs quickly",
-          "It uses a long prompt"
+          "It references as many files as possible to give Codex full context",
+          "It is bounded, tied to a specific artifact or question, and produces output you can review in one pass",
+          "It produces the longest possible output so you have more to work with",
+          "It uses a numbered multi-step prompt format"
         ],
         correctIndex: 1
       },
       {
-        question: "Why is review part of the Codex workflow?",
+        question: "You ask Codex: 'Improve our entire recruiting process.' What is the main problem with this task?",
         options: [
-          "Because Codex requires it by design",
-          "Because Codex can make changes that need human verification",
-          "Because review is optional but recommended",
-          "Because Codex is slow"
-        ],
-        correctIndex: 1
-      },
-      {
-        question: "What is a sign that a task is too broad?",
-        options: [
-          "It asks a question",
-          "It takes too long to run",
-          "It produces changes that cannot be fully reviewed in one pass",
-          "It references a specific file"
+          "The prompt is too polite and needs to be more direct",
+          "Codex cannot understand recruiting workflows",
+          "The scope is too broad — any answer will require guesswork, and you cannot review or verify it in one pass",
+          "There are no project files for Codex to reference"
         ],
         correctIndex: 2
       },
       {
-        question: "What should you inspect after Codex completes a task?",
+        question: "Codex returns a 15-step proposal for restructuring your interview process. Before doing anything with it, the most important first step is:",
         options: [
-          "Only the output text",
-          "The files touched, assumptions made, and what needs verification",
-          "Only the code changes",
-          "The token count"
+          "Share it immediately with your team for feedback",
+          "Ask Codex to implement the steps automatically before anyone forgets",
+          "Check whether each step is grounded in how your actual process works and flag explicitly what Codex assumed versus what it confirmed",
+          "Accept the first five steps since Codex is usually more accurate early in a list"
+        ],
+        correctIndex: 2
+      },
+      {
+        question: "After Codex investigates a recruiting workflow, asking 'What assumptions did you make?' is valuable because:",
+        options: [
+          "It makes Codex produce more text, giving you more material to review",
+          "It reveals hidden decisions Codex made that could make the output wrong for your specific situation",
+          "It is a polite way to signal you are satisfied with the answer",
+          "It generates a shareable summary you can send to your manager"
         ],
         correctIndex: 1
       },
       {
-        question: "Why is 'what assumptions did you make?' a useful follow-up?",
+        question: "Codex returns a list of steps for a recruiting workflow. The right next action is:",
         options: [
-          "It is a polite question",
-          "It reveals hidden decisions that could affect correctness",
-          "It lengthens the answer",
-          "It forces a summary"
+          "Implement all the steps immediately before the context is lost",
+          "Share the list with your manager before reviewing it yourself",
+          "Verify each step against your actual process — mark what is accurate, what is assumed, and what needs human confirmation before acting",
+          "Ask Codex to implement the steps automatically and review afterward"
         ],
-        correctIndex: 1
+        correctIndex: 2
       }
     ],
     gradingStandard: [
@@ -513,54 +538,54 @@ const baseCurriculumContentByWeek: Record<number, BaseWeekCurriculumContent> = {
     ],
     quizQuestions: [
       {
-        question: "Why does terminal-native context matter?",
+        question: "What makes Claude Code 'terminal-native'?",
         options: [
-          "It improves internet access",
-          "It grounds AI output in actual project files and command output",
-          "It speeds up responses",
-          "It reduces spelling errors"
+          "It runs faster than browser-based AI tools because it skips the web layer",
+          "It works inside your actual project directory and uses your real files and terminal commands as part of its reasoning",
+          "It was designed exclusively for software engineers writing production code",
+          "It does not require an internet connection to operate"
         ],
         correctIndex: 1
       },
       {
-        question: "What kinds of tasks fit Claude Code well?",
+        question: "You are inside your recruiting-workspace repo in Claude Code. Which question will it answer most reliably?",
         options: [
-          "Tasks requiring graphic design",
-          "Tasks with no file involvement",
-          "Tasks that need project files, terminal commands, and real project context",
-          "Tasks requiring internet browsing"
+          "What is the best sourcing strategy for VP Sales roles in 2025?",
+          "What files exist in this repo and what does each one contain?",
+          "What will the recruiting job market look like in two years?",
+          "How do I write better cold outreach in general?"
+        ],
+        correctIndex: 1
+      },
+      {
+        question: "What does CLAUDE.md do?",
+        options: [
+          "It stores your Anthropic API key in a secure location",
+          "It runs a set of commands automatically every time you open Claude Code",
+          "It gives Claude Code persistent context about your project, role, and preferences that it reads before every session",
+          "It automatically backs up your repo to the cloud"
         ],
         correctIndex: 2
       },
       {
-        question: "What is one sign that a task should use a coding agent rather than a chat tool?",
+        question: "A colleague says: 'Just use Claude in the browser — it is the same as Claude Code.' What is the key difference they are missing?",
         options: [
-          "The task is about writing",
-          "The answer requires inspecting actual project files or running commands",
-          "The task is short",
-          "The answer is factual"
+          "The browser version uses a newer, more capable model",
+          "The browser version is free; Claude Code costs money per session",
+          "Claude Code has access to your actual project files, terminal output, and command history; the browser version only works with what you paste into it",
+          "Claude Code only works on Mac and the browser version works everywhere"
         ],
-        correctIndex: 1
+        correctIndex: 2
       },
       {
-        question: "Why is actual project context more valuable than generic explanation?",
+        question: "When should you update CLAUDE.md?",
         options: [
-          "It is always shorter",
-          "It references the real files and behaviors that affect the task",
-          "It is easier to produce",
-          "It avoids jargon"
+          "Once, during initial setup — it should not change after that",
+          "Only when Claude Code makes a mistake and needs correction",
+          "Whenever your project, role, or operating standards change — it is a living document that shapes every Claude Code session going forward",
+          "Once per week on a fixed maintenance schedule"
         ],
-        correctIndex: 1
-      },
-      {
-        question: "Why should the team compare tools by task fit rather than brand preference?",
-        options: [
-          "Brand preference is expensive",
-          "Task fit leads to better results and more honest assessment of what each tool does well",
-          "All tools are the same",
-          "Brand preference is unreliable"
-        ],
-        correctIndex: 1
+        correctIndex: 2
       }
     ],
     gradingStandard: [
@@ -605,54 +630,54 @@ const baseCurriculumContentByWeek: Record<number, BaseWeekCurriculumContent> = {
     ],
     quizQuestions: [
       {
-        question: "When should something remain a prompt instead of becoming a skill?",
+        question: "You write the same sourcing intake prompt three times a week, adjusting it slightly each time for different roles. The most useful improvement is:",
         options: [
-          "When it is very long",
-          "When it is used once and unlikely to need repetition",
-          "When it has context",
-          "When it involves code"
+          "Memorize the prompt so you type it faster without copy-pasting",
+          "Save it in a notes app and copy-paste it each time",
+          "Turn it into a named Claude Code skill file so you invoke it with one slash command and typed inputs — no copy-pasting needed",
+          "Ask your manager to standardize it as an official team document"
+        ],
+        correctIndex: 2
+      },
+      {
+        question: "A playbook is different from a prompt because:",
+        options: [
+          "Playbooks are always longer than prompts and require more effort to create",
+          "A playbook guides a person or team through a multi-step recurring process; a prompt is a single AI instruction for one specific task",
+          "Prompts use AI and playbooks do not use AI at all",
+          "Playbooks only work inside Claude Code and not in chat tools"
         ],
         correctIndex: 1
       },
       {
-        question: "What is a sign that a process needs a playbook?",
+        question: "Why are narrow reusable assets more valuable than broad ones?",
         options: [
-          "It is a one-step process",
-          "It involves multiple people, steps, or decisions that recur regularly",
-          "It is simple",
-          "It is quick to explain"
+          "They are faster to write and require less effort",
+          "Narrow assets are easier to trust, test, share, and improve — broad assets try to handle too many cases and end up handling none of them well",
+          "They use fewer AI tokens per invocation",
+          "Broad assets are not allowed by most company policies"
         ],
         correctIndex: 1
       },
       {
-        question: "Why are narrow reusable assets better than giant ones?",
+        question: "Your `/candidate-brief` skill produces the same generic output regardless of which candidate you specify. The most likely cause is:",
         options: [
-          "They are easier to write",
-          "Narrow assets are easier to reuse, review, and trust without explanation",
-          "They take less time",
-          "They require fewer tools"
+          "The underlying Claude model was updated and changed its behavior",
+          "The skill file is saved in the wrong folder and Claude Code is reading an old version",
+          "The skill file does not include `$ARGUMENTS` — there is no placeholder to receive the specific candidate input you type after the command",
+          "Claude Code requires a restart to load new input on each invocation"
         ],
-        correctIndex: 1
+        correctIndex: 2
       },
       {
-        question: "What is the value of naming a reusable workflow?",
+        question: "Before sharing a skill file with a teammate, the minimum it needs is:",
         options: [
-          "It makes it look professional",
-          "A clear name helps teammates find and reuse it without asking for explanation",
-          "It is required by policy",
-          "It shortens the asset"
+          "A version number, changelog, and author attribution",
+          "A full user manual with step-by-step screenshots",
+          "A one-sentence description of what it does, a clear `$ARGUMENTS` spec showing what to type, and a description of what it returns — enough to use without asking the author",
+          "Written approval from a team lead or manager"
         ],
-        correctIndex: 1
-      },
-      {
-        question: "What makes an asset useful to someone besides the author?",
-        options: [
-          "A long explanation",
-          "Clear inputs, outputs, and quality standard that someone else can follow",
-          "High complexity",
-          "The author's name on it"
-        ],
-        correctIndex: 1
+        correctIndex: 2
       }
     ],
     gradingStandard: [
@@ -701,54 +726,54 @@ const baseCurriculumContentByWeek: Record<number, BaseWeekCurriculumContent> = {
     ],
     quizQuestions: [
       {
-        question: "What problem does MCP help solve?",
+        question: "What problem does the GitHub MCP server primarily solve?",
         options: [
-          "Token limits",
-          "The need to copy-paste data between AI tools and external systems",
-          "Response speed",
-          "Hallucinations"
+          "It increases the token limit so Claude Code can handle larger files",
+          "It eliminates the need to manually copy repo information into AI prompts — Claude Code reads your actual GitHub repos directly",
+          "It allows Claude Code to write and push code without any human review",
+          "It automatically backs up your repositories on a schedule"
         ],
         correctIndex: 1
       },
       {
-        question: "Why are connected workflows more powerful than copy-paste workflows?",
+        question: "You install the GitHub MCP and ask Claude Code: 'What files are in my recruiting-workspace repo?' It names three specific files that actually exist there. What does this confirm?",
         options: [
-          "They require less review",
-          "The AI works with real, current context instead of manually pasted fragments",
-          "They are always faster",
-          "They eliminate human review"
+          "Claude Code guessed correctly based on common patterns it learned in training",
+          "The MCP connection is working — Claude Code read your actual GitHub repo content, not a prediction",
+          "Claude Code remembered your repo from a previous session where you pasted the contents",
+          "GitHub repos always contain those standard files by default"
         ],
         correctIndex: 1
       },
       {
-        question: "Why are connected workflows also riskier?",
+        question: "Before giving Claude Code write access to any external system — ATS, Slack, or calendar — the most important question to answer first is:",
         options: [
-          "They are slower",
-          "They can read or write real systems, increasing the impact of errors",
-          "They cost more",
-          "They require more prompting"
+          "Is the MCP server free or does it cost money?",
+          "Is the connection fast enough to be worth using?",
+          "What human review step exists before any AI-generated change affects real candidate records or real people?",
+          "Does the vendor officially support MCP in their documentation?"
+        ],
+        correctIndex: 2
+      },
+      {
+        question: "Why is read-only MCP access safer as a starting point than write-capable access?",
+        options: [
+          "Read-only connections are always significantly faster to set up and run",
+          "Write-capable errors can change or damage real records in ways that are hard to reverse; read-only errors only affect what you see, not what actually exists",
+          "Read-only access is free and write-capable access has a monthly cost",
+          "The distinction is mostly cosmetic for practical AI tool use"
         ],
         correctIndex: 1
       },
       {
-        question: "Why should learners care whether a system is read-only or write-capable?",
+        question: "You run the MCP install command correctly and then `claude mcp list` shows nothing. The most likely causes are:",
         options: [
-          "Write-capable systems are slower",
-          "Write-capable access means errors can have real, hard-to-reverse consequences",
-          "Read-only systems are faster",
-          "The distinction is cosmetic"
+          "MCP is not supported on your version of Claude Code and needs an upgrade",
+          "You need to restart your entire computer before changes take effect",
+          "The Personal Access Token was entered incorrectly, or you ran the command outside the correct directory",
+          "GitHub changed its API recently and the MCP server no longer works"
         ],
-        correctIndex: 1
-      },
-      {
-        question: "What does 'grounded' mean in a connected workflow?",
-        options: [
-          "The workflow runs locally",
-          "The output is based on real retrieved data rather than generic assumptions",
-          "The system is secure",
-          "The workflow is fast"
-        ],
-        correctIndex: 1
+        correctIndex: 2
       }
     ],
     gradingStandard: [
@@ -793,54 +818,54 @@ const baseCurriculumContentByWeek: Record<number, BaseWeekCurriculumContent> = {
     ],
     quizQuestions: [
       {
-        question: "Why does bad scoping break delegated work?",
+        question: "You have three tasks: (1) research a target company, (2) draft outreach based on that research, (3) summarize a different candidate's LinkedIn profile. Which can run in parallel?",
         options: [
-          "It makes agents slower",
-          "An agent with a poorly defined task will fill gaps with assumptions",
-          "It wastes tokens",
-          "It requires more prompting"
+          "Tasks 1 and 2 — they are both about the same company so they share context",
+          "All three — parallel is always faster so you should run everything at once",
+          "Tasks 1 and 3 — they are independent; task 2 must wait for task 1's output before it can start",
+          "None of them — all recruiting tasks must be done sequentially to be safe"
+        ],
+        correctIndex: 2
+      },
+      {
+        question: "You delegate 'improve our recruiting workflow' to a subagent and the output is impossible to evaluate. What most likely went wrong?",
+        options: [
+          "The subagent model is not powerful enough for this type of task",
+          "The task is too vague — 'improve' has no definition of done, no constraints, and no clear output format to judge against",
+          "Recruiting workflows are too complex for AI delegation",
+          "The subagent ran out of available context window"
         ],
         correctIndex: 1
       },
       {
-        question: "What makes a delegated task reviewable?",
+        question: "A subagent returns output. Before using it or passing it to the next step, you should:",
         options: [
-          "It is short",
-          "It has a clear expected output the reviewer can evaluate against clear criteria",
-          "It uses one tool",
-          "It involves one step"
+          "Use it immediately — subagents are specifically designed to be reliable without human review",
+          "Have the subagent review its own output for errors before you see it",
+          "Review it yourself — delegated tasks can contain errors that propagate and compound if they go unchecked at the handoff point",
+          "Save it and do a batch review at the end of all tasks"
+        ],
+        correctIndex: 2
+      },
+      {
+        question: "Context control means giving each delegated task:",
+        options: [
+          "The full conversation history so it has maximum possible information to work with",
+          "Only the information it needs to complete its specific job — not every piece of context you have",
+          "A longer prompt to reduce any chance of ambiguity",
+          "Access to all files in your repository regardless of relevance"
         ],
         correctIndex: 1
       },
       {
-        question: "What is the difference between parallel and sequential work?",
+        question: "You run three parallel research tasks and one returns empty results. The best response is:",
         options: [
-          "Parallel is always better",
-          "Sequential work must happen in order; parallel work can happen at the same time",
-          "They are interchangeable",
-          "Sequential is always faster"
+          "Accept the empty result and note it in your summary output",
+          "Redo all three tasks from the beginning to ensure consistency",
+          "Investigate: check the task scope and inputs for that specific task, then retry with better-defined constraints",
+          "Accept the other two results and permanently discard the one that failed"
         ],
-        correctIndex: 1
-      },
-      {
-        question: "Why is context control important?",
-        options: [
-          "It reduces token usage",
-          "Each task should have only the context it needs to avoid confusion and errors",
-          "Context control is optional",
-          "It improves response speed"
-        ],
-        correctIndex: 1
-      },
-      {
-        question: "What should always be true of a delegated output?",
-        options: [
-          "It should be short",
-          "It should be reviewable by a human before being used or passed forward",
-          "It should be fully automated",
-          "It should cite all sources"
-        ],
-        correctIndex: 1
+        correctIndex: 2
       }
     ],
     gradingStandard: [
@@ -885,52 +910,52 @@ const baseCurriculumContentByWeek: Record<number, BaseWeekCurriculumContent> = {
     ],
     quizQuestions: [
       {
-        question: "Why is speed alone not a sufficient measure?",
+        question: "You are building an eval for AI-generated candidate outreach. Which criterion is most useful?",
         options: [
-          "Speed is inaccurate",
-          "Fast output can still be wrong, incomplete, or unsafe",
-          "Speed is hard to measure",
-          "Speed only applies to chat tools"
+          "'The message sounds professional' — Yes or No",
+          "'The message was generated in under 10 seconds'",
+          "'The message references the candidate's specific current role or company — Pass: yes, with a direct quote. Fail: generic opener with no personalization'",
+          "'The message is under 200 words'"
+        ],
+        correctIndex: 2
+      },
+      {
+        question: "A guardrail differs from an eval criterion because:",
+        options: [
+          "Guardrails are longer and more formal documents requiring team sign-off",
+          "A guardrail prevents a known failure before it happens; an eval criterion judges quality after output is already produced",
+          "Guardrails are optional and eval criteria are required by the workflow",
+          "Eval criteria only apply to text output; guardrails apply to code and automation"
         ],
         correctIndex: 1
       },
       {
-        question: "What is the purpose of an eval?",
+        question: "Your rubric asks: 'Is this message personalized? Yes or No.' Two reviewers disagree on 40% of messages. The problem is:",
         options: [
-          "To make AI faster",
-          "To give the team a repeatable way to judge whether output meets quality standards",
-          "To remove the need for review",
-          "To reduce cost"
+          "One reviewer is wrong and needs to be retrained or replaced",
+          "'Personalized' is not defined specifically enough — a useful criterion tells reviewers exactly what evidence to look for so any two people reach the same answer",
+          "The rubric has too few questions and needs more criteria to resolve the disagreement",
+          "You need a third reviewer to break ties when two reviewers disagree"
         ],
         correctIndex: 1
       },
       {
-        question: "What is the purpose of a guardrail?",
+        question: "A 'reject condition' in an eval means:",
         options: [
-          "To increase speed",
-          "To prevent predictable failures before they become expensive",
-          "To measure quality",
-          "To simplify prompts"
+          "The output scores below average on all evaluation criteria",
+          "A specific failure — such as invented facts or missing required fields — that means the output cannot be used at all regardless of how it scores elsewhere",
+          "The AI refused to complete the task and returned an error message",
+          "The output was generated too slowly to be useful in your workflow"
         ],
         correctIndex: 1
       },
       {
-        question: "What makes a criterion useful instead of vague?",
+        question: "A team that runs an AI outreach workflow without any eval rubric will typically experience:",
         options: [
-          "Length",
-          "Being specific enough that two reviewers would reach the same verdict",
-          "Using formal language",
-          "Being short"
-        ],
-        correctIndex: 1
-      },
-      {
-        question: "What happens when teams rely only on intuition?",
-        options: [
-          "They are always right",
-          "Errors can go unnoticed and workflows cannot improve reliably",
-          "They work faster",
-          "Quality improves naturally"
+          "Consistently improving output quality as the AI learns from usage",
+          "Inconsistent quality — good results sometimes, poor results other times — with no reliable way to identify why or improve it systematically",
+          "Better results because intuition and feel are faster and more flexible than formal rubrics",
+          "No quality issues as long as they are using the most capable available model"
         ],
         correctIndex: 1
       }
@@ -980,52 +1005,52 @@ const baseCurriculumContentByWeek: Record<number, BaseWeekCurriculumContent> = {
     ],
     quizQuestions: [
       {
-        question: "Why are small agents often better first builds?",
+        question: "You are designing your first Claude Code skill for recruiting. Which scope is most appropriate?",
         options: [
-          "They require less thinking",
-          "They are easier to trust, review, and improve in practice",
-          "They are always more useful",
-          "They are faster to build"
+          "Automate the entire recruiting lifecycle from job requisition through offer letter",
+          "Generate a structured sourcing intake brief when I paste a job title and 2–3 context sentences",
+          "Replace all manual candidate research across every open role on the team",
+          "Handle all outreach drafting, scheduling, and follow-up for all open roles simultaneously"
         ],
         correctIndex: 1
       },
       {
-        question: "What makes a micro-agent useful instead of just clever?",
+        question: "Your skill file is saved, the slash command runs without errors, but the output is identical regardless of what you type after the command. The most likely cause is:",
         options: [
-          "It uses the latest model",
-          "It solves a real repeated problem with visible time or quality value",
-          "It has many features",
-          "It runs automatically"
+          "The Claude model version changed and broke the skill's behavior",
+          "The skill file is saved in the wrong folder and Claude Code is reading an outdated version",
+          "The skill file does not include `$ARGUMENTS` — there is no placeholder to receive the specific input you type",
+          "You need to reload Claude Code after each new input for the skill to pick it up"
         ],
-        correctIndex: 1
+        correctIndex: 2
       },
       {
-        question: "Why must value be measurable?",
+        question: "The first real sign that a micro-agent is useful — not just technically working — is:",
         options: [
-          "To justify the cost",
-          "Because teams will not maintain something if the benefit is invisible",
-          "Value is always measurable",
-          "To satisfy policy"
+          "It produces longer, more detailed output than doing the task manually",
+          "It receives positive comments in a team meeting or review session",
+          "You or a teammate saves measurable time or improves output quality on a task you previously did manually",
+          "It runs without any errors three times in a row during testing"
         ],
-        correctIndex: 1
+        correctIndex: 2
       },
       {
-        question: "Why should review stay in the loop?",
+        question: "Before sharing a skill file with a teammate, the minimum documentation it needs is:",
         options: [
-          "To slow things down",
-          "Automated outputs can contain errors that a human must catch before use",
-          "Review is optional",
-          "Review improves speed"
+          "A full user manual with annotated screenshots and a FAQ section",
+          "A version number and a running changelog of all changes made",
+          "A one-sentence description, a clear `$ARGUMENTS` spec showing what to paste or type, and a description of what it returns — enough to use confidently without asking the author",
+          "Written approval from a team lead confirming the skill is ready for team use"
         ],
-        correctIndex: 1
+        correctIndex: 2
       },
       {
-        question: "What is one sign a micro-agent is over-scoped?",
+        question: "You built a skill that works correctly in every test but nobody on the team uses it after two weeks. The most likely explanation is:",
         options: [
-          "It is too small",
-          "It tries to replace human judgment across too many decisions",
-          "It runs too fast",
-          "It uses multiple tools"
+          "The AI quality is not yet good enough for the team to trust it",
+          "The skill solves a problem that is not painful enough to change habits around, or using it is harder than just doing the task manually",
+          "The team did not have enough time to learn a new tool",
+          "The skill file format is incompatible with some teammates' operating system setup"
         ],
         correctIndex: 1
       }
@@ -1041,8 +1066,9 @@ const baseCurriculumContentByWeek: Record<number, BaseWeekCurriculumContent> = {
     summary:
       "Week 12 turns the program into an operating rhythm. Learners present one real build and identify what habit or system they will actually carry forward.",
     teachingOverview: [
-      "This week closes the program by turning learning into operating behavior. Learners present one real build or workflow, explain why it matters, show how it should be reviewed, and identify what should continue after the bootcamp.",
-      "The final standard is not spectacle. A strong capstone is useful, bounded, explainable, reusable, and honest about limitations. The best outcome is a team that keeps shipping small, reviewed, AI-enabled improvements after the formal curriculum ends."
+      "This week closes the program by turning learning into operating behavior. Learners present one real build or workflow, explain why it matters, show how it should be reviewed, and identify what should continue after the bootcamp ends.",
+      "The final standard is not spectacle. A strong capstone is useful, bounded, explainable, reusable, and honest about its limitations. The difference between a learner who tried AI for 12 weeks and a practitioner who changed how they work comes down to one thing: did they take one real workflow and make it part of how they operate every day? A capstone that sits in a slide deck and never gets used again is worth nothing. A capstone that saves 20 minutes per req, every week, for the next year is worth everything.",
+      "The best outcome is a team that keeps shipping small, reviewed, AI-enabled improvements after the formal curriculum ends — not because they were told to, but because they have seen what works and built the habits to keep doing it."
     ],
     lessonTakeaways: [
       "A capstone should be useful, bounded, explainable, and reusable.",
@@ -1073,54 +1099,54 @@ const baseCurriculumContentByWeek: Record<number, BaseWeekCurriculumContent> = {
     ],
     quizQuestions: [
       {
-        question: "What makes a capstone real rather than decorative?",
+        question: "What makes a capstone presentation credible rather than impressive-looking?",
         options: [
-          "A polished presentation",
-          "It solves a real recurring problem with measurable value and clear limitations",
-          "Impressive complexity",
-          "Using the latest tools"
+          "Using the most advanced and recent AI tools available",
+          "Showing a concrete before/after improvement, naming limitations honestly, and having a clear next version planned",
+          "Having the longest demo with the most workflow steps",
+          "Referencing as many weeks of the curriculum as possible in the presentation"
         ],
         correctIndex: 1
       },
       {
-        question: "Why is adoptability important?",
+        question: "An 'operating habit' is different from a one-time experiment because:",
         options: [
-          "It makes the project look good",
-          "A workflow that teammates never actually use creates no real value",
-          "Adoptability is secondary to quality",
-          "It ensures accuracy"
+          "Experiments are inherently riskier and harder to recover from when they fail",
+          "An operating habit runs every time a specific trigger happens — it becomes part of the default workflow, not a special occasion",
+          "Habits are always simpler and faster to execute than one-time experiments",
+          "Experiments require more tools and setup before they can be run"
         ],
         correctIndex: 1
       },
       {
-        question: "Why should value be visible?",
+        question: "Your capstone skill file works correctly but only you know how to invoke it. What is missing?",
         options: [
-          "For reporting purposes",
-          "Invisible value leads teams to abandon workflows they cannot justify maintaining",
-          "Value is always visible",
-          "Visibility is cosmetic"
+          "Better underlying code that makes the output more reliable",
+          "Manager approval confirming the skill is ready for team use",
+          "Documentation explaining what to paste, what to expect, and where to apply human judgment — enough for a teammate to use it confidently without asking you",
+          "A more complex and sophisticated prompt that handles more edge cases"
+        ],
+        correctIndex: 2
+      },
+      {
+        question: "Naming the limitations of your capstone workflow honestly does what?",
+        options: [
+          "Makes the presentation look weaker and less impressive to the audience",
+          "Builds team trust and helps people know exactly where to apply human judgment — preventing misuse and failed adoption",
+          "Is required by company policy for all AI tools before deployment",
+          "Reduces the scope of what you appear to have delivered in the program"
         ],
         correctIndex: 1
       },
       {
-        question: "Why is reviewability still important at the end?",
+        question: "The most valuable outcome of completing this program is:",
         options: [
-          "Because the program requires it",
-          "AI outputs at any stage can contain errors that require human judgment",
-          "Review only matters early in a project",
-          "It speeds up the workflow"
+          "A polished slide deck summarizing everything you learned over 12 weeks",
+          "Having tried and used every tool introduced in the curriculum at least once",
+          "One useful workflow or skill the team will actually keep using after the program ends — adoptable, reviewed, and maintained",
+          "Completing all 12 weekly assignments and receiving the final badge"
         ],
-        correctIndex: 1
-      },
-      {
-        question: "Why is one durable habit more valuable than ten fragile experiments?",
-        options: [
-          "Habits are easier to explain",
-          "A habit that sticks creates consistent value; experiments that fade leave nothing behind",
-          "Experiments are always risky",
-          "Habits are simpler to build"
-        ],
-        correctIndex: 1
+        correctIndex: 2
       }
     ],
     gradingStandard: [
@@ -1225,7 +1251,7 @@ const curriculumEnhancementsByWeek: Record<number, WeekCurriculumEnhancement> = 
       "Evaluate whether an agent answer is grounded in actual project evidence."
     ],
     workedExample:
-      "Example: open your recruiting-workspace repo in Codex and ask 'What is in this repo and what is it for?' A weak answer makes something up. A strong answer reads the actual README and file list, reports what it finds, and says 'I only see a README with no content yet — here is what I would suggest adding.' That specificity is what grounded means.",
+      "Scenario: you just created your recruiting-workspace repo and want to understand it. Weak prompt sent to chat AI (no repo): 'What is in my recruiting repo?' Weak answer: 'A typical recruiting repo contains job descriptions, candidate tracking spreadsheets, and process documents.' That could apply to any recruiter anywhere — it is not about your repo. Strong prompt sent to Codex (with repo connected): 'Read the files in this repo and tell me exactly what exists, what is missing, and what I should add to make this useful for sourcing and outreach work.' Strong answer: 'Your repo contains one file: README.md with no content. There are no playbooks, prompts, or workflow files yet. Based on what a recruiting workspace usually needs, I would suggest adding: a /prompts folder for reusable AI prompts, a /playbooks folder for step-by-step workflows, and a CLAUDE.md file for Claude Code context.' That is grounded — it reports what actually exists, not what typically exists.",
     guidedPractice: [
       "Open platform.openai.com, connect your recruiting-workspace repo in Codex, and confirm it can see your files.",
       "Write one question you could answer with ChatGPT chat (no repo needed).",
@@ -1280,11 +1306,13 @@ const curriculumEnhancementsByWeek: Record<number, WeekCurriculumEnhancement> = 
       "Create prompts that can be reused by teammates."
     ],
     workedExample:
-      "Weak prompt: `Make this better.` Strong prompt: `Review this assignment prompt for a non-technical recruiting teammate. Keep it under 2 hours, identify unclear instructions, rewrite it in learner-friendly language, and return: issues, revised prompt, and grading checklist.`",
+      "Weak prompt: 'Write outreach for this candidate.' It fails because: task is undefined (what kind of outreach — email, LinkedIn, InMail?), context is missing (what role, what company, what stage?), there are no constraints (what to avoid? what tone?), no definition of done (how long? how many versions?), and the output shape is unclear. Strong prompt: 'Write a 3-sentence LinkedIn message to [Name], currently a Senior Account Executive at Salesforce, for a VP of Sales role at a Series B SaaS company. Tone: warm and direct, not salesy. Reference their current title specifically. Do not mention compensation. Return the message only — no explanation, no subject line, no alternatives.' The second prompt is usable the moment it comes back. The first requires three follow-up exchanges to reach the same place — and even then the result is worse because the AI guessed at the context.",
     guidedPractice: [
-      "Take this vague prompt: 'Find me good VP Sales candidates.' Rewrite it with: task (screen candidates for VP Sales), context (SaaS company, Series B, must have closed enterprise deals), constraints (no candidates from direct competitors, max 5 results), definition of done (ranked list with evidence), output format (table with name, match score, evidence).",
-      "Rewrite it with a clear output format.",
-      "Add one constraint that prevents a predictable bad answer."
+      "Take this vague prompt: 'Find me good VP Sales candidates.' Using the 5-element checklist, identify which elements are missing: task, context, constraints, definition of done, output format. Write one sentence for each element that is missing.",
+      "Rewrite the prompt with all five elements. Your rewrite must specify: the seniority level and role, the company type and stage, at least one constraint (something to exclude or limit), what 'good' means (your definition of done), and the exact output format — table, ranked list, bullet points, or something else.",
+      "Add one constraint that blocks a predictable bad result — for example, excluding candidates from a specific type of company, capping the number of results at a specific number, or requiring a specific evidence type before a candidate qualifies.",
+      "Test it mentally: with your rewritten prompt, what would the AI still have to guess or assume? Name at least one remaining assumption. Add a prompt element that resolves it.",
+      "Compare your final version to the original. List two specific ways the rewritten prompt will produce a more useful result — not just 'it's clearer' but what will actually be different in the output."
     ],
     commonMistakes: [
       "Asking for quality without defining what quality means.",
@@ -1331,9 +1359,11 @@ const curriculumEnhancementsByWeek: Record<number, WeekCurriculumEnhancement> = 
     workedExample:
       "Apply the checklist to a candidate summary that sounds polished: (1) Grounded? No — it invents seniority that isn't in the resume. (2) Complete? No — it omits three scorecard criteria entirely. (3) Constraints followed? No — you asked for evidence-backed bullets and got prose. (4) Usable? No — you cannot send this to a hiring manager as-is. (5) Risk? High — a hiring manager could make a decision on invented information. Revision prompt: 'Rewrite this using only facts from the resume. Use bullet format. Label anything you cannot confirm as unknown.' That is a targeted fix — not 'make this better.'",
     guidedPractice: [
-      "Review one AI output and mark three flaws.",
-      "Classify each flaw as grounding, completeness, constraint, usability, or risk.",
-      "Write one revision prompt that targets those flaws directly."
+      "Using any chat AI, generate an outreach message for a fictional VP Sales candidate named Jordan Lee, currently a Senior AE at Oracle, applying for a VP of Sales role at your company. Do not give the AI specific constraints — let it produce whatever it wants.",
+      "Run the 5-question checklist on the result: (1) Grounded — does it reference Jordan's actual role and company, or is it generic? (2) Complete — does it include all the elements of good outreach? (3) Constraints followed — you gave none, so check for obvious violations of good practice. (4) Usable — could you send this as-is without changes? (5) Risk — what is the worst case if this message goes to Jordan or to the hiring manager?",
+      "Identify at least three specific flaws. For each one, name the evidence precisely — not 'it's generic' but 'it says your impressive background without naming any specific detail about Jordan's actual role at Oracle.'",
+      "Classify each flaw as grounding, completeness, constraint, usability, or risk — using the 5-question checklist categories.",
+      "Write one revision prompt that targets the most serious flaw directly. Run it. Check whether the revised output fixes the problem without introducing new problems."
     ],
     commonMistakes: [
       "Mistaking polished tone for correctness.",
@@ -1384,9 +1414,11 @@ const curriculumEnhancementsByWeek: Record<number, WeekCurriculumEnhancement> = 
     workedExample:
       "Ask Codex: 'Walk me through how a new job req moves from approval to posting in our typical process — what steps, who owns each, and where do things usually get stuck?' That is a scoped investigation task. Codex reads your project files and traces the workflow rather than guessing.",
     guidedPractice: [
-      "Convert a broad recruiting task (like 'improve our hiring process') into a one-sentence bounded Codex task (like 'explain the steps between job approval and job posting in my repo's workflow files').",
-      "Ask Codex to investigate before making changes.",
-      "Review its answer for files touched, assumptions, and next verification step."
+      "Write a one-sentence bounded Codex task using this format: [action verb] + [specific target] + [without doing X]. For example: 'Explain the steps in our job approval process using only files in this repo — do not suggest changes or add anything new.' The 'without doing X' part prevents Codex from taking actions you did not ask for.",
+      "Before sending the task, write down your predictions: what files would Codex need to answer this well? What would a complete answer include? These become your verification checklist.",
+      "Send the task. Review the output against your predictions. For each claim Codex makes, mark it: is this based on actual file content, or is it a reasonable-sounding assumption about how things usually work?",
+      "Ask Codex: 'What assumptions did you make in that answer?' Note which assumptions were accurate for your actual situation and which were not — these are your verification items.",
+      "Write one follow-up prompt that resolves the most important unverified assumption. Compare the new output to the original. Write one sentence describing what changed and why it matters."
     ],
     commonMistakes: [
       "Giving Codex a task too broad to review.",
@@ -1642,9 +1674,11 @@ const curriculumEnhancementsByWeek: Record<number, WeekCurriculumEnhancement> = 
     workedExample:
       "Example eval: Outreach draft criteria include role relevance, evidence-backed personalization, clear ask, concise length, and no invented facts. Guardrails include no unsupported claims and no personal data beyond approved sources. Here is exactly how to write one criterion — Role relevance: Does the draft specifically reference the candidate's current role or company? Pass = yes, with quote. Fail = generic opener with no personalization.",
     guidedPractice: [
-      "Choose one recurring AI output.",
-      "Write four criteria for a good result.",
-      "Add two guardrails and one reject condition."
+      "Choose one recurring AI output your team relies on — outreach draft, candidate summary, sourcing brief, or intake. Write down in plain English what 'terrible' looks like and what 'excellent' looks like. This is your raw material for the rubric.",
+      "Turn your 'excellent' description into 4 criteria. Write each one as a binary question with explicit pass and fail definitions. Use this exact format: '[Criterion name]: [Question]. Pass = [specific evidence]. Fail = [specific evidence].' The criterion passes only when a reviewer can point to something specific.",
+      "Test your criteria against two real examples: apply them to one output you would send and one you would not send. Do your criteria catch the difference clearly? If two reviewers would still disagree on a criterion, it is too vague — rewrite it until the answer is obvious from the evidence.",
+      "Write two guardrails: rules that prevent predictable failures before the output is even generated. A guardrail lives in your prompt or your process, not the rubric. Example: 'Never include information about a candidate that is not from the approved source documents.'",
+      "Define one reject condition: a specific failure that means the output cannot be used at all, regardless of how it scores on everything else. Name it precisely — 'if the message contains any fact about the candidate that is not verifiable from approved sources, reject regardless of score.'"
     ],
     commonMistakes: [
       "Using vague criteria like `good` or `professional`.",
@@ -1744,11 +1778,12 @@ const curriculumEnhancementsByWeek: Record<number, WeekCurriculumEnhancement> = 
       "Commit to one durable operating habit after the program."
     ],
     workedExample:
-      "Example capstone: A candidate-screening prep workflow that takes approved resume notes, generates evidence-backed questions, flags unknowns, and includes a reviewer checklist. The learner presents time saved, risks, and what version two should improve.",
+      "Strong capstone example — skill file: `/intake [job title, hiring manager name, 2–3 context sentences]` returns target job titles, company archetypes to source from, must-have criteria, exclusion criteria, and 3 Boolean search strings. Written explanation: Problem — building a sourcing strategy from scratch takes 30–45 minutes per req, and the quality varies depending on who does it. Value — /intake cuts initial sourcing setup to under 5 minutes per req and produces more consistent coverage of title variations. Limits — it cannot verify that criteria are legally defensible, it does not know your ATS or existing pipeline, and it will hallucinate if you give it a vague brief. Next version — add a step that reads the CLAUDE.md for approved sources before generating Boolean strings. Operating habit: 'Every time a new req opens and I get the intake call notes, I run /intake before I write a single search string.' That is a real capstone — concrete problem, specific value, honest limits, clear next version, and one habit that changes how the work gets done.",
     guidedPractice: [
-      "Write a one-paragraph capstone summary.",
-      "List the input, output, review boundary, and value measure.",
-      "Practice explaining one limitation honestly."
+      "Write your written explanation covering exactly four things: (a) Problem — what recruiting task does this skill help with, and how often does it come up? (2–3 sentences) (b) Value — what specifically improved — time saved, quality improved, or friction removed? Be specific enough to be checkable. (c) Limits — what can this skill not do, and where would you still want a human? Name at least two. (d) Next version — if you had one more week, what one change would make it significantly better?",
+      "Write one operating habit using this exact format: 'Every time [specific trigger], I will [specific action].' Example: 'Every time a new req opens and I receive the intake call notes, I will run /intake before I write a single search string.'",
+      "Practice explaining your capstone out loud in under 2 minutes: what it does, why it matters, where it fails, and what comes next. Time yourself. If it takes longer than 2 minutes, cut until it fits.",
+      "Identify one other workflow, habit, or standard from any week of the program — not just week 11 — that the team should keep using after the program ends. Write one sentence explaining why it deserves to be permanent."
     ],
     commonMistakes: [
       "Presenting a flashy demo without a real workflow.",
