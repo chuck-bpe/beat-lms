@@ -1,32 +1,15 @@
-import { existsSync, readFileSync } from "node:fs";
-import path from "node:path";
-
 type SlackMessageArgs = {
   channel: string;
   text: string;
 };
 
-function readLocalEnvValue(key: string) {
-  const envPath = path.join(process.cwd(), ".env.local");
-
-  if (!existsSync(envPath)) {
-    return "";
-  }
-
-  const lines = readFileSync(envPath, "utf8").split(/\r?\n/);
-  const line = lines.find((entry) => entry.startsWith(`${key}=`));
-
-  return line ? line.slice(key.length + 1).trim() : "";
-}
-
 function getSlackEnv() {
-  const token = process.env.SLACK_BOT_TOKEN || readLocalEnvValue("SLACK_BOT_TOKEN");
-  const defaultChannel =
-    process.env.SLACK_DEFAULT_CHANNEL || readLocalEnvValue("SLACK_DEFAULT_CHANNEL");
+  const token = process.env.SLACK_BOT_TOKEN;
+  const defaultChannel = process.env.SLACK_DEFAULT_CHANNEL;
 
   if (!token || !defaultChannel) {
     throw new Error(
-      "Missing Slack configuration. Add SLACK_BOT_TOKEN and SLACK_DEFAULT_CHANNEL to .env.local."
+      "Missing Slack configuration. Set SLACK_BOT_TOKEN and SLACK_DEFAULT_CHANNEL environment variables."
     );
   }
 

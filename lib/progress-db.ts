@@ -117,8 +117,8 @@ export async function getAdminProgressSummary(): Promise<{
       streak: 0,
       completionRate,
       currentWeek,
-      confidence: completionRate,
-      needsNudge: completionRate < 25
+      confidence: 0,
+      needsNudge: completed < (currentWeek - 1) * 3
     };
   });
 
