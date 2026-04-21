@@ -2,15 +2,16 @@ import { Header } from "@/components/header";
 import Link from "next/link";
 import { requireRole } from "@/lib/auth";
 import { learners, weeks as fallbackWeeks } from "@/lib/beat-data";
-import { getPublishedWeeks } from "@/lib/beat-db";
+import { getPublishedWeeks, getPublishedWeeksDetailed } from "@/lib/beat-db";
 import { getAdminProgressSummary, getRecentSubmissions } from "@/lib/progress-db";
 import { SlackDigestForm } from "./slack-digest-form";
 import { SlackNudgesForm } from "./slack-nudges-form";
-import { updateSubmissionReviewStatus } from "./actions";
+import { updateSubmissionReviewStatus, toggleModulePublished } from "./actions";
 
 export default async function AdminPage() {
   await requireRole("admin");
   const weeks = await getPublishedWeeks().catch(() => fallbackWeeks);
+  const detailedWeeks = await getPublishedWeeksDetailed().catch(() => []);
   const progressSummary = await getAdminProgressSummary().catch(() => ({
     learners,
     averageCompletion: 63.5,
@@ -104,7 +105,7 @@ export default async function AdminPage() {
               <span>Role</span>
               <span>Week</span>
               <span>Completion</span>
-              <span>Confidence</span>
+              <span>Quiz avg (coming soon)</span>
             </div>
             {progressSummary.learners.map((learner) => (
               <div className="table-row" key={learner.name}>
@@ -112,7 +113,7 @@ export default async function AdminPage() {
                 <span>{learner.role}</span>
                 <span>{learner.currentWeek}</span>
                 <span>{learner.completionRate}%</span>
-                <span>{learner.confidence}%</span>
+                <span>—</span>
               </div>
             ))}
           </div>
@@ -170,10 +171,16 @@ export default async function AdminPage() {
             <li>Weeks 7-12 shift into skills, MCP, delegation, evals, and capstone operating habits</li>
           </ul>
           <div className="mini-timeline">
-            {weeks.slice(0, 6).map((week) => (
+            {detailedWeeks.map((week) => (
               <div key={week.week} className="timeline-row">
                 <span>Week {week.week}</span>
                 <strong>{week.title}</strong>
+                <form action={toggleModulePublished} className="inline-form">
+                  <input type="hidden" name="moduleId" value={week.id} />
+                  <button className="button secondary small-button" type="submit">
+                    Unpublish
+                  </button>
+                </form>
               </div>
             ))}
           </div>

@@ -1,10 +1,12 @@
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import { Header } from "@/components/header";
+import { QuizForm } from "@/components/quiz-form";
 import { requireUser } from "@/lib/auth";
 import { weeks as fallbackWeeks } from "@/lib/beat-data";
 import { getPublishedWeeksDetailed, type PublishedWeek } from "@/lib/beat-db";
 import { getCurriculumContent } from "@/lib/curriculum-content";
+import { getQuizResponse } from "@/lib/quiz-db";
 
 type LessonPageProps = {
   params: Promise<{
@@ -41,6 +43,13 @@ export default async function LessonPage({ params }: LessonPageProps) {
 
   const previousLesson = lessonNumber > 1 ? lessonNumber - 1 : null;
   const nextLesson = lessonNumber < week.lessons.length ? lessonNumber + 1 : null;
+  const nextWeekIndex = weeks.findIndex((w) => w.week === weekNumber) + 1;
+  const nextWeek = nextLesson === null && nextWeekIndex < weeks.length ? weeks[nextWeekIndex] : null;
+
+  const existingQuizResponse =
+    lesson.format === "quiz"
+      ? await getQuizResponse(profile.id, weekNumber).catch(() => null)
+      : null;
 
   return (
     <main className="page-shell">
@@ -193,11 +202,12 @@ export default async function LessonPage({ params }: LessonPageProps) {
         <section className="card">
           <p className="eyebrow">Check Yourself</p>
           <h3>Use these questions to confirm the lesson landed</h3>
-          <ol className="ordered-list">
-            {curriculum.quizQuestions.map((question) => (
-              <li key={question}>{question}</li>
-            ))}
-          </ol>
+          <QuizForm
+            userId={profile.id}
+            weekNumber={weekNumber}
+            questions={curriculum.quizQuestions}
+            existingResponse={existingQuizResponse}
+          />
         </section>
       ) : null}
 
@@ -277,6 +287,10 @@ export default async function LessonPage({ params }: LessonPageProps) {
           {nextLesson ? (
             <Link className="button primary" href={`/curriculum/week/${week.week}/lesson/${nextLesson}`}>
               Next lesson
+            </Link>
+          ) : nextWeek ? (
+            <Link className="button primary" href={`/curriculum/week/${nextWeek.week}/lesson/1`}>
+              Start Week {nextWeek.week}
             </Link>
           ) : (
             <Link className="button primary" href="/learner">

@@ -199,8 +199,8 @@ export default async function CurriculumPage() {
                   <section className="curriculum-block">
                     <strong>Check yourself</strong>
                     <ol className="ordered-list">
-                      {curriculum.quizQuestions.map((question) => (
-                        <li key={question}>{question}</li>
+                      {curriculum.quizQuestions.map((q) => (
+                        <li key={q.question}>{q.question}</li>
                       ))}
                     </ol>
                   </section>

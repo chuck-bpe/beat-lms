@@ -78,20 +78,20 @@ export async function getPublishedWeeksDetailed(): Promise<PublishedWeek[]> {
 
         return {
           id: lesson.id,
-          title: canonicalLesson?.title ?? lesson.title,
-          duration: canonicalLesson?.duration ?? lesson.duration,
-          format: canonicalLesson?.format ?? lesson.format,
-          description: canonicalLesson?.description ?? lesson.description
+          title: lesson.title || canonicalLesson?.title || "",
+          duration: lesson.duration || canonicalLesson?.duration || "",
+          format: lesson.format || canonicalLesson?.format || "lesson",
+          description: lesson.description || canonicalLesson?.description || ""
         };
       });
 
     return {
       id: module.id,
       week: module.week_number,
-      title: canonicalWeek?.title ?? module.title,
-      theme: canonicalWeek?.theme ?? module.theme,
-      outcome: canonicalWeek?.outcome ?? module.outcome,
-      badge: canonicalWeek?.badge ?? module.badge,
+      title: module.title || canonicalWeek?.title || "",
+      theme: module.theme || canonicalWeek?.theme || "",
+      outcome: module.outcome || canonicalWeek?.outcome || "",
+      badge: module.badge || canonicalWeek?.badge || "",
       focus: canonicalWeek?.focus ?? [],
       lessons: moduleLessons
     };

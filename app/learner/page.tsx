@@ -1,11 +1,13 @@
 import Link from "next/link";
 import { Header } from "@/components/header";
+import { QuizForm } from "@/components/quiz-form";
 import { requireUser } from "@/lib/auth";
 import { WeekCard } from "@/components/week-card";
 import { promptLibrary, weeks as fallbackWeeks } from "@/lib/beat-data";
 import { getCurriculumContent } from "@/lib/curriculum-content";
 import { getPublishedWeeksDetailed, type PublishedWeek } from "@/lib/beat-db";
 import { getLearnerProgressSummary, getLearnerSubmissions } from "@/lib/progress-db";
+import { getQuizResponse } from "@/lib/quiz-db";
 import { markLessonComplete, submitAssignment } from "./actions";
 
 export default async function LearnerPage() {
@@ -37,6 +39,7 @@ export default async function LearnerPage() {
   const submissions = await getLearnerSubmissions(profile.id).catch(() => []);
   const currentAssignment = currentWeek.lessons.find((lesson) => lesson.format === "assignment");
   const curriculum = getCurriculumContent(currentWeek.week);
+  const existingQuizResponse = await getQuizResponse(profile.id, currentWeek.week).catch(() => null);
 
   return (
     <main className="page-shell">
@@ -243,12 +246,13 @@ export default async function LearnerPage() {
           {curriculum ? (
             <div className="curriculum-stack">
               <div className="curriculum-block">
-                <strong>Quiz-style questions</strong>
-                <ol className="ordered-list">
-                  {curriculum.quizQuestions.map((question) => (
-                    <li key={question}>{question}</li>
-                  ))}
-                </ol>
+                <strong>Quiz</strong>
+                <QuizForm
+                  userId={profile.id}
+                  weekNumber={currentWeek.week}
+                  questions={curriculum.quizQuestions}
+                  existingResponse={existingQuizResponse}
+                />
               </div>
               <div className="curriculum-block">
                 <strong>What counts as done</strong>

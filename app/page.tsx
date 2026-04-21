@@ -30,9 +30,6 @@ export default async function HomePage() {
             <Link className="button primary" href="/auth">
               Sign in to BEAT
             </Link>
-            <Link className="button secondary" href="/admin">
-              Open admin view
-            </Link>
           </div>
         </div>
         <div className="hero-panel">

@@ -83,13 +83,13 @@ export const weeks: Week[] = [
         title: "Your first 10 useful commands",
         duration: "20 min",
         format: "demo",
-        description: "Walk through pwd, ls, cd, cat, rg, npm run dev, git status, and stopping a running process."
+        description: "Walk through pwd, ls, cd, touch, git init, git add, git commit, git log, and stopping a running process."
       },
       {
-        title: "Run the repo without fear",
+        title: "Create your own repo from scratch",
         duration: "60 min",
         format: "assignment",
-        description: "Navigate the BEAT repo, run key commands, start the app locally, and explain what each command did."
+        description: "Create a new folder, initialize a Git repo, make your first commit, and explain what each command did."
       },
       {
         title: "Terminal command check",
@@ -111,7 +111,7 @@ export const weeks: Week[] = [
         title: "Codex, Claude Code, ChatGPT, and Claude: what each one is for",
         duration: "25 min",
         format: "lesson",
-        description: "Teach when to use chat tools versus coding agents and how repo context changes the quality of output."
+        description: "Teach when to use chat tools versus coding agents, how repo context changes the quality of output, including initial Codex setup."
       },
       {
         title: "One task, two coding agents",
@@ -247,7 +247,7 @@ export const weeks: Week[] = [
         title: "What Claude Code is especially good at",
         duration: "25 min",
         format: "lesson",
-        description: "Explain how Claude Code works as a terminal-first coding workflow with files, commands, memory, and connected tools."
+        description: "Explain how Claude Code works as a terminal-first coding workflow with files, commands, memory, and connected tools, including Claude Code installation."
       },
       {
         title: "Terminal-first task execution in Claude Code",

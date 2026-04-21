@@ -16,7 +16,8 @@ export async function updateSubmissionReviewStatus(formData: FormData) {
   const submissionId = String(formData.get("submissionId") || "");
   const reviewStatus = String(formData.get("reviewStatus") || "");
 
-  if (!submissionId || !reviewStatus) {
+  const allowedStatuses = ["reviewed", "needs_revision"];
+  if (!submissionId || !allowedStatuses.includes(reviewStatus)) {
     return;
   }
 
@@ -32,6 +33,39 @@ export async function updateSubmissionReviewStatus(formData: FormData) {
 
   revalidatePath("/admin");
   revalidatePath("/learner");
+}
+
+export async function toggleModulePublished(formData: FormData) {
+  await requireRole("admin");
+  const moduleId = String(formData.get("moduleId") || "");
+
+  if (!moduleId) {
+    return;
+  }
+
+  const supabase = await createClient();
+  const { data, error: fetchError } = await supabase
+    .from("modules")
+    .select("is_published")
+    .eq("id", moduleId)
+    .single();
+
+  if (fetchError || !data) {
+    throw fetchError ?? new Error("Module not found");
+  }
+
+  const { error } = await supabase
+    .from("modules")
+    .update({ is_published: !data.is_published })
+    .eq("id", moduleId);
+
+  if (error) {
+    throw error;
+  }
+
+  revalidatePath("/admin");
+  revalidatePath("/");
+  revalidatePath("/curriculum");
 }
 
 export type SlackDigestState = {
