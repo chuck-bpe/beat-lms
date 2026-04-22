@@ -45,6 +45,10 @@ export async function submitAssignment(formData: FormData) {
     return;
   }
 
+  if (content.length < 80) {
+    throw new Error("Please include a real submission with the requested work, evidence, and reflection.");
+  }
+
   const supabase = await createClient();
   const { error } = await supabase.from("submissions").insert({
     user_id: profile.id,

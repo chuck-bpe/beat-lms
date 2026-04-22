@@ -137,10 +137,10 @@ const baseCurriculumContentByWeek: Record<number, BaseWeekCurriculumContent> = {
   },
   2: {
     summary:
-      "This week you use Codex for the first time on your actual repo. You are not just prompting — you are directing construction. You review what it builds like an owner, not a spectator.",
+      "This week you use Codex for the first time on your actual repo. You start in investigation mode: asking grounded questions, checking file evidence, and learning when Codex should answer versus when it should change files.",
     teachingOverview: [
-      "You have been using AI tools that answer questions. This week the mental shift is that Codex does not answer — it builds. You give it a task, it writes working files, and you decide whether to accept the result. That is a different relationship. The AI is not your editor. It is your contractor, and you are the client reviewing the work.",
-      "You probably use custom GPTs for recruiting. Custom GPTs answer questions. Codex builds things. The difference is the same as the difference between asking a colleague what the intake doc should include versus handing them a laptop and saying 'write it.' One is advice. The other is construction. This week you supervise construction for the first time.",
+      "You have been using AI tools that answer questions from whatever context you paste in. This week the mental shift is that Codex can work from the actual repository. In ask mode, it can investigate files and explain what is really there. In code mode, it can propose changes. This week starts with ask mode because investigation is safer and teaches you how to judge grounding before you let any agent edit anything.",
+      "You probably use custom GPTs for recruiting. Custom GPTs answer based on the context you provide. Codex can answer from project evidence and, later, build from that evidence. The difference is the same as asking a colleague to speculate about what your intake doc should include versus asking someone to open the actual file and report what is missing. This week you learn the second habit first.",
       "After this week, you will understand what it means for AI to be grounded in your actual project. A chat tool guesses. Codex reads your real files. That distinction — grounded versus generic — becomes the most important quality check you run for the rest of this program."
     ],
     lessonTakeaways: [
@@ -710,7 +710,7 @@ const baseCurriculumContentByWeek: Record<number, BaseWeekCurriculumContent> = {
       "Once you have one MCP server running, adding others follows the exact same pattern."
     ],
     demoSteps: [
-      "Get a GitHub Personal Access Token: github.com → Settings → Developer Settings → Personal Access Tokens → Tokens (classic) → Generate new token → check 'repo' scope → copy the token.",
+      "Create a fine-grained GitHub Personal Access Token for the single `recruiting-workspace` repo: github.com → Settings → Developer Settings → Personal Access Tokens → Fine-grained tokens → Generate new token → select only that repository → grant the minimum read permissions needed for repository contents → copy the token.",
       "Install the GitHub MCP in Claude Code: run `claude mcp add github --env GITHUB_PERSONAL_ACCESS_TOKEN=[your-token] -- npx -y @modelcontextprotocol/server-github`",
       "Verify: run `claude mcp list` and confirm `github` appears.",
       "Launch Claude Code from inside your recruiting-workspace repo and ask: 'List all files in this repo and summarize what each one contains.'",
@@ -720,7 +720,7 @@ const baseCurriculumContentByWeek: Record<number, BaseWeekCurriculumContent> = {
     assignmentDeliverable:
       "A screenshot of `claude mcp list` showing the GitHub MCP connected, plus a screenshot of Claude Code answering a question that required reading your actual repo, plus a one-paragraph reflection on what changed when AI had real access.",
     assignmentSteps: [
-      "Generate a GitHub Personal Access Token with 'repo' scope at github.com/settings/tokens.",
+      "Generate a fine-grained GitHub Personal Access Token for only your `recruiting-workspace` repo with the minimum read permissions needed for repository contents.",
       "Run the install command: `claude mcp add github --env GITHUB_PERSONAL_ACCESS_TOKEN=[your-token] -- npx -y @modelcontextprotocol/server-github`",
       "Run `claude mcp list` and take a screenshot confirming the connection.",
       "Launch Claude Code inside your recruiting-workspace repo and ask it a question that requires reading your files.",
@@ -1585,7 +1585,7 @@ const curriculumEnhancementsByWeek: Record<number, WeekCurriculumEnhancement> = 
     howThisConnectsToAI:
       "An AI answer is only as good as the context it has. Right now you are the context bridge — copy-pasting files into chat. MCP replaces you in that role. Claude Code reads the real source directly, which means every answer is grounded in what is actually there, not in what you remembered to include.",
     whatYouWillDoNext: [
-      "Get a GitHub Personal Access Token: go to github.com → click your profile photo (top right) → Settings → Developer settings (bottom of left sidebar) → Personal access tokens → Tokens (classic) → Generate new token (classic) → name it 'claude-code' → check only the 'repo' checkbox → click Generate token → copy the token immediately (you only see it once).",
+      "Get a fine-grained GitHub Personal Access Token: go to github.com → click your profile photo (top right) → Settings → Developer settings → Personal access tokens → Fine-grained tokens → Generate new token → name it 'claude-code' → select only your `recruiting-workspace` repo → grant the minimum read permissions needed for repository contents → copy the token immediately (you only see it once).",
       "Install the GitHub MCP server with one terminal command using `claude mcp add`.",
       "Run `claude mcp list` to confirm the connection.",
       "Ask Claude Code a question that requires reading your actual GitHub repo and verify the answer is grounded."
@@ -1610,9 +1610,9 @@ const curriculumEnhancementsByWeek: Record<number, WeekCurriculumEnhancement> = 
       "Describe the difference between read-only and write-capable MCP access."
     ],
     workedExample:
-      "Full MCP installation: Go to github.com/settings/tokens → Generate new token (classic) → check the narrowest repo access that covers your recruiting-workspace repo → copy the token. Then run: `claude mcp add github --env GITHUB_PERSONAL_ACCESS_TOKEN=[your-token] -- npx -y @modelcontextprotocol/server-github`. Verify: run `claude mcp list` and confirm 'github' appears. Now open Claude Code inside your recruiting-workspace repo and ask: 'List all files in this repo and summarize what each one is for.' The answer is grounded in your actual files — not generic advice. That is the difference between chat AI and connected AI.",
+      "Full MCP installation: Go to github.com/settings/tokens → Fine-grained tokens → Generate new token → select only your recruiting-workspace repo → grant the minimum read permissions needed for repository contents → copy the token. Then run: `claude mcp add github --env GITHUB_PERSONAL_ACCESS_TOKEN=[your-token] -- npx -y @modelcontextprotocol/server-github`. Verify: run `claude mcp list` and confirm 'github' appears. Now open Claude Code inside your recruiting-workspace repo and ask: 'List all files in this repo and summarize what each one is for.' The answer is grounded in your actual files — not generic advice. That is the difference between chat AI and connected AI.",
     guidedPractice: [
-      "Go to github.com/settings/tokens → Generate new token (classic) → choose the narrowest repo access that covers your recruiting-workspace repo → copy the token. A Personal Access Token is like a secure password you create just for Claude Code. Treat it as sensitive: do not paste it into Slack, screenshots, submissions, or the repo.",
+      "Go to github.com/settings/tokens → Fine-grained tokens → Generate new token → choose only your recruiting-workspace repo → grant the minimum read permissions needed for repository contents → copy the token. A Personal Access Token is like a secure password you create just for Claude Code. Treat it as sensitive: do not paste it into Slack, screenshots, submissions, or the repo.",
       "Run the MCP install command. It has four parts: `claude mcp add github` names the connection; `--env GITHUB_PERSONAL_ACCESS_TOKEN=[your-token]` passes your token as an environment variable; `--` separates Claude Code options from the server command; `npx -y @modelcontextprotocol/server-github` downloads and runs the MCP server. Copy the whole command, replace [your-token] with your actual token (no brackets), and run it. If you see 'command not found' for npx, Node.js is not installed — go to nodejs.org, install it, then retry.",
       "Run `claude mcp list` and confirm `github` appears in the list.",
       "Launch Claude Code inside your recruiting-workspace repo and ask it to list and describe all your files.",

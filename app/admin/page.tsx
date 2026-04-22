@@ -1,7 +1,7 @@
 import { Header } from "@/components/header";
 import Link from "next/link";
 import { requireRole } from "@/lib/auth";
-import { learners, weeks as fallbackWeeks } from "@/lib/beat-data";
+import { weeks as fallbackWeeks } from "@/lib/beat-data";
 import { getPublishedWeeks, getAllWeeksForAdmin } from "@/lib/beat-db";
 import { getAdminProgressSummary, getRecentSubmissions } from "@/lib/progress-db";
 import { getAllQuizScores } from "@/lib/quiz-db";
@@ -13,11 +13,7 @@ export default async function AdminPage() {
   await requireRole("admin");
   const weeks = await getPublishedWeeks().catch(() => fallbackWeeks);
   const allWeeks = await getAllWeeksForAdmin().catch(() => []);
-  const progressSummary = await getAdminProgressSummary().catch(() => ({
-    learners,
-    averageCompletion: 63.5,
-    nudgeCount: learners.filter((learner) => learner.needsNudge).length
-  }));
+  const progressSummary = await getAdminProgressSummary();
   const atRiskLearners = progressSummary.learners.filter((learner) => learner.needsNudge);
   const currentModule = progressSummary.learners.length
     ? Math.max(1, Math.min(...progressSummary.learners.map((learner) => learner.currentWeek)))
