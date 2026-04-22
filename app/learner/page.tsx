@@ -97,6 +97,10 @@ export default async function LearnerPage() {
                 </div>
                 {progressSummary.completedLessonTitles.has(lesson.title) ? (
                   <span className="status-pill done">Done</span>
+                ) : lesson.format === "assignment" || lesson.format === "quiz" ? (
+                  <Link className="button secondary small-button" href={`/curriculum/week/${currentWeek.week}/lesson/${index + 1}`}>
+                    Complete in lesson
+                  </Link>
                 ) : (
                   <form action={markLessonComplete} className="inline-form">
                     <input type="hidden" name="lessonId" value={lesson.id} />
@@ -115,7 +119,7 @@ export default async function LearnerPage() {
       <section className="card">
         <p className="eyebrow">Before You Start</p>
         <h3>Setup checklist</h3>
-        <p>Terminal, GitHub, Node.js, VS Code, and API keys — make sure you have everything before Week 1.</p>
+        <p>Terminal, GitHub, Node.js, VS Code, and approved AI tool access — make sure the basics are ready before Week 1.</p>
         <div className="cta-row">
           <Link className="button secondary" href="/prerequisites">
             View setup guide

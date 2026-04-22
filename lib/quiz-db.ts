@@ -2,7 +2,9 @@
 
 import { requireUser } from "@/lib/auth";
 import { getCurriculumContent } from "@/lib/curriculum-content";
+import { getPublishedWeeksDetailed } from "@/lib/beat-db";
 import { createClient } from "@/lib/supabase/server";
+import { revalidatePath } from "next/cache";
 
 export type QuizResponse = {
   id: string;
@@ -44,6 +46,32 @@ export async function saveQuizResponse(
   if (error) {
     throw error;
   }
+
+  const weeks = await getPublishedWeeksDetailed();
+  const week = weeks.find((item) => item.week === weekNumber);
+  const quizLesson = week?.lessons.find((lesson) => lesson.format === "quiz");
+
+  if (week && quizLesson) {
+    const { error: progressError } = await supabase.from("progress").upsert(
+      {
+        user_id: profile.id,
+        module_id: week.id,
+        lesson_id: quizLesson.id,
+        status: "completed",
+        completed_at: new Date().toISOString()
+      },
+      {
+        onConflict: "user_id,lesson_id"
+      }
+    );
+
+    if (progressError) {
+      throw progressError;
+    }
+  }
+
+  revalidatePath("/learner");
+  revalidatePath("/admin");
 
   return { score, total };
 }

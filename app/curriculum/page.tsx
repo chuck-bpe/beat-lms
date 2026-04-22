@@ -205,6 +205,21 @@ export default async function CurriculumPage() {
                     </ol>
                   </section>
 
+                  <section className="curriculum-block">
+                    <strong>Watch / read / do</strong>
+                    <div className="asset-list">
+                      {curriculum.recommendedResources.map((resource) => (
+                        <a className="asset-row resource-link" href={resource.url} key={resource.url} rel="noreferrer" target="_blank">
+                          <span className="pill">{resource.type}</span>
+                          <div>
+                            <strong>{resource.label}</strong>
+                            <p className="muted">{resource.url}</p>
+                          </div>
+                        </a>
+                      ))}
+                    </div>
+                  </section>
+
                   <section className="curriculum-block full-span">
                     <strong>What counts as done</strong>
                     <ul className="clean-list tight-list">

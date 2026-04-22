@@ -4,6 +4,7 @@ import { requireRole } from "@/lib/auth";
 import { learners, weeks as fallbackWeeks } from "@/lib/beat-data";
 import { getPublishedWeeks, getAllWeeksForAdmin } from "@/lib/beat-db";
 import { getAdminProgressSummary, getRecentSubmissions } from "@/lib/progress-db";
+import { getAllQuizScores } from "@/lib/quiz-db";
 import { SlackDigestForm } from "./slack-digest-form";
 import { SlackNudgesForm } from "./slack-nudges-form";
 import { updateSubmissionReviewStatus, toggleModulePublished } from "./actions";
@@ -22,6 +23,23 @@ export default async function AdminPage() {
     ? Math.max(1, Math.min(...progressSummary.learners.map((learner) => learner.currentWeek)))
     : 1;
   const submissions = await getRecentSubmissions().catch(() => []);
+  const quizScores = await getAllQuizScores().catch(() => []);
+  const quizAverageByUserId = new Map<string, string>();
+
+  progressSummary.learners.forEach((learner) => {
+    if (!learner.id) {
+      return;
+    }
+
+    const learnerScores = quizScores.filter((score) => score.userId === learner.id);
+    if (!learnerScores.length) {
+      return;
+    }
+
+    const average =
+      learnerScores.reduce((sum, score) => sum + score.score / Math.max(score.total, 1), 0) / learnerScores.length;
+    quizAverageByUserId.set(learner.id, `${Math.round(average * 100)}%`);
+  });
 
   return (
     <main className="page-shell">
@@ -105,7 +123,7 @@ export default async function AdminPage() {
               <span>Role</span>
               <span>Week</span>
               <span>Completion</span>
-              <span>Quiz avg (coming soon)</span>
+              <span>Quiz avg</span>
             </div>
             {progressSummary.learners.map((learner) => (
               <div className="table-row" key={learner.name}>
@@ -113,7 +131,7 @@ export default async function AdminPage() {
                 <span>{learner.role}</span>
                 <span>{learner.currentWeek}</span>
                 <span>{learner.completionRate}%</span>
-                <span>—</span>
+                <span>{learner.id ? quizAverageByUserId.get(learner.id) ?? "—" : "—"}</span>
               </div>
             ))}
           </div>

@@ -183,34 +183,35 @@ export default async function PrerequisitesPage() {
 
         <article className="card">
           <p className="eyebrow">Step 5</p>
-          <h3>API keys for Codex and Claude Code</h3>
+          <h3>AI tool access for Codex and Claude Code</h3>
           <div className="curriculum-detail-grid">
             <div className="curriculum-block">
               <strong>OpenAI / Codex (needed Week 2)</strong>
               <p>
-                Go to platform.openai.com. Create a free account if you do not have one. You will use Codex starting in
-                Week 2. Usage is metered — most people spend $2–10/month at program usage levels.
+                Go to chatgpt.com/codex. Sign in with the ChatGPT account approved for this program, then connect your
+                GitHub account when prompted. Codex currently works through supported ChatGPT plans, not a separate API-key
+                setup for this course.
               </p>
             </div>
             <div className="curriculum-block">
               <strong>Anthropic / Claude Code (needed Week 6)</strong>
               <p>
-                Go to console.anthropic.com. Create a free account. You will need an API key for Claude Code starting in
-                Week 6. Usage is metered at roughly $5–20/month depending on how much you use it.
+                Follow the official Claude Code overview linked in the curriculum. Install Claude Code when you reach Week 6,
+                launch it with <code>claude</code>, and complete the authentication prompts for your approved Anthropic setup.
               </p>
             </div>
             <div className="curriculum-block">
-              <strong>You do not need these immediately</strong>
+              <strong>You do not need everything immediately</strong>
               <p>
-                You can complete Weeks 1 through 5 without API keys. Set up your accounts now so you are not blocked
-                when you get there. You will not be charged until you start making API calls.
+                You can complete Week 1 with only Terminal, GitHub, Node.js, and VS Code. Codex begins in Week 2 and Claude
+                Code begins in Week 6, so it is fine to confirm those accounts after the first week if needed.
               </p>
             </div>
             <div className="curriculum-block">
-              <strong>These are the only paid tools in the program</strong>
+              <strong>Keep costs intentional</strong>
               <p>
-                Claude.ai and Codex (which you already have access to) are the only other tools with costs. Everything
-                else — GitHub, Node.js, VS Code, Git Bash — is free.
+                GitHub, Node.js, VS Code, and Git Bash are free for this program. AI tool costs depend on the plans and
+                usage your team chooses, so use the approved company setup instead of creating surprise personal spend.
               </p>
             </div>
           </div>
@@ -221,7 +222,7 @@ export default async function PrerequisitesPage() {
         <p className="eyebrow">You are ready</p>
         <h3>All five steps done? Start Week 1.</h3>
         <p>
-          Once you have a working terminal, a GitHub account, Node.js, VS Code, and your API accounts created, you have
+          Once you have a working terminal, a GitHub account, Node.js, VS Code, and your approved AI tool access confirmed, you have
           everything you need to start. Week 1 walks you through creating your first Git repository and pushing it to
           GitHub.
         </p>

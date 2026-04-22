@@ -112,7 +112,9 @@ export async function getAdminProgressSummary(): Promise<{
     const currentWeek = Math.min(weeks.length, Math.floor(completed / 4) + 1);
 
     return {
+      id: user.id,
       name: user.full_name || user.email,
+      email: user.email,
       role: "Learner",
       streak: 0,
       completionRate,

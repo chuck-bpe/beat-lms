@@ -9,7 +9,7 @@ function isAuthorized(request: Request) {
   return expected && provided === `Bearer ${expected}`;
 }
 
-export async function POST(request: Request) {
+export async function GET(request: Request) {
   if (!isAuthorized(request)) {
     return NextResponse.json({ ok: false, error: "unauthorized" }, { status: 401 });
   }
@@ -30,3 +30,5 @@ export async function POST(request: Request) {
 
   return NextResponse.json({ ok: true });
 }
+
+export const POST = GET;

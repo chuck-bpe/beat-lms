@@ -202,7 +202,7 @@ export default async function LessonPage({ params }: LessonPageProps) {
             <div className="asset-list">
               {curriculum.recommendedResources.map((resource) => (
                 <a className="asset-row resource-link" href={resource.url} key={resource.url} rel="noreferrer" target="_blank">
-                  <span className="pill">Resource</span>
+                  <span className="pill">{resource.type}</span>
                   <div>
                     <strong>{resource.label}</strong>
                     <p>{resource.url}</p>

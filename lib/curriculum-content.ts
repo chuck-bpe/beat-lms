@@ -21,6 +21,7 @@ type WeekCurriculumEnhancement = {
   whatYouWillDoNext: string[];
   plainEnglishVocabulary: string[];
   recommendedResources: {
+    type: "Watch" | "Read" | "Do";
     label: string;
     url: string;
   }[];
@@ -156,7 +157,7 @@ const baseCurriculumContentByWeek: Record<number, BaseWeekCurriculumContent> = {
     assignmentDeliverable:
       "A repo-investigation submission: the original Codex prompt, the answer it gave, a follow-up prompt, and a short judgment on whether the result was grounded in your actual repo.",
     assignmentSteps: [
-      "Open your recruiting-workspace repo in Codex on platform.openai.com.",
+      "Open your recruiting-workspace repo in Codex at chatgpt.com/codex.",
       "Ask one question about what the repo contains or how it could be improved.",
       "Ask at least one follow-up that pushes for more specificity.",
       "Submit both prompts, the answers, and a short note on whether the result was complete, incomplete, or misleading."
@@ -702,7 +703,7 @@ const baseCurriculumContentByWeek: Record<number, BaseWeekCurriculumContent> = {
     ],
     demoSteps: [
       "Get a GitHub Personal Access Token: github.com → Settings → Developer Settings → Personal Access Tokens → Tokens (classic) → Generate new token → check 'repo' scope → copy the token.",
-      "Install the GitHub MCP in Claude Code: run `claude mcp add github -e GITHUB_PERSONAL_ACCESS_TOKEN=[your-token] -- npx -y @modelcontextprotocol/server-github`",
+      "Install the GitHub MCP in Claude Code: run `claude mcp add github --env GITHUB_PERSONAL_ACCESS_TOKEN=[your-token] -- npx -y @modelcontextprotocol/server-github`",
       "Verify: run `claude mcp list` and confirm `github` appears.",
       "Launch Claude Code from inside your recruiting-workspace repo and ask: 'List all files in this repo and summarize what each one contains.'",
       "Ask a follow-up: 'Based on what you see in this repo, what would make it more useful as a recruiting workspace?'",
@@ -712,7 +713,7 @@ const baseCurriculumContentByWeek: Record<number, BaseWeekCurriculumContent> = {
       "A screenshot of `claude mcp list` showing the GitHub MCP connected, plus a screenshot of Claude Code answering a question that required reading your actual repo, plus a one-paragraph reflection on what changed when AI had real access.",
     assignmentSteps: [
       "Generate a GitHub Personal Access Token with 'repo' scope at github.com/settings/tokens.",
-      "Run the install command: `claude mcp add github -e GITHUB_PERSONAL_ACCESS_TOKEN=[your-token] -- npx -y @modelcontextprotocol/server-github`",
+      "Run the install command: `claude mcp add github --env GITHUB_PERSONAL_ACCESS_TOKEN=[your-token] -- npx -y @modelcontextprotocol/server-github`",
       "Run `claude mcp list` and take a screenshot confirming the connection.",
       "Launch Claude Code inside your recruiting-workspace repo and ask it a question that requires reading your files.",
       "Take a screenshot of the grounded answer.",
@@ -806,7 +807,7 @@ const baseCurriculumContentByWeek: Record<number, BaseWeekCurriculumContent> = {
       "A screenshot of Claude Code running at least two parallel subagent tasks in your recruiting-workspace repo, plus a one-paragraph reflection on what each agent found and what still required your human review.",
     assignmentSteps: [
       "Open Claude Code in your recruiting-workspace repo.",
-      "Type a prompt asking Claude Code to run two tasks in parallel — for example: 'Use the Task tool to run these two tasks in parallel: Task 1 — summarize every file in this repo. Task 2 — review my CLAUDE.md and suggest three improvements. Report both results together.'",
+      "Type a prompt asking Claude Code to delegate two focused tasks — for example: 'Use subagents if available to run these two tasks separately: Task 1 — summarize every file in this repo. Task 2 — review my CLAUDE.md and suggest three improvements. Report both results together.'",
       "Take a screenshot of the combined subagent output.",
       "Write a one-paragraph reflection: what did each task find, and what would you still need to verify or decide yourself before acting on either result?"
     ],
@@ -869,7 +870,7 @@ const baseCurriculumContentByWeek: Record<number, BaseWeekCurriculumContent> = {
       }
     ],
     gradingStandard: [
-      "Screenshot shows Claude Code running at least two tasks using the Task tool.",
+      "Screenshot shows Claude Code running or delegating at least two clearly separated tasks.",
       "Reflection accurately describes what each subagent returned.",
       "Identifies at least one thing that still required human judgment.",
       "Distinguishes what the agents did from what you verified."
@@ -1161,7 +1162,7 @@ const baseCurriculumContentByWeek: Record<number, BaseWeekCurriculumContent> = {
 const curriculumEnhancementsByWeek: Record<number, WeekCurriculumEnhancement> = {
   1: {
     whatThisIs:
-      "The terminal is a text-based way to control your computer. Instead of clicking through folders and apps, you type short commands. In this program, you use it for safe basics: finding where they are, seeing what files exist, creating a Git repository, and pushing it to GitHub.\n\nWhat you will need before starting this program: (1) A Mac or PC — Mac Terminal is built in; Windows users install Git Bash free at gitforwindows.org. (2) A free GitHub account at github.com. (3) Node.js installed — free at nodejs.org (this also installs npm, which you need for Claude Code). (4) VS Code installed — free at code.visualstudio.com. (5) An Anthropic API key from console.anthropic.com — you will need this in Week 6 for Claude Code; it costs roughly $5–20/month based on usage, not a flat subscription. The only paid tools in this program are Claude.ai and Codex, which you already have.",
+      "The terminal is a text-based way to control your computer. Instead of clicking through folders and apps, you type short commands. In this program, you use it for safe basics: finding where you are, seeing what files exist, creating a Git repository, and pushing it to GitHub.\n\nWhat you will need before starting this program: (1) A Mac or PC — Mac Terminal is built in; Windows users install Git Bash free at gitforwindows.org. (2) A free GitHub account at github.com. (3) Node.js installed — free at nodejs.org (this also installs npm and npx, which you need later). (4) VS Code installed — free at code.visualstudio.com. (5) Access to the AI tools your team approves for this program. Codex currently starts at chatgpt.com/codex with a supported ChatGPT plan and GitHub connection. Claude Code starts from the Anthropic Claude Code docs and may require Anthropic authentication or an API key depending on your setup.",
     whyThisComesNow:
       "We start here because Codex, Claude Code, and most serious AI coding workflows live around files, commands, and project output. If the terminal feels mysterious, every later week feels harder than it needs to. This week gives you basic control before asking you to supervise AI.",
     howThisConnectsToAI:
@@ -1184,6 +1185,7 @@ const curriculumEnhancementsByWeek: Record<number, WeekCurriculumEnhancement> = 
     ],
     recommendedResources: [
       {
+        type: "Read",
         label: "GitHub Docs: About Git",
         url: "https://docs.github.com/en/get-started/using-git/about-git"
       }
@@ -1222,7 +1224,7 @@ const curriculumEnhancementsByWeek: Record<number, WeekCurriculumEnhancement> = 
     howThisConnectsToAI:
       "Modern AI work is increasingly tool-specific. The skill is not just asking AI a question; it is deciding whether the task needs general reasoning, file awareness, command execution, or code changes.",
     whatYouWillDoNext: [
-      "Set up Codex: go to platform.openai.com, create or sign in to your account, add API access, and navigate to the Codex section.",
+      "Set up Codex: go to chatgpt.com/codex, sign in with your approved ChatGPT account, connect GitHub, and choose your recruiting-workspace repo.",
       "Type your first Codex prompt about a project question and observe how it differs from a chat answer.",
       "Compare a chat-style task with a coding-agent task on the same question.",
       "Ask a follow-up that forces the answer to become more grounded.",
@@ -1237,10 +1239,17 @@ const curriculumEnhancementsByWeek: Record<number, WeekCurriculumEnhancement> = 
     ],
     recommendedResources: [
       {
+        type: "Watch",
+        label: "OpenAI Academy: Introduction to Codex",
+        url: "https://academy.openai.com/public/videos/introduction-to-codex-2026-03-02"
+      },
+      {
+        type: "Do",
         label: "OpenAI Codex cloud docs",
         url: "https://platform.openai.com/docs/codex"
       },
       {
+        type: "Read",
         label: "Claude Code overview",
         url: "https://docs.anthropic.com/en/docs/claude-code/overview"
       }
@@ -1253,7 +1262,7 @@ const curriculumEnhancementsByWeek: Record<number, WeekCurriculumEnhancement> = 
     workedExample:
       "Scenario: you just created your recruiting-workspace repo and want to understand it. Weak prompt sent to chat AI (no repo): 'What is in my recruiting repo?' Weak answer: 'A typical recruiting repo contains job descriptions, candidate tracking spreadsheets, and process documents.' That could apply to any recruiter anywhere — it is not about your repo. Strong prompt sent to Codex (with repo connected): 'Read the files in this repo and tell me exactly what exists, what is missing, and what I should add to make this useful for sourcing and outreach work.' Strong answer: 'Your repo contains one file: README.md with no content. There are no playbooks, prompts, or workflow files yet. Based on what a recruiting workspace usually needs, I would suggest adding: a /prompts folder for reusable AI prompts, a /playbooks folder for step-by-step workflows, and a CLAUDE.md file for Claude Code context.' That is grounded — it reports what actually exists, not what typically exists.",
     guidedPractice: [
-      "Open platform.openai.com, connect your recruiting-workspace repo in Codex, and confirm it can see your files.",
+      "Open chatgpt.com/codex, connect your GitHub account if prompted, select your recruiting-workspace repo, and confirm Codex can see your files.",
       "Write one question you could answer with ChatGPT chat (no repo needed).",
       "Write one question that only Codex can answer well because it requires reading your actual repo.",
       "Before moving on, ask yourself: Does this answer mention specific files in your repo? Could the exact same answer apply to any repo? Did it answer what you actually asked?",
@@ -1292,10 +1301,12 @@ const curriculumEnhancementsByWeek: Record<number, WeekCurriculumEnhancement> = 
     ],
     recommendedResources: [
       {
+        type: "Read",
         label: "OpenAI prompt engineering guide",
         url: "https://platform.openai.com/docs/guides/prompt-engineering"
       },
       {
+        type: "Read",
         label: "Anthropic prompt engineering overview",
         url: "https://docs.anthropic.com/en/docs/build-with-claude/prompt-engineering/overview"
       }
@@ -1347,6 +1358,7 @@ const curriculumEnhancementsByWeek: Record<number, WeekCurriculumEnhancement> = 
     ],
     recommendedResources: [
       {
+        type: "Read",
         label: "OpenAI text generation guide",
         url: "https://platform.openai.com/docs/guides/text"
       }
@@ -1398,10 +1410,17 @@ const curriculumEnhancementsByWeek: Record<number, WeekCurriculumEnhancement> = 
     ],
     recommendedResources: [
       {
+        type: "Watch",
+        label: "OpenAI Academy: Introduction to Codex",
+        url: "https://academy.openai.com/public/videos/introduction-to-codex-2026-03-02"
+      },
+      {
+        type: "Do",
         label: "OpenAI Codex cloud docs",
         url: "https://platform.openai.com/docs/codex"
       },
       {
+        type: "Read",
         label: "OpenAI Codex announcement",
         url: "https://openai.com/index/introducing-codex/"
       }
@@ -1440,7 +1459,7 @@ const curriculumEnhancementsByWeek: Record<number, WeekCurriculumEnhancement> = 
       "Claude Code shows how AI becomes more useful when it is close to the working environment. Instead of pasting snippets into chat, you can ask for help inside the project context.",
     whatYouWillDoNext: [
       "Install Claude Code: run `npm install -g @anthropic-ai/claude-code` in your terminal.",
-      "Launch with `claude` and authenticate using your Anthropic API key from console.anthropic.com.",
+      "Launch with `claude` and follow the official authentication prompts from Claude Code.",
       "Navigate into your recruiting-workspace repo and ask Claude Code one question about it.",
       "Create a CLAUDE.md file in your repo root — this gives Claude Code persistent context about your work and preferences.",
       "Add at least three lines to CLAUDE.md: what this repo is for, your role, and one rule you always want followed.",
@@ -1455,10 +1474,17 @@ const curriculumEnhancementsByWeek: Record<number, WeekCurriculumEnhancement> = 
     ],
     recommendedResources: [
       {
+        type: "Watch",
+        label: "Anthropic: Introducing Claude Code",
+        url: "https://www.youtube.com/watch?v=AJpK3YTTKZ4"
+      },
+      {
+        type: "Do",
         label: "Claude Code overview",
         url: "https://docs.anthropic.com/en/docs/claude-code/overview"
       },
       {
+        type: "Read",
         label: "Claude Code slash commands",
         url: "https://docs.anthropic.com/en/docs/claude-code/slash-commands"
       }
@@ -1469,10 +1495,10 @@ const curriculumEnhancementsByWeek: Record<number, WeekCurriculumEnhancement> = 
       "Compare Claude Code and Codex by task fit."
     ],
     workedExample:
-      "Installation walkthrough: run `npm install -g @anthropic-ai/claude-code`, then `claude` to launch. On first run it asks for your Anthropic API key — get one at console.anthropic.com. Navigate to your recruiting-workspace repo with `cd ~/recruiting-workspace` then run `claude`. Ask: 'What is in this repo and how is it structured?' Now create a CLAUDE.md in the repo root. A good CLAUDE.md for a recruiter might read: '# Recruiting Workspace\\n\\nThis is a personal AI productivity repo for a senior GTM recruiter. I use this to store prompts, playbooks, and automation scripts.\\n\\nRules:\\n- Always write prompts in plain English, not code\\n- Label any uncertain output as [UNVERIFIED]\\n- Prefer bullet points over paragraphs in all outputs'. Now ask Claude Code the same question — it reads CLAUDE.md first and shapes every response around your context.",
+      "Installation walkthrough: follow the official Claude Code overview, run the recommended install command, then launch with `claude` and complete the authentication prompts. Navigate to your recruiting-workspace repo with `cd ~/recruiting-workspace` then run `claude`. Ask: 'What is in this repo and how is it structured?' Now create a CLAUDE.md in the repo root. A good CLAUDE.md for a recruiter might read: '# Recruiting Workspace\\n\\nThis is a personal AI productivity repo for a senior GTM recruiter. I use this to store prompts, playbooks, and automation scripts.\\n\\nRules:\\n- Always write prompts in plain English, not code\\n- Label any uncertain output as [UNVERIFIED]\\n- Prefer bullet points over paragraphs in all outputs'. Now ask Claude Code the same question — it reads CLAUDE.md first and shapes every response around your context.",
     guidedPractice: [
       "Run `npm install -g @anthropic-ai/claude-code` and confirm with `claude --version`.",
-      "Launch `claude`, authenticate with your Anthropic API key, and confirm you can send a message.",
+      "Launch `claude`, complete the official authentication prompts, and confirm you can send a message.",
       "Navigate into your recruiting-workspace repo and ask Claude Code to describe what it sees.",
       "Create a CLAUDE.md file: run `touch CLAUDE.md`, open it in VS Code with `code .`, and write three lines: what the repo is for, your role, and one rule.",
       "Ask the same question again and notice how Claude Code's response changes with CLAUDE.md in place."
@@ -1511,6 +1537,7 @@ const curriculumEnhancementsByWeek: Record<number, WeekCurriculumEnhancement> = 
     ],
     recommendedResources: [
       {
+        type: "Do",
         label: "Claude Code slash commands and custom commands",
         url: "https://docs.anthropic.com/en/docs/claude-code/slash-commands"
       }
@@ -1561,6 +1588,7 @@ const curriculumEnhancementsByWeek: Record<number, WeekCurriculumEnhancement> = 
     ],
     recommendedResources: [
       {
+        type: "Do",
         label: "Claude Code MCP docs",
         url: "https://docs.anthropic.com/en/docs/claude-code/mcp"
       }
@@ -1571,10 +1599,10 @@ const curriculumEnhancementsByWeek: Record<number, WeekCurriculumEnhancement> = 
       "Describe the difference between read-only and write-capable MCP access."
     ],
     workedExample:
-      "Full MCP installation: Go to github.com/settings/tokens → Generate new token (classic) → check the 'repo' scope → copy the token. Then run: `claude mcp add github -e GITHUB_PERSONAL_ACCESS_TOKEN=[your-token] -- npx -y @modelcontextprotocol/server-github`. Verify: run `claude mcp list` and confirm 'github' appears. Now open Claude Code inside your recruiting-workspace repo and ask: 'List all files in this repo and summarize what each one is for.' The answer is grounded in your actual files — not generic advice. That is the difference between chat AI and connected AI.",
+      "Full MCP installation: Go to github.com/settings/tokens → Generate new token (classic) → check the narrowest repo access that covers your recruiting-workspace repo → copy the token. Then run: `claude mcp add github --env GITHUB_PERSONAL_ACCESS_TOKEN=[your-token] -- npx -y @modelcontextprotocol/server-github`. Verify: run `claude mcp list` and confirm 'github' appears. Now open Claude Code inside your recruiting-workspace repo and ask: 'List all files in this repo and summarize what each one is for.' The answer is grounded in your actual files — not generic advice. That is the difference between chat AI and connected AI.",
     guidedPractice: [
-      "Go to github.com/settings/tokens → Generate new token (classic) → check 'repo' scope → copy the token. A Personal Access Token is like a secure password you create just for Claude Code — the 'repo' scope means it will only be able to read and search your GitHub repositories, not your account settings or billing.",
-      "Run the MCP install command. It has four parts: `claude mcp add github` names the connection; `-e GITHUB_PERSONAL_ACCESS_TOKEN=[your-token]` passes your token securely; `--` separates Claude Code options from the server command; `npx -y @modelcontextprotocol/server-github` downloads and runs the MCP server. Copy the whole command, replace [your-token] with your actual token (no brackets), and run it. If you see 'command not found' for npx, Node.js is not installed — go to nodejs.org, install it, then retry.",
+      "Go to github.com/settings/tokens → Generate new token (classic) → choose the narrowest repo access that covers your recruiting-workspace repo → copy the token. A Personal Access Token is like a secure password you create just for Claude Code. Treat it as sensitive: do not paste it into Slack, screenshots, submissions, or the repo.",
+      "Run the MCP install command. It has four parts: `claude mcp add github` names the connection; `--env GITHUB_PERSONAL_ACCESS_TOKEN=[your-token]` passes your token as an environment variable; `--` separates Claude Code options from the server command; `npx -y @modelcontextprotocol/server-github` downloads and runs the MCP server. Copy the whole command, replace [your-token] with your actual token (no brackets), and run it. If you see 'command not found' for npx, Node.js is not installed — go to nodejs.org, install it, then retry.",
       "Run `claude mcp list` and confirm `github` appears in the list.",
       "Launch Claude Code inside your recruiting-workspace repo and ask it to list and describe all your files.",
       "Compare this grounded answer to what a chat tool would say with no repo access."
@@ -1599,7 +1627,7 @@ const curriculumEnhancementsByWeek: Record<number, WeekCurriculumEnhancement> = 
       "Modern AI work often involves parallel research, drafting, checking, and synthesis. The human operator coordinates context, assigns tasks, and owns final judgment.",
     whatYouWillDoNext: [
       "Open Claude Code in your recruiting-workspace repo.",
-      "Run a parallel subagent prompt: 'Use the Task tool to run these two tasks in parallel: Task 1 — summarize all files in this repo. Task 2 — review my CLAUDE.md and suggest three improvements. Report both results together.'",
+      "Run a delegation prompt: 'Use subagents if available to run these two tasks separately: Task 1 — summarize all files in this repo. Task 2 — review my CLAUDE.md and suggest three improvements. Report both results together.'",
       "Review the combined output and identify what each subagent found.",
       "Submit a screenshot of the output and a short reflection on what still required your judgment."
     ],
@@ -1612,6 +1640,7 @@ const curriculumEnhancementsByWeek: Record<number, WeekCurriculumEnhancement> = 
     ],
     recommendedResources: [
       {
+        type: "Read",
         label: "Claude Code subagents",
         url: "https://docs.anthropic.com/en/docs/claude-code/sub-agents"
       }
@@ -1622,7 +1651,7 @@ const curriculumEnhancementsByWeek: Record<number, WeekCurriculumEnhancement> = 
       "Know what still requires your own judgment after Claude Code reports back."
     ],
     workedExample:
-      "Actual subagent execution: Open Claude Code in your recruiting-workspace repo and type: 'Use the Task tool to run these two tasks in parallel: Task 1 — read every file in this repo and list what each one contains. Task 2 — review the CLAUDE.md file and suggest three improvements. Report both results together.' Claude Code spawns two subagents simultaneously. Within seconds it reports back: a file inventory from Task 1 and improvement suggestions from Task 2. You defined the tasks, reviewed the output, and decided what to act on. That is delegation in practice — not a design document. Some tasks must go in order: research the company first, then draft outreach based on that research — these cannot run in parallel because step 2 depends on step 1.",
+      "Actual delegation execution: Open Claude Code in your recruiting-workspace repo and type: 'Use subagents if available to run these two tasks separately: Task 1 — read every file in this repo and list what each one contains. Task 2 — review the CLAUDE.md file and suggest three improvements. Report both results together.' Claude Code may delegate those tasks to separate subagents, or it may simulate the same separation in a single session depending on your setup. Either way, the learning goal is the same: you defined separate tasks, reviewed separate outputs, and decided what to act on. Some tasks must go in order: research the company first, then draft outreach based on that research — these cannot run in parallel because step 2 depends on step 1.",
     guidedPractice: [
       "Warm-up: before running two tasks at once, send one single-task prompt first. Ask Claude Code inside your repo: 'What files are in this repo and what does each one do?' Read the response. This is what one focused task looks like — now you will run two at the same time.",
       "Open Claude Code in your recruiting-workspace repo.",
@@ -1663,6 +1692,7 @@ const curriculumEnhancementsByWeek: Record<number, WeekCurriculumEnhancement> = 
     ],
     recommendedResources: [
       {
+        type: "Read",
         label: "OpenAI agent evals guide",
         url: "https://platform.openai.com/docs/guides/agent-evals"
       }
@@ -1715,6 +1745,7 @@ const curriculumEnhancementsByWeek: Record<number, WeekCurriculumEnhancement> = 
     ],
     recommendedResources: [
       {
+        type: "Read",
         label: "OpenAI Agents guide",
         url: "https://platform.openai.com/docs/guides/agents"
       }
@@ -1765,10 +1796,12 @@ const curriculumEnhancementsByWeek: Record<number, WeekCurriculumEnhancement> = 
     ],
     recommendedResources: [
       {
+        type: "Read",
         label: "OpenAI Codex cloud docs",
         url: "https://platform.openai.com/docs/codex"
       },
       {
+        type: "Read",
         label: "Claude Code overview",
         url: "https://docs.anthropic.com/en/docs/claude-code/overview"
       }

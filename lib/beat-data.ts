@@ -16,7 +16,9 @@ export type Week = {
 };
 
 export type Learner = {
+  id?: string;
   name: string;
+  email?: string;
   role: string;
   streak: number;
   completionRate: number;
@@ -355,7 +357,7 @@ export const weeks: Week[] = [
         title: "Run parallel subagents in Claude Code",
         duration: "20 min",
         format: "demo",
-        description: "Use Claude Code's Task tool to run two tasks in parallel and show how the combined output differs from a single sequential prompt."
+        description: "Use Claude Code subagents or clearly separated delegated tasks to show how scoped parallel work differs from one overloaded prompt."
       },
       {
         title: "Run and review parallel subagents in your repo",

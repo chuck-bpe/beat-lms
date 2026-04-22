@@ -58,6 +58,23 @@ export async function submitAssignment(formData: FormData) {
     throw error;
   }
 
+  const { error: progressError } = await supabase.from("progress").upsert(
+    {
+      user_id: profile.id,
+      module_id: moduleId,
+      lesson_id: lessonId,
+      status: "completed",
+      completed_at: new Date().toISOString()
+    },
+    {
+      onConflict: "user_id,lesson_id"
+    }
+  );
+
+  if (progressError) {
+    throw progressError;
+  }
+
   revalidatePath("/learner");
   revalidatePath("/admin");
 }
