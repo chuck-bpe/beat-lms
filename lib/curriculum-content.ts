@@ -37,10 +37,11 @@ export type WeekCurriculumContent = BaseWeekCurriculumContent & WeekCurriculumEn
 const baseCurriculumContentByWeek: Record<number, BaseWeekCurriculumContent> = {
   1: {
     summary:
-      "Week 1 removes fear from the terminal. The bar is not technical mastery; the bar is basic control: navigate, inspect, run, stop, and explain what happened.",
+      "This week you step behind the interface. You learn to control your computer from the terminal — the layer every app, dashboard, and AI tool is built on top of.",
     teachingOverview: [
-      "Most people avoid the terminal because it feels opaque, fragile, and easy to mess up. This week reframes it as a direct, readable interface for doing work. You do not need to become an engineer; you need enough comfort to know where you are, what you are running, and how to stop when something feels uncertain.",
-      "The core mental model is locate, inspect, run, and stop. If you can open the project, search for a term, inspect a file, start a process, stop it, and explain what happened in plain English, you have crossed the threshold that makes Codex and Claude Code much less intimidating."
+      "You have been using AI through interfaces that other people built. Lovable, ChatGPT, your ATS — someone wrote the code that makes those screens work. This week the mental shift is simple but real: you stop being only a user and start learning how builders work. The terminal is where that happens. It is not a developer tool. It is a direct line to your computer — no clicks, no menus, no waiting for a button to appear.",
+      "Think about the Lovable dashboard your team already uses. Someone built that by typing commands, managing files, and pushing code. They did not do it by clicking through folders. The terminal is the layer beneath every product you have ever loved. When you can navigate it at a basic level, AI tools like Codex and Claude Code stop feeling like magic boxes and start feeling like tools you actually control.",
+      "After this week, you will have a live GitHub repository that holds everything you build for the next 11 weeks. Every prompt, playbook, and skill file you create in this program lives there. When your company changes ATS — and it will — your repo comes with you. That is the real reason this week matters."
     ],
     lessonTakeaways: [
       "The terminal is a direct interface to your computer, not an engineer-only zone.",
@@ -136,10 +137,11 @@ const baseCurriculumContentByWeek: Record<number, BaseWeekCurriculumContent> = {
   },
   2: {
     summary:
-      "Week 2 is about tool selection. You will learn the difference between general chat AI and coding agents, then use one coding agent to investigate a real repo question.",
+      "This week you use Codex for the first time on your actual repo. You are not just prompting — you are directing construction. You review what it builds like an owner, not a spectator.",
     teachingOverview: [
-      "This week separates normal chat AI from coding-agent work. ChatGPT and Claude are excellent for drafting, comparing, summarizing, and thinking. Codex and Claude Code become more valuable when the work depends on files, commands, repo context, or changes that need review.",
-      "Your goal is not to pick a favorite tool. It is to develop judgment. By the end of this week you should be able to say why a task belongs in chat, Codex, or Claude Code, and test whether an answer is grounded in actual project files rather than just sounding confident."
+      "You have been using AI tools that answer questions. This week the mental shift is that Codex does not answer — it builds. You give it a task, it writes working files, and you decide whether to accept the result. That is a different relationship. The AI is not your editor. It is your contractor, and you are the client reviewing the work.",
+      "You probably use custom GPTs for recruiting. Custom GPTs answer questions. Codex builds things. The difference is the same as the difference between asking a colleague what the intake doc should include versus handing them a laptop and saying 'write it.' One is advice. The other is construction. This week you supervise construction for the first time.",
+      "After this week, you will understand what it means for AI to be grounded in your actual project. A chat tool guesses. Codex reads your real files. That distinction — grounded versus generic — becomes the most important quality check you run for the rest of this program."
     ],
     lessonTakeaways: [
       "Chat tools are best for brainstorming, drafting, summarizing, and comparison.",
@@ -229,10 +231,11 @@ const baseCurriculumContentByWeek: Record<number, BaseWeekCurriculumContent> = {
   },
   3: {
     summary:
-      "Week 3 upgrades prompting from vague conversation to task design. The focus is clear asks, real constraints, and output shapes that lead to action.",
+      "This week you stop writing prompts and start writing instructions. The quality of what AI builds depends entirely on the quality of what you give it — and vague asks produce vague results.",
     teachingOverview: [
-      "This week teaches that prompting is really task design. A good prompt does not just ask for help; it defines the task, gives context, states constraints, describes what done means, and specifies the output shape. That is what turns AI output from commentary into usable work.",
-      "This week you practice prompt surgery: taking vague asks and making them operational. The point is not to write fancy prompts. The point is to create prompts that another teammate could reuse and that a coding agent or chat tool can act on without guessing what you meant."
+      "You already write prompts. The mental shift this week is that prompts for agents are not questions — they are specifications. When you brief a candidate to a hiring manager, you do not say 'tell me what you think.' You give them the role, the criteria, the context, and what you need back. A good prompt works the same way. You are writing the spec, not asking a question.",
+      "Think about the last time an AI gave you something you could not use. Not because the AI was bad — because the ask was vague. 'Write outreach for this candidate' is not a task. It is a hope. A task says: three sentences, LinkedIn message, reference their current title, do not mention comp, warm and direct tone, return the message only. The second version leaves nothing to guess. That is what a prompt for an agent looks like.",
+      "After this week, you will have three prompts you can reuse — for chat, for Codex, and for a recurring recruiting workflow. Those are not just exercises. They are the beginning of your operating toolkit. Every strong prompt you write from here on is an asset."
     ],
     lessonTakeaways: [
       "Strong prompts are built from task, context, constraints, definition of done, and output format.",
@@ -321,10 +324,11 @@ const baseCurriculumContentByWeek: Record<number, BaseWeekCurriculumContent> = {
   },
   4: {
     summary:
-      "Week 4 teaches review discipline. You will learn to inspect AI outputs for grounding, usefulness, constraints, and risk instead of rewarding polish alone.",
+      "This week you build the habit that separates a strong AI operator from a passive one: review. AI is confident. That does not mean it is right. You learn a five-question checklist that catches most problems before they cause damage.",
     teachingOverview: [
-      "This week builds the habit that separates strong operators from passive AI users: review. Polished output can still be wrong, incomplete, ungrounded, or unsafe. You need a simple way to inspect work without becoming slow or paranoid.",
-      "The core practice is a lightweight review loop: check grounding, check completeness, check constraints, check usability, and check risk. Then write a targeted revision prompt. By the end of this week you should know that review and revision are part of the workflow — not a sign that the tool failed, but a sign that you are operating it correctly."
+      "AI does not flag its own errors. It produces polished, confident-sounding output whether the underlying answer is correct or invented. That is not a flaw — it is how the technology works. The mental shift this week is that review is not a sign the tool failed. It is proof you are using it correctly. Accepting output without checking is the flaw.",
+      "You have probably accepted AI output that was wrong. It sounded right. It was formatted cleanly. There were no obvious red flags. And then you forwarded it to a hiring manager, or used it in a brief, and someone caught something you missed. That is the moment this week is designed to prevent. The five-question checklist — grounded, complete, constraints followed, usable, risk — takes under two minutes and catches the majority of real problems.",
+      "After this week, review becomes automatic. You will not slow down. You will just ask better questions before you send anything. That habit makes everything you build later — skills, agents, connected workflows — significantly safer to operate."
     ],
     lessonTakeaways: [
       "Polished bad output is more dangerous than obviously bad output because it passes a quick scan.",
@@ -414,10 +418,11 @@ const baseCurriculumContentByWeek: Record<number, BaseWeekCurriculumContent> = {
   },
   5: {
     summary:
-      "Week 5 is your first real Codex operator week. You will scope a real task, use Codex on it, and review what came back like an owner rather than a spectator.",
+      "This week you use Codex as an investigator. You ask it to trace a workflow, map what is in your project, or surface what you do not know — and you review what it finds like someone who owns the answer.",
     teachingOverview: [
-      "This week moves from concept to real Codex usage. You will scope one small task, let Codex investigate or change something, and then inspect the result. The main lesson is that Codex is not a magic button; it is a workflow for asking, reviewing, iterating, and deciding.",
-      "The standard is ownership. By the end of this week you should know what you asked Codex to do, what files or behavior were involved, what changed, what remains uncertain, and what you would verify before trusting the result."
+      "You have been building things. This week the mental shift is from builder to investigator. Codex is not just for writing files — it is for understanding what is already there. You can ask it to trace how a process works, identify what is missing from your repo, or explain what a piece of workflow actually does. That is a different kind of task, and it requires a different kind of review.",
+      "Think about how you currently research a company before sourcing. You open tabs, read LinkedIn profiles, piece together signals. Codex can do the equivalent for your project files. Point it at your repo and ask it to tell you what is actually there, what is connected to what, and where the gaps are. The result is a map — and maps only matter if you check them against reality.",
+      "After this week, you know how to use Codex not just to build but to understand. That makes you a better operator of everything that comes after. When you ask Claude Code to work in your project in Week 6, you will already know what is in there."
     ],
     lessonTakeaways: [
       "Codex is most valuable as a workflow for investigation, change, review, and delegation.",
@@ -506,10 +511,11 @@ const baseCurriculumContentByWeek: Record<number, BaseWeekCurriculumContent> = {
   },
   6: {
     summary:
-      "Week 6 makes Claude Code concrete as a terminal-native operating environment. You will use it on a real task and compare the fit honestly against Codex.",
+      "This week you install Claude Code and use it inside your actual project. Claude Code is not a chatbot you paste into — it reads your files, knows your context, and works alongside you in the terminal.",
     teachingOverview: [
-      "This week introduces Claude Code as a terminal-native way to work inside a project. The goal is for you to experience firsthand how file context, command output, and project structure change the quality of AI help.",
-      "Compare tools by fit, not by hype. Claude Code tends to feel strongest when terminal context and project navigation matter. Codex may feel stronger for other agentic workflows. The durable skill is knowing how to choose, supervise, and review the tool for the task at hand."
+      "You have used Codex through a browser. Claude Code is different. The mental shift is this: Claude Code lives inside your project. It reads your files before every response. It knows what is in your CLAUDE.md. It sees your terminal output. Instead of pasting snippets into a chat window and hoping the AI understands the context, the context is already there. That changes what you can ask for and how much you can trust the answer.",
+      "CLAUDE.md is the key. It is a plain text file you create in your repo root. Think of it as a permanent briefing document for your AI partner. You write it once and update it whenever something changes. What this repo is for. Your role. Rules you always want followed. Every Claude Code session starts by reading it. That is what makes it feel like an ongoing relationship with a project-aware tool — not a fresh conversation every time.",
+      "After this week, you have two serious coding-agent workflows. Codex for browser-based, GitHub-connected tasks. Claude Code for terminal-native, file-aware work inside the project. The skill is not picking a winner — it is knowing which one fits the job you have in front of you."
     ],
     lessonTakeaways: [
       "Claude Code is strongest when actual project files, commands, and context matter.",
@@ -598,10 +604,11 @@ const baseCurriculumContentByWeek: Record<number, BaseWeekCurriculumContent> = {
   },
   7: {
     summary:
-      "Week 7 is about compounding. You will learn how to convert repeated work into reusable prompts, checklists, skills, or operating playbooks instead of starting fresh every time.",
+      "This week you turn your best work into commands. Every strong prompt you have rebuilt from scratch is IP you are leaving on the floor. Skill files make it permanent.",
     teachingOverview: [
-      "This week shifts you from one-off AI wins to reusable operating assets. If you write the same prompt three times, explain the same process repeatedly, or use the same review checklist often, that pattern should become a shared asset.",
-      "This week you practice deciding whether something should be a prompt, checklist, skill, or playbook. The best assets are narrow, named, clear about inputs and outputs, and easy for a teammate to use without extra explanation from you."
+      "You have been building good things one task at a time. The mental shift this week is from doing to systematizing. Every time you rebuild the same prompt from memory, every time you re-explain the same process, every time you run the same checklist manually — that is a system waiting to exist. Skill files in Claude Code are how you stop rebuilding and start reusing.",
+      "Think about how you handle intake calls. You probably have a mental pattern: the questions you always ask, the criteria you always push back on, the way you frame the role. That mental pattern is skill. If you put it in a skill file, your whole team runs the same intake process and the AI executes it with one command. That is the difference between your knowledge living in your head versus living in the repo.",
+      "After this week, your recruiting-workspace repo starts to feel like a real operating toolkit. Not just files — commands that execute your best thinking on demand. Every skill you add is IP you own and can take with you anywhere."
     ],
     lessonTakeaways: [
       "Reusable assets reduce ambiguity, inconsistency, and wasted time.",
@@ -690,10 +697,11 @@ const baseCurriculumContentByWeek: Record<number, BaseWeekCurriculumContent> = {
   },
   8: {
     summary:
-      "Week 8 moves from MCP theory to actual installation. You will install the GitHub MCP server, connect it to Claude Code, and run a real recruiting task through it. By the end of this week you have a live connected workflow, not a diagram.",
+      "This week you connect Claude Code to your actual GitHub repo. No more copy-pasting files into chat. The AI reads your real data directly. You install one tool, run one command, and see the difference immediately.",
     teachingOverview: [
-      "This week draws a hard line between describing MCP and using it. You will install the GitHub MCP server — a free, open-source tool that lets Claude Code read and search your GitHub repos directly. No copy-pasting. No switching tabs. The AI reads your actual repo and answers based on real content.",
-      "The practical lesson is that connected workflows are not harder than copy-paste — they are easier once set up. The risk conversation is equally important: when AI can read a system, it is grounded. When it can write, the stakes rise. This week is read-only, which is the right place to start."
+      "Right now, when you want AI to know something about your project, you copy it in. You switch tabs, find the file, paste the text, and hope the context window is large enough. MCP removes that bottleneck. The mental shift is from clipboard AI to connected AI. Instead of you acting as the middleman between your data and the model, the model has a direct channel to the real thing.",
+      "Think about the difference between describing a candidate to a hiring manager from memory versus handing them the resume. You describe what you remember. The resume contains what actually happened. MCP is the resume. This week you connect Claude Code to your GitHub repo, which means when you ask it about your project, it reads the actual files — not your description of them, not a cached version, the real content right now.",
+      "After this week, you understand the difference between a connected workflow and a copy-paste workflow. And you understand why write-capable connections require more care than read-only ones. Before you let AI change anything in a real system, you need review habits. You have those now."
     ],
     lessonTakeaways: [
       "MCP servers are installed in minutes with a single terminal command — no coding required.",
@@ -786,10 +794,11 @@ const baseCurriculumContentByWeek: Record<number, BaseWeekCurriculumContent> = {
   },
   9: {
     summary:
-      "Week 9 is about delegation and parallel work. You will learn to break bigger workflows into sensible agent tasks with clear inputs, outputs, and review boundaries.",
+      "This week you give AI two jobs at once. You split a workflow into parallel tasks, review both outputs separately, and synthesize the results yourself. You are the coordinator now.",
     teachingOverview: [
-      "This week you learn how to stop overloading a single prompt or agent with an entire messy workflow. Strong delegation starts by breaking work into pieces that are small enough to execute, review, and combine.",
-      "You will practice identifying which steps can run in parallel and which must remain sequential. Your job as the operator is context control: define the task, specify inputs and outputs, preserve review boundaries, and synthesize the final result yourself."
+      "You have been giving AI one task at a time. The mental shift this week is that you are the coordinator of multiple tasks, not the executor of one. That is what it means to become an agent operator. You define the work, assign it, review what comes back, and decide what to act on. The AI is not thinking for you — it is executing for you.",
+      "Think about how you manage a search. You do not research the company, draft the sourcing strategy, and write the first outreach message in one sitting. You break it into steps. Some you can hand off while you work on something else. Others must happen in order — you cannot draft outreach before you know what the role actually requires. The same logic applies to parallel agents. Some tasks can run at the same time. Others must wait for a prior result.",
+      "After this week, you will have run your first real parallel delegation in Claude Code. Two tasks, two outputs, one review from you. That is the foundation of everything more complex that comes later — and it only works if you own the synthesis at the end."
     ],
     lessonTakeaways: [
       "Bad delegation usually fails because the work was badly scoped, not because agents are useless.",
@@ -878,10 +887,11 @@ const baseCurriculumContentByWeek: Record<number, BaseWeekCurriculumContent> = {
   },
   10: {
     summary:
-      "Week 10 introduces evals and guardrails as practical quality systems. You will learn to measure workflows with something stronger than intuition.",
+      "This week you move from hoping your AI workflows work to knowing they work. Evals are repeatable quality tests. Guardrails prevent known failures before they happen. Together they are the difference between operating on luck and operating with confidence.",
     teachingOverview: [
-      "This week teaches that reliable AI work needs a quality system. If you cannot evaluate a workflow, you cannot improve it reliably. Evals do not need to be complicated; they need to be repeatable enough to reveal whether the output is good.",
-      "You will build a mini rubric and guardrails for one workflow. The aim is to make your judgment visible and consistent: what counts as correct, useful, constrained, clear, and reviewable. That makes future automation safer and easier to improve."
+      "For nine weeks you have been trusting your judgment on whether an AI output was good. That works for individual tasks. It breaks down when workflows run repeatedly, when multiple people use the same skill file, or when the stakes are higher than a single message. The mental shift this week is from operator to engineer. An engineer does not just run the machine — they build in tests.",
+      "An eval is a question you can answer with yes or no, with clear evidence for each. Not 'is this good' — that is a vibe. Try 'does this message reference the candidate's specific current role or company — yes with a quote, or no.' Two reviewers should reach the same answer. If they do not, the criterion is too vague. A guardrail is different. It lives in the prompt or the process, not the rubric. It prevents a known failure before the output is even generated.",
+      "After this week, you have a quality system for at least one recurring workflow. That system makes the skills and agents you build in Week 11 significantly safer to share and deploy. A build without a quality system is a one-person experiment. A build with a quality system is something the team can trust."
     ],
     lessonTakeaways: [
       "If a workflow cannot be evaluated, it cannot be improved reliably.",
@@ -970,10 +980,11 @@ const baseCurriculumContentByWeek: Record<number, BaseWeekCurriculumContent> = {
   },
   11: {
     summary:
-      "Week 11 is your first real build week. You will design a small, bounded, reviewable, and visibly useful recruiting micro-agent.",
+      "This week you build something real. Not a demo, not a concept — a working skill file committed to your repo, solving a recruiting problem you actually have. Narrow scope. Honest limits. Real value.",
     teachingOverview: [
-      "This week turns your previous skills into a small practical build. The best first micro-agent is not the most impressive one; it is the one that solves a real recurring problem with clear inputs, outputs, review, and value.",
-      "Keep your scope tight. A useful sourcing helper, research summarizer, outreach prep workflow, or note synthesis assistant is better than a sprawling agent nobody trusts. The standard is usefulness, reviewability, and adoption."
+      "Ten weeks of preparation end here. The mental shift is simple: stop learning about building and start building. The best first micro-agent is not the most impressive one. It is the most useful one — the one that solves a real problem you face every week, with inputs you can define, outputs you can review, and limits you can name honestly.",
+      "Narrow scope is not a limitation — it is the strategy. A skill that does one thing reliably is more valuable than a skill that attempts five things and fails on three. The sourcing intake brief that takes 45 minutes manually and runs in 5 with your skill file — that is a win the team can see. Start there. Version two can do more once version one is trusted.",
+      "After this week, you have a skill file committed to your repo. That is the deliverable for Week 12. You will explain what it does, what it cannot do, and what you would improve in the next version. The most credible builds are the ones with honest limits — because honest limits are what make a tool safe to adopt."
     ],
     lessonTakeaways: [
       "The best first agent is small, reviewable, and tied to a real workflow.",
@@ -1065,11 +1076,11 @@ const baseCurriculumContentByWeek: Record<number, BaseWeekCurriculumContent> = {
   },
   12: {
     summary:
-      "Week 12 turns the program into an operating rhythm. You will present one real build and identify what habit or system you will actually carry forward.",
+      "The program ends. The practice does not. This week you present your build, name its limits honestly, and commit to one operating habit that changes how you work from here on.",
     teachingOverview: [
-      "This week closes the program by turning learning into operating behavior. You will present one real build or workflow, explain why it matters, show how it should be reviewed, and identify what you will continue doing after the program ends.",
-      "The final standard is not spectacle. A strong capstone is useful, bounded, explainable, reusable, and honest about its limitations. The difference between trying AI for 12 weeks and actually changing how you work comes down to one thing: did you take one real workflow and make it part of how you operate every day? A capstone that sits in a slide deck and never gets used again is worth nothing. A capstone that saves 20 minutes per req, every week, for the next year is worth everything.",
-      "The best outcome is a team that keeps shipping small, reviewed, AI-enabled improvements after the formal curriculum ends — not because they were told to, but because they have seen what works and built the habits to keep doing it."
+      "The mental shift this week is the last one: from program participant to AI practitioner. A practitioner is not someone who completed 12 weeks of training. It is someone who changed how they work. The capstone is not a test of what you learned — it is a commitment to how you will operate going forward.",
+      "The strongest capstone is not the most impressive one. It is the most honest one. A build that solves one real problem, runs reliably, has named limits, and comes with a documented operating habit is worth more than a sprawling demo that nobody uses next week. The teams that keep improving after programs like this end are the ones who ship small, reviewed, useful things — not the ones who tried to build something extraordinary.",
+      "After this week, you are not done building. You are just starting with a foundation nobody can take away. You know the terminal. You have skill files. You understand when AI is trustworthy and when it needs your judgment. You know how to make connected workflows and evaluate them honestly. That is not a certificate. That is a change in how you work."
     ],
     lessonTakeaways: [
       "A capstone should be useful, bounded, explainable, and reusable.",
@@ -1162,11 +1173,11 @@ const baseCurriculumContentByWeek: Record<number, BaseWeekCurriculumContent> = {
 const curriculumEnhancementsByWeek: Record<number, WeekCurriculumEnhancement> = {
   1: {
     whatThisIs:
-      "The terminal is a text-based way to control your computer. Instead of clicking through folders and apps, you type short commands. In this program, you use it for safe basics: finding where you are, seeing what files exist, creating a Git repository, and pushing it to GitHub.\n\nWhat you will need before starting this program: (1) A Mac or PC — Mac Terminal is built in; Windows users install Git Bash free at gitforwindows.org. (2) A free GitHub account at github.com. (3) Node.js installed — free at nodejs.org (this also installs npm and npx, which you need later). (4) VS Code installed — free at code.visualstudio.com. (5) Access to the AI tools your team approves for this program. Codex currently starts at chatgpt.com/codex with a supported ChatGPT plan and GitHub connection. Claude Code starts from the Anthropic Claude Code docs and may require Anthropic authentication or an API key depending on your setup.",
+      "You already know how to use AI. This week you learn how builders control their computers — the layer beneath every app, dashboard, and tool you use. Instead of clicking through menus, you type short commands. You will create a folder, initialize a Git repository, commit a file, and push it to GitHub.\n\nWhat you will need before starting this program: (1) A Mac or PC — Mac Terminal is built in; Windows users install Git Bash free at gitforwindows.org. (2) A free GitHub account at github.com. (3) Node.js installed — free at nodejs.org (this also installs npm and npx, which you need later). (4) VS Code installed — free at code.visualstudio.com. (5) Access to the AI tools your team approves for this program. Codex currently starts at chatgpt.com/codex with a supported ChatGPT plan and GitHub connection. Claude Code starts from the Anthropic Claude Code docs and may require Anthropic authentication or an API key depending on your setup.",
     whyThisComesNow:
-      "We start here because Codex, Claude Code, and most serious AI coding workflows live around files, commands, and project output. If the terminal feels mysterious, every later week feels harder than it needs to. This week gives you basic control before asking you to supervise AI.",
+      "This is week one because everything else in this program depends on it. Codex, Claude Code, GitHub, and every skill file you build live in a file system you navigate from the terminal. If this layer feels mysterious, every later week is harder than it needs to be.",
     howThisConnectsToAI:
-      "AI coding agents do not just chat. They inspect files, run commands, read errors, and propose changes. You need enough terminal fluency to understand what the agent is doing and avoid either freezing up or trusting it blindly. Your recruiting-workspace repo is also your portable toolkit. Every prompt, playbook, and skill file you build in this program lives here — separate from any ATS or tool your company uses. When your company changes ATS, your repo comes with you.",
+      "AI coding agents do not just answer questions. They read files, run commands, check errors, and propose changes — all inside the same terminal environment you are learning now. The more comfortable you are here, the more clearly you can see what the agent is actually doing instead of just trusting it.",
     whatYouWillDoNext: [
       "Confirm your setup: Node.js installed (`node -v`), VS Code installed (`code --version`), GitHub account created.",
       "Open Terminal, create a folder called `recruiting-workspace`, and move into it.",
@@ -1218,11 +1229,11 @@ const curriculumEnhancementsByWeek: Record<number, WeekCurriculumEnhancement> = 
   },
   2: {
     whatThisIs:
-      "This week is about choosing the right AI tool for the job. ChatGPT and Claude are conversational tools. Codex and Claude Code are coding agents that can work with actual project files, commands, and codebase context.",
+      "You use ChatGPT and Claude every day — but those tools do not know what is in your project files. Codex does. This week you connect Codex to your recruiting-workspace repo, give it a real task, and see what a file-aware AI answer actually looks like compared to a chat answer.",
     whyThisComesNow:
-      "After you understand the terminal at a basic level, you can understand why coding agents are different from ordinary chat. This prevents the common mistake of using one AI tool for every task.",
+      "You have your repo. Now you need someone to work in it. Codex is that tool — but only if you know the difference between a grounded answer and a confident-sounding guess. Last week built the repo. This week you put it to work.",
     howThisConnectsToAI:
-      "Modern AI work is increasingly tool-specific. The skill is not just asking AI a question; it is deciding whether the task needs general reasoning, file awareness, command execution, or code changes.",
+      "Codex reads your actual GitHub repository rather than guessing what might be in it. That one change — real file access versus inference — is the difference between an AI that helps you and an AI that performs helpfulness.",
     whatYouWillDoNext: [
       "Set up Codex: go to chatgpt.com/codex, sign in with your approved ChatGPT account, connect GitHub, and choose your recruiting-workspace repo.",
       "Type your first Codex prompt about a project question and observe how it differs from a chat answer.",
@@ -1281,11 +1292,11 @@ const curriculumEnhancementsByWeek: Record<number, WeekCurriculumEnhancement> = 
   },
   3: {
     whatThisIs:
-      "Prompting is the practice of giving AI a clear task. In this course, prompting is not about clever wording. It is about defining the work well enough that the AI can produce something usable.",
+      "You have been writing prompts since you first opened ChatGPT. This week you upgrade that skill. Prompts for AI agents need structure, constraints, and a defined output format — not just a question. You learn to write instructions that produce usable results every time, not just sometimes.",
     whyThisComesNow:
-      "Once you know which tool to use, the next skill is giving that tool a good task. Weak prompts create vague outputs. Strong prompts make the expected work, context, constraints, and output format clear.",
+      "You know which tool to use and how to run it. The missing piece is giving it clear enough instructions that you do not have to run it three times to get something useful. Strong prompts make everything from here on faster.",
     howThisConnectsToAI:
-      "AI tools are powerful but literal in the wrong ways. If you leave out the audience, constraints, source material, definition of done, or output format, the model fills those gaps with assumptions.",
+      "AI fills in whatever you leave blank — and it does so confidently. If you do not specify the output format, tone, constraints, or definition of done, the model invents answers to all of those. Prompt design is how you stop that from happening.",
     whatYouWillDoNext: [
       "Look at weak prompts and identify what is missing.",
       "Rewrite prompts with task, context, constraints, definition of done, and output format.",
@@ -1338,11 +1349,11 @@ const curriculumEnhancementsByWeek: Record<number, WeekCurriculumEnhancement> = 
   },
   4: {
     whatThisIs:
-      "This week is about reviewing AI output using a five-question checklist you will keep and use for the rest of the program. The five questions are: (1) Is it grounded — does the answer cite real evidence or files, or is it guessing? (2) Is it complete — does it actually answer what was asked, or does it stop short? (3) Does it follow constraints — did the AI honor the rules you gave it, or did it quietly ignore them? (4) Is it usable — can you act on this without major rework? (5) What is the risk — what could go wrong if this answer is wrong or incomplete? Run these five questions on every significant AI output before you use it.",
+      "You have been generating good AI output for weeks. This week you learn to judge it. The five-question checklist you build here — grounded, complete, constraints followed, usable, risk — is the review system you will use for the rest of this program and beyond. It takes under two minutes. It catches most real problems before they reach a hiring manager.",
     whyThisComesNow:
-      "After you can ask better questions, you need to know how to judge the answers. AI often sounds confident even when it is wrong or incomplete. Review discipline prevents speed from turning into sloppy work.",
+      "You can now pick the right tool and write a clear prompt. But a clear prompt does not guarantee a correct answer. Before you go further and build reusable assets and agents, you need a reliable way to know whether what came back is actually trustworthy.",
     howThisConnectsToAI:
-      "The most valuable AI users are not the ones who accept answers fastest. They are the ones who can quickly spot weak assumptions, missing evidence, hallucinations, and risky recommendations.",
+      "AI does not tell you when it is wrong. It formats its errors the same way it formats its correct answers — confidently and cleanly. The review checklist exists because confidence is not evidence. You need a habit, not a vibe.",
     whatYouWillDoNext: [
       "Generate one AI output.",
       "Review it using a simple quality checklist.",
@@ -1390,11 +1401,11 @@ const curriculumEnhancementsByWeek: Record<number, WeekCurriculumEnhancement> = 
   },
   5: {
     whatThisIs:
-      "This week introduces Codex as a coding-agent workflow. Codex can help investigate code, explain behavior, propose changes, and support real project work when the task is scoped clearly.",
+      "You have used Codex to look at a file and answer a question. This week you use it to figure something out. You ask Codex to investigate your project — trace what is there, explain how something works, or surface what is missing — and you review what it finds before acting on any of it.",
     whyThisComesNow:
-      "You first needed terminal confidence, tool selection, prompting, and review discipline. Now you are ready to ask Codex to do real project work without treating it like magic.",
+      "You have four weeks of foundation: terminal basics, tool selection, prompt design, and review discipline. You are ready to put Codex on a real scoped task and hold it accountable for what it produces. This week is where operator habits become real.",
     howThisConnectsToAI:
-      "Codex represents the shift from AI as a writing assistant to AI as a supervised worker. Your job is to define the task, inspect the work, and decide what is safe to accept.",
+      "Asking AI to investigate a system rather than just answer a question is a different skill. It requires you to scope the task carefully, verify which claims are grounded in real files, and separate what Codex confirmed from what it assumed.",
     whatYouWillDoNext: [
       "Choose one small project task.",
       "Ask Codex to investigate or improve it.",
@@ -1452,11 +1463,11 @@ const curriculumEnhancementsByWeek: Record<number, WeekCurriculumEnhancement> = 
   },
   6: {
     whatThisIs:
-      "This week introduces Claude Code as a terminal-native coding agent. It works inside a project and can use files, commands, context, memory, and tool connections to help complete coding tasks.",
+      "You have been using AI that knows nothing about your project unless you paste it in. Claude Code is different — it runs inside your project, reads your files, and checks your CLAUDE.md before every response. This week you install it, set it up, and use it on a real task inside your recruiting-workspace repo.",
     whyThisComesNow:
-      "Claude Code makes more sense now that you understand terminal basics and Codex-style agent supervision. This week gives you a second serious coding-agent workflow and teaches comparison by task fit.",
+      "After five weeks using browser-based tools, you are ready for a tool that lives inside the work. You understand terminal basics, you have a real repo, you have review habits. Claude Code is the natural next step — and CLAUDE.md means every session starts with full context instead of starting from zero.",
     howThisConnectsToAI:
-      "Claude Code shows how AI becomes more useful when it is close to the working environment. Instead of pasting snippets into chat, you can ask for help inside the project context.",
+      "Claude Code reads your CLAUDE.md and your actual project files before it answers anything. That context — your rules, your role, your project structure — is what makes the difference between a generic answer and one that actually fits your situation.",
     whatYouWillDoNext: [
       "Install Claude Code: run `npm install -g @anthropic-ai/claude-code` in your terminal.",
       "Launch with `claude` and follow the official authentication prompts from Claude Code.",
@@ -1516,11 +1527,11 @@ const curriculumEnhancementsByWeek: Record<number, WeekCurriculumEnhancement> = 
   },
   7: {
     whatThisIs:
-      "This week is about turning repeated AI work into reusable team assets. A reusable asset might be a prompt, checklist, skill, playbook, or standard operating pattern. Your `/playbooks` folder in the repo becomes your portable recruiting toolkit: intake templates, sourcing checklists, outreach review prompts, candidate brief skills. Unlike prompts saved inside a chat tool or ATS, these travel with you regardless of what platform your company uses.",
+      "You repeat work. Every intake brief, every outreach pattern, every candidate summary framework — you have rebuilt these from scratch more times than you should have. This week you stop. You learn to turn repeated work into a skill file: a named, reusable command that runs your best thinking with a single slash and a few words of input.",
     whyThisComesNow:
-      "After you can use AI for individual tasks, the next step is making good work repeatable. This prevents you from reinventing the same prompt or process every time.",
+      "Six weeks in, you have real patterns worth preserving. You know how to prompt well, review critically, and use both Codex and Claude Code. Now you turn that knowledge into assets instead of habits that only exist in your head.",
     howThisConnectsToAI:
-      "AI quality improves when instructions, examples, and standards are reusable. Skills and playbooks help the team get more consistent outputs with less repeated explanation.",
+      "A Claude Code skill file is a Markdown file you save once and invoke forever. Claude Code reads it as a full instruction set every time you call it. Your skill files are the permanent record of what you have figured out — and unlike chat history, they do not disappear.",
     whatYouWillDoNext: [
       "Identify one recruiting workflow you repeat at least weekly.",
       "Decide whether it should be a prompt, checklist, skill, or playbook.",
@@ -1568,11 +1579,11 @@ const curriculumEnhancementsByWeek: Record<number, WeekCurriculumEnhancement> = 
   },
   8: {
     whatThisIs:
-      "MCP stands for Model Context Protocol — a standard way to connect AI tools like Claude Code to external systems like GitHub, Slack, Notion, or your ATS. An MCP server is a small program that runs in the background and gives Claude Code live access to a real system. This week you install one for the first time. This week has the single most technical step in the program — one terminal command. Take it slowly. If it works, you will have a live AI connection to your GitHub repo in under 5 minutes.",
+      "Every time you paste something into an AI chat to give it context, you are doing work the AI could do itself. MCP — Model Context Protocol — is the standard that removes that step. It gives Claude Code a live connection to a real system. This week you install the GitHub MCP server with one terminal command and ask Claude Code a question that requires reading your actual repo. This is the most technical step in the program. Take it slowly and follow the steps exactly.",
     whyThisComesNow:
-      "You now know terminal basics, tool selection, prompting, review, Codex, Claude Code, and reusable skills. MCP is the next layer: instead of manually pasting information into AI, the AI reads it directly. This is only safe to introduce now that you have review habits in place.",
+      "You have seven weeks of foundation. You know the terminal, you can review outputs, you have skill files running, and you understand what it means to be a grounded answer versus a guess. Connected workflows are only safe once you have those habits. Now you do.",
     howThisConnectsToAI:
-      "Every AI answer is only as good as its context. MCP removes the bottleneck of copy-pasting by giving the AI a live connection to the real information it needs. GitHub MCP means Claude Code can read your repos. A Slack MCP would mean it could read channel history. A Notion MCP would mean it could read your notes.",
+      "An AI answer is only as good as the context it has. Right now you are the context bridge — copy-pasting files into chat. MCP replaces you in that role. Claude Code reads the real source directly, which means every answer is grounded in what is actually there, not in what you remembered to include.",
     whatYouWillDoNext: [
       "Get a GitHub Personal Access Token: go to github.com → click your profile photo (top right) → Settings → Developer settings (bottom of left sidebar) → Personal access tokens → Tokens (classic) → Generate new token (classic) → name it 'claude-code' → check only the 'repo' checkbox → click Generate token → copy the token immediately (you only see it once).",
       "Install the GitHub MCP server with one terminal command using `claude mcp add`.",
@@ -1620,11 +1631,11 @@ const curriculumEnhancementsByWeek: Record<number, WeekCurriculumEnhancement> = 
   },
   9: {
     whatThisIs:
-      "This week is about running multiple AI tasks at once. Instead of loading one prompt with everything, you split the work into two smaller jobs and ask Claude Code to handle both at the same time. You review both results and decide what to do next. Developers call this 'parallel subagents' — think of it as giving Claude Code two clear jobs with separate outputs.",
+      "You have been giving AI one task at a time. This week you give it two at once. You split a workflow into two clearly defined jobs — separate inputs, separate outputs — ask Claude Code to run both, and then review the combined results and decide what to do with them. The key word is you: you still own the synthesis and the decision.",
     whyThisComesNow:
-      "Once you understand tools and connected workflows, you can start coordinating work across steps. Delegation is the bridge from using one AI tool to designing an AI-enabled workflow.",
+      "You have a connected workflow, reusable skills, and review habits. Those three things make delegation safe. Without them, parallel tasks compound errors faster than you can catch them. With them, you can start coordinating work instead of just executing it.",
     howThisConnectsToAI:
-      "Modern AI work often involves parallel research, drafting, checking, and synthesis. The human operator coordinates context, assigns tasks, and owns final judgment.",
+      "Running two agent tasks at once is only useful if the tasks are clearly scoped and you review each output before acting. This week you practice the decomposition and the synthesis — the two skills that separate a prompt writer from an agent operator.",
     whatYouWillDoNext: [
       "Open Claude Code in your recruiting-workspace repo.",
       "Run a delegation prompt: 'Use subagents if available to run these two tasks separately: Task 1 — summarize all files in this repo. Task 2 — review my CLAUDE.md and suggest three improvements. Report both results together.'",
@@ -1672,11 +1683,11 @@ const curriculumEnhancementsByWeek: Record<number, WeekCurriculumEnhancement> = 
   },
   10: {
     whatThisIs:
-      "This week introduces evals and guardrails. An eval is a repeatable way to judge output quality. A guardrail is a rule that prevents predictable failure.",
+      "You have been reviewing individual AI outputs. This week you build a system to review them consistently. An eval is a repeatable set of binary questions that tell you whether an output is good enough to use. A guardrail is a rule that blocks a known failure before the output is even generated. You build both for one real workflow.",
     whyThisComesNow:
-      "Before you design more serious automations, you need a way to measure whether outputs are good. Without evals, you rely on vibes, speed, or confidence.",
+      "Next week you build something real that other people might use. Before that, you need a way to know whether it works — not just when you run it in perfect conditions, but reliably. Evals give you that. They also make your Week 11 build significantly easier to trust.",
     howThisConnectsToAI:
-      "AI workflows improve when the team can test them against clear standards. Evals and guardrails make the difference between experimenting and operating reliably.",
+      "AI improves when you can measure it. Without an eval rubric, you cannot tell whether a skill file is getting better or worse over time. With one, you can test every version against the same criteria and catch regressions before they reach a hiring manager.",
     whatYouWillDoNext: [
       "Choose one recurring AI output.",
       "Define four or five criteria for a good result.",
@@ -1724,11 +1735,11 @@ const curriculumEnhancementsByWeek: Record<number, WeekCurriculumEnhancement> = 
   },
   11: {
     whatThisIs:
-      "This week is about designing a small recruiting micro-agent or automation. A micro-agent is a narrow helper that improves one repeated workflow without pretending to replace human judgment.",
+      "Everything in this program has been preparing you for this week. You write a real skill file that solves a real recruiting problem, test it inside Claude Code with an actual example, commit it to your repo, and document it clearly enough that a teammate could use it without asking you how.",
     whyThisComesNow:
-      "You now have enough foundation: terminal comfort, tool selection, prompting, review, reusable assets, connected workflows, delegation, and evals. That is the minimum base for building something useful safely.",
+      "You have ten weeks of foundation: terminal control, tool selection, prompt design, review discipline, Codex investigation, Claude Code, reusable skills, MCP connections, parallel delegation, and eval rubrics. That is exactly the toolkit you need to build something small and trustworthy. Nothing was wasted.",
     howThisConnectsToAI:
-      "AI becomes operational when it is embedded into a real workflow with clear inputs, outputs, review, and value. The best first build is small enough to trust and improve.",
+      "A skill file is AI made operational. It is not a chat conversation — it is a repeatable, invokable command that runs your best thinking every time. The value is not in the technology. It is in the specific recruiting judgment you encoded into the instructions.",
     whatYouWillDoNext: [
       "Identify one small recurring workflow you want to automate (sourcing intake, candidate brief, outreach review, etc.).",
       "Write a skill file as a Markdown file with: a one-sentence description, what input it needs, and what it should return.",
@@ -1776,11 +1787,11 @@ const curriculumEnhancementsByWeek: Record<number, WeekCurriculumEnhancement> = 
   },
   12: {
     whatThisIs:
-      "This week is the capstone. Learners present one useful workflow, build, playbook, prompt set, or micro-agent and explain how it should become part of the team’s operating rhythm. An operating habit is something you actually do every time — not a best practice on a slide. Three examples: running your /intake slash command every time a new req opens instead of starting from scratch, checking AI output with the 5-question checklist before forwarding it to a hiring manager, and updating CLAUDE.md with new rules whenever the team agrees on a new standard. The goal of the capstone is to commit to one habit like these that survives after the program ends.",
+      "You take the skill file you built in Week 11 and present it as a real operating artifact: what problem it solves, what value it creates, what it cannot do, and what you would improve next. Then you commit to one operating habit — something you will do every time a specific trigger happens, not a best practice on a slide. The program ends. The habit does not.",
     whyThisComesNow:
-      "The final week turns learning into adoption. The point is not to show off. The point is to prove that you can use AI responsibly to improve real work.",
+      "Eleven weeks of building lead here. The capstone is not a final exam — it is a transition. You are not proving what you know. You are committing to what you will keep doing. That is the only version of this week that matters.",
     howThisConnectsToAI:
-      "AI capability only matters if it changes how the team works. The capstone connects tools, judgment, review, and workflow design into one practical artifact.",
+      "AI tools only change how you work if you integrate them into specific moments in your workflow. A capstone that defines a trigger and a response — ‘every time a req opens, I run /intake before I write a search string’ — is a workflow change. Everything else is just a demo.",
     whatYouWillDoNext: [
       "Choose one real workflow or build from the program.",
       "Prepare a short explanation of the problem, solution, value, and limits.",
