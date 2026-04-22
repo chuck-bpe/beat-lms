@@ -10,7 +10,6 @@ export type MCQQuestion = {
 };
 
 type QuizFormProps = {
-  userId: string;
   weekNumber: number;
   questions: MCQQuestion[];
   existingResponse?: {
@@ -20,7 +19,7 @@ type QuizFormProps = {
   } | null;
 };
 
-export function QuizForm({ userId, weekNumber, questions, existingResponse }: QuizFormProps) {
+export function QuizForm({ weekNumber, questions, existingResponse }: QuizFormProps) {
   const [selectedAnswers, setSelectedAnswers] = useState<Record<number, number>>(
     existingResponse?.answers ?? {}
   );
@@ -42,16 +41,12 @@ export function QuizForm({ userId, weekNumber, questions, existingResponse }: Qu
       return;
     }
 
-    const computed = questions.reduce((acc, q, i) => {
-      return acc + (selectedAnswers[i] === q.correctIndex ? 1 : 0);
-    }, 0);
-
     setSaving(true);
     setError(null);
 
     try {
-      await saveQuizResponse(userId, weekNumber, computed, total, selectedAnswers);
-      setScore(computed);
+      const { score: serverScore } = await saveQuizResponse(weekNumber, selectedAnswers);
+      setScore(serverScore);
       setSubmitted(true);
     } catch {
       setError("Failed to save your quiz. Please try again.");

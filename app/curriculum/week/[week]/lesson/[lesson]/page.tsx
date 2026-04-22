@@ -364,7 +364,6 @@ export default async function LessonPage({ params }: LessonPageProps) {
         <p className="eyebrow">Check Yourself</p>
         <h3>Use these questions to confirm the lesson landed</h3>
         <QuizForm
-          userId={profile.id}
           weekNumber={weekNumber}
           questions={curriculum.quizQuestions}
           existingResponse={existingQuizResponse}

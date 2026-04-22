@@ -5,10 +5,14 @@ BEAT is a web-based internal LMS for a recruiting team learning to use AI more e
 ## MVP direction
 
 - One admin and invite-only learners
-- Self-paced curriculum with shared baseline for everyone
-- Practical recruiting-first lessons with Claude and ChatGPT comparisons
+- Self-paced, 12-week curriculum: terminal basics → Codex → Claude Code → prompting → review → reusable skills → MCP → delegation → evals → micro-agents → capstone
+- Hands-on every week: real terminal commands, committed repos, skill files, and assignments
 - Progress dashboards, lightweight accountability, and Slack nudges
-- Prompt library, workflow gallery, and capstone delivery
+- Prompt library, workflow gallery, and capstone operating habit delivery
+
+## Required Supabase setup
+
+Run `/supabase/migrations/20240101000000_quiz_responses.sql` in the Supabase SQL editor before the quiz feature will work.
 
 ## Recommended production stack
 

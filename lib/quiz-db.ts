@@ -1,5 +1,7 @@
 "use server";
 
+import { requireUser } from "@/lib/auth";
+import { getCurriculumContent } from "@/lib/curriculum-content";
 import { createClient } from "@/lib/supabase/server";
 
 export type QuizResponse = {
@@ -13,16 +15,24 @@ export type QuizResponse = {
 };
 
 export async function saveQuizResponse(
-  userId: string,
   weekNumber: number,
-  score: number,
-  total: number,
   answers: Record<number, number>
-): Promise<void> {
+): Promise<{ score: number; total: number }> {
+  const profile = await requireUser();
+  const curriculum = getCurriculumContent(weekNumber);
+
+  if (!curriculum) {
+    throw new Error(`No curriculum found for week ${weekNumber}`);
+  }
+
+  const questions = curriculum.quizQuestions;
+  const total = questions.length;
+  const score = questions.reduce((acc, q, i) => acc + (answers[i] === q.correctIndex ? 1 : 0), 0);
+
   const supabase = await createClient();
   const { error } = await supabase.from("quiz_responses").upsert(
     {
-      user_id: userId,
+      user_id: profile.id,
       week_number: weekNumber,
       score,
       total,
@@ -34,6 +44,8 @@ export async function saveQuizResponse(
   if (error) {
     throw error;
   }
+
+  return { score, total };
 }
 
 export async function getQuizResponse(

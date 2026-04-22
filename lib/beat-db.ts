@@ -30,9 +30,75 @@ export type PublishedWeek = Omit<Week, "lessons"> & {
   lessons: PublishedLesson[];
 };
 
+export type AdminWeek = PublishedWeek & {
+  isPublished: boolean;
+};
+
 export async function getPublishedWeeks(): Promise<Week[]> {
   const weeks = await getPublishedWeeksDetailed();
   return weeks.map(({ id: _id, ...week }) => week);
+}
+
+export async function getAllWeeksForAdmin(): Promise<AdminWeek[]> {
+  const supabase = await createClient();
+  const { data: modules, error: modulesError } = await supabase
+    .from("modules")
+    .select("id, week_number, title, theme, outcome, badge, is_published")
+    .order("week_number", { ascending: true });
+
+  if (modulesError) {
+    throw modulesError;
+  }
+
+  const moduleRows = (modules ?? []) as ModuleRow[];
+
+  if (moduleRows.length === 0) {
+    return [];
+  }
+
+  const { data: lessons, error: lessonsError } = await supabase
+    .from("lessons")
+    .select("id, module_id, title, format, duration, description, position")
+    .in(
+      "module_id",
+      moduleRows.map((module) => module.id)
+    )
+    .order("position", { ascending: true });
+
+  if (lessonsError) {
+    throw lessonsError;
+  }
+
+  const lessonRows = (lessons ?? []) as LessonRow[];
+
+  return moduleRows.map((module) => {
+    const canonicalWeek = canonicalWeeks.find((week) => week.week === module.week_number);
+    const moduleLessons = lessonRows
+      .filter((lesson) => lesson.module_id === module.id)
+      .sort((a, b) => a.position - b.position)
+      .map((lesson, index) => {
+        const canonicalLesson = canonicalWeek?.lessons[index];
+        return {
+          id: lesson.id,
+          title: canonicalLesson?.title || lesson.title || "",
+          duration: canonicalLesson?.duration || lesson.duration || "",
+          format: canonicalLesson?.format || lesson.format || "lesson",
+          description: canonicalLesson?.description || lesson.description || ""
+        };
+      });
+
+    return {
+      id: module.id,
+      week: module.week_number,
+      title: canonicalWeek?.title || module.title || "",
+      theme: canonicalWeek?.theme || module.theme || "",
+      outcome: canonicalWeek?.outcome || module.outcome || "",
+      badge: canonicalWeek?.badge || module.badge || "",
+      focus: canonicalWeek?.focus ?? [],
+      lessons: moduleLessons,
+      isPublished: module.is_published
+    };
+  });
 }
 
 export async function getPublishedWeeksDetailed(): Promise<PublishedWeek[]> {
@@ -78,20 +144,20 @@ export async function getPublishedWeeksDetailed(): Promise<PublishedWeek[]> {
 
         return {
           id: lesson.id,
-          title: lesson.title || canonicalLesson?.title || "",
-          duration: lesson.duration || canonicalLesson?.duration || "",
-          format: lesson.format || canonicalLesson?.format || "lesson",
-          description: lesson.description || canonicalLesson?.description || ""
+          title: canonicalLesson?.title || lesson.title || "",
+          duration: canonicalLesson?.duration || lesson.duration || "",
+          format: canonicalLesson?.format || lesson.format || "lesson",
+          description: canonicalLesson?.description || lesson.description || ""
         };
       });
 
     return {
       id: module.id,
       week: module.week_number,
-      title: module.title || canonicalWeek?.title || "",
-      theme: module.theme || canonicalWeek?.theme || "",
-      outcome: module.outcome || canonicalWeek?.outcome || "",
-      badge: module.badge || canonicalWeek?.badge || "",
+      title: canonicalWeek?.title || module.title || "",
+      theme: canonicalWeek?.theme || module.theme || "",
+      outcome: canonicalWeek?.outcome || module.outcome || "",
+      badge: canonicalWeek?.badge || module.badge || "",
       focus: canonicalWeek?.focus ?? [],
       lessons: moduleLessons
     };
