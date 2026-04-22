@@ -50,15 +50,16 @@ const baseCurriculumContentByWeek: Record<number, BaseWeekCurriculumContent> = {
       "Terminal fluency matters because coding agents rely on files, commands, and process output."
     ],
     demoSteps: [
-      "Create the workspace: `mkdir ~/recruiting-workspace && cd ~/recruiting-workspace`.",
-      "Initialize Git: `git init`, then confirm with `git status`.",
-      "Create a file: `touch README.md`, then confirm with `ls`.",
-      "Stage and commit: `git add README.md` then `git commit -m 'first commit'`.",
-      "Review the history: `git log --oneline`.",
-      "Open in VS Code: `code .` — show how files appear visually.",
-      "Go to github.com → New repository → name it `recruiting-workspace` → copy the URL.",
-      "Push to GitHub: `git remote add origin [url]` then `git push -u origin main`.",
-      "Confirm: open the GitHub URL in a browser and see the repo live."
+      "`pwd` — 'print working directory.' Run it anytime you are lost. It shows your exact location in the file system, like /Users/yourname. This is the first command to remember.",
+      "`ls` — lists everything in the current folder. If the folder is empty, nothing prints. That is normal, not an error.",
+      "`mkdir recruiting-workspace` — creates a new folder. Run `ls` again and it appears. Folders do not exist until you make them.",
+      "`cd recruiting-workspace` — moves you into the folder you just created. Your prompt will change to reflect the new location. `cd ..` takes you one level back up.",
+      "`touch README.md` — creates an empty file. The file is blank — you can open and edit it in VS Code.",
+      "`git init` — activates version control inside this folder. Git starts watching for changes. Run `git status` immediately after to see what it reports.",
+      "`git add README.md` — stages the file. Git knows you want to save it, but has not saved it yet. Staging is the step between 'I changed this' and 'I committed this.'",
+      "`git commit -m 'first commit'` — saves a permanent snapshot. The message in quotes is the label for this snapshot. `git log --oneline` shows one line per commit so you can see your history.",
+      "`code .` — opens the entire current folder in VS Code. The dot means 'here.' This is how you will view and edit files throughout the program.",
+      "`git push -u origin main` — sends your local commits to GitHub. After this, your repo is live and accessible from any browser."
     ],
     assignmentDeliverable:
       "A submission with the commands you ran, one terminal screenshot showing `git log`, and a short reflection on what feels less intimidating now.",
@@ -1208,7 +1209,7 @@ const curriculumEnhancementsByWeek: Record<number, WeekCurriculumEnhancement> = 
       "Push your recruiting-workspace repo to GitHub so it is live and ready for Codex in Week 2."
     ],
     workedExample:
-      "Full session: `mkdir ~/recruiting-workspace` creates the folder; `cd ~/recruiting-workspace` enters it; `git init` activates version control; `touch README.md` creates a file; `ls` confirms it exists; `git add README.md` stages it; `git commit -m 'first commit'` saves a snapshot; `git log --oneline` shows the history; `code .` opens VS Code; on github.com create a new repo named `recruiting-workspace`, copy the URL, then run `git remote add origin [url]` and `git push -u origin main`. Open the URL in a browser — your repo is now live. This is the repo you will build on for the entire 12-week program.",
+      "Here is how a full session reads from start to finish — and what each line means. You open Terminal. `pwd` shows you are at /Users/yourname. `mkdir recruiting-workspace` creates the folder. `cd recruiting-workspace` puts you inside it. `git init` tells Git to watch this folder — you see 'Initialized empty Git repository.' `touch README.md` creates a blank file. `ls` confirms it is there. `git status` shows README.md as 'untracked' — Git sees it but has not been told to save it yet. `git add README.md` stages it — now Git is ready to save it. `git commit -m 'first commit'` saves the snapshot. `git log --oneline` shows one line: your commit hash and message. `code .` opens VS Code with the folder visible in the left sidebar. On github.com you create a repo named recruiting-workspace, copy the URL, run `git remote add origin [url]`, then `git push -u origin main`. You open the GitHub URL and your file is there. That is the full cycle — create, track, commit, push. You will do this every week.",
     guidedPractice: [
       "Run `pwd` and `ls` in your new folder; write one sentence explaining each output.",
       "Run `git init` then `git status`; describe what changed in the output.",
