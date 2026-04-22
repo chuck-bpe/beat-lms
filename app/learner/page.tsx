@@ -112,6 +112,17 @@ export default async function LearnerPage() {
         </article>
       </section>
 
+      <section className="card">
+        <p className="eyebrow">Before You Start</p>
+        <h3>Setup checklist</h3>
+        <p>Terminal, GitHub, Node.js, VS Code, and API keys — make sure you have everything before Week 1.</p>
+        <div className="cta-row">
+          <Link className="button secondary" href="/prerequisites">
+            View setup guide
+          </Link>
+        </div>
+      </section>
+
       <section className="split-grid">
         <article className="card">
           <p className="eyebrow">Week Guide</p>

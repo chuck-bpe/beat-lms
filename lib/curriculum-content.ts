@@ -1165,7 +1165,7 @@ const curriculumEnhancementsByWeek: Record<number, WeekCurriculumEnhancement> = 
     whyThisComesNow:
       "We start here because Codex, Claude Code, and most serious AI coding workflows live around files, commands, and project output. If the terminal feels mysterious, every later week feels harder than it needs to. This week gives you basic control before asking you to supervise AI.",
     howThisConnectsToAI:
-      "AI coding agents do not just chat. They inspect files, run commands, read errors, and propose changes. You need enough terminal fluency to understand what the agent is doing and avoid either freezing up or trusting it blindly.",
+      "AI coding agents do not just chat. They inspect files, run commands, read errors, and propose changes. You need enough terminal fluency to understand what the agent is doing and avoid either freezing up or trusting it blindly. Your recruiting-workspace repo is also your portable toolkit. Every prompt, playbook, and skill file you build in this program lives here — separate from any ATS or tool your company uses. When your company changes ATS, your repo comes with you.",
     whatYouWillDoNext: [
       "Confirm your setup: Node.js installed (`node -v`), VS Code installed (`code --version`), GitHub account created.",
       "Open Terminal, create a folder called `recruiting-workspace`, and move into it.",
@@ -1490,7 +1490,7 @@ const curriculumEnhancementsByWeek: Record<number, WeekCurriculumEnhancement> = 
   },
   7: {
     whatThisIs:
-      "This week is about turning repeated AI work into reusable team assets. A reusable asset might be a prompt, checklist, skill, playbook, or standard operating pattern.",
+      "This week is about turning repeated AI work into reusable team assets. A reusable asset might be a prompt, checklist, skill, playbook, or standard operating pattern. Your `/playbooks` folder in the repo becomes your portable recruiting toolkit: intake templates, sourcing checklists, outreach review prompts, candidate brief skills. Unlike prompts saved inside a chat tool or ATS, these travel with you regardless of what platform your company uses.",
     whyThisComesNow:
       "After you can use AI for individual tasks, the next step is making good work repeatable. This prevents you from reinventing the same prompt or process every time.",
     howThisConnectsToAI:
@@ -1541,13 +1541,13 @@ const curriculumEnhancementsByWeek: Record<number, WeekCurriculumEnhancement> = 
   },
   8: {
     whatThisIs:
-      "MCP stands for Model Context Protocol — a standard way to connect AI tools like Claude Code to external systems like GitHub, Slack, Notion, or your ATS. An MCP server is a small program that runs in the background and gives Claude Code live access to a real system. This week you install one for the first time.",
+      "MCP stands for Model Context Protocol — a standard way to connect AI tools like Claude Code to external systems like GitHub, Slack, Notion, or your ATS. An MCP server is a small program that runs in the background and gives Claude Code live access to a real system. This week you install one for the first time. This week has the single most technical step in the program — one terminal command. Take it slowly. If it works, you will have a live AI connection to your GitHub repo in under 5 minutes.",
     whyThisComesNow:
       "You now know terminal basics, tool selection, prompting, review, Codex, Claude Code, and reusable skills. MCP is the next layer: instead of manually pasting information into AI, the AI reads it directly. This is only safe to introduce now that you have review habits in place.",
     howThisConnectsToAI:
       "Every AI answer is only as good as its context. MCP removes the bottleneck of copy-pasting by giving the AI a live connection to the real information it needs. GitHub MCP means Claude Code can read your repos. A Slack MCP would mean it could read channel history. A Notion MCP would mean it could read your notes.",
     whatYouWillDoNext: [
-      "Get a GitHub Personal Access Token at github.com/settings/tokens (takes 2 minutes, free).",
+      "Get a GitHub Personal Access Token: go to github.com → click your profile photo (top right) → Settings → Developer settings (bottom of left sidebar) → Personal access tokens → Tokens (classic) → Generate new token (classic) → name it 'claude-code' → check only the 'repo' checkbox → click Generate token → copy the token immediately (you only see it once).",
       "Install the GitHub MCP server with one terminal command using `claude mcp add`.",
       "Run `claude mcp list` to confirm the connection.",
       "Ask Claude Code a question that requires reading your actual GitHub repo and verify the answer is grounded."
@@ -1574,7 +1574,7 @@ const curriculumEnhancementsByWeek: Record<number, WeekCurriculumEnhancement> = 
       "Full MCP installation: Go to github.com/settings/tokens → Generate new token (classic) → check the 'repo' scope → copy the token. Then run: `claude mcp add github -e GITHUB_PERSONAL_ACCESS_TOKEN=[your-token] -- npx -y @modelcontextprotocol/server-github`. Verify: run `claude mcp list` and confirm 'github' appears. Now open Claude Code inside your recruiting-workspace repo and ask: 'List all files in this repo and summarize what each one is for.' The answer is grounded in your actual files — not generic advice. That is the difference between chat AI and connected AI.",
     guidedPractice: [
       "Go to github.com/settings/tokens → Generate new token (classic) → check 'repo' scope → copy the token. A Personal Access Token is like a secure password you create just for Claude Code — the 'repo' scope means it will only be able to read and search your GitHub repositories, not your account settings or billing.",
-      "Run the MCP install command in your terminal, substituting your actual token.",
+      "Run the MCP install command. It has four parts: `claude mcp add github` names the connection; `-e GITHUB_PERSONAL_ACCESS_TOKEN=[your-token]` passes your token securely; `--` separates Claude Code options from the server command; `npx -y @modelcontextprotocol/server-github` downloads and runs the MCP server. Copy the whole command, replace [your-token] with your actual token (no brackets), and run it. If you see 'command not found' for npx, Node.js is not installed — go to nodejs.org, install it, then retry.",
       "Run `claude mcp list` and confirm `github` appears in the list.",
       "Launch Claude Code inside your recruiting-workspace repo and ask it to list and describe all your files.",
       "Compare this grounded answer to what a chat tool would say with no repo access."
@@ -1592,7 +1592,7 @@ const curriculumEnhancementsByWeek: Record<number, WeekCurriculumEnhancement> = 
   },
   9: {
     whatThisIs:
-      "This week is about delegation: breaking bigger workflows into smaller AI-assisted tasks. Instead of asking one agent to do everything, you define smaller jobs with clear inputs and outputs.",
+      "This week is about running multiple AI tasks at once. Instead of loading one prompt with everything, you split the work into two smaller jobs and ask Claude Code to handle both at the same time. You review both results and decide what to do next. Developers call this 'parallel subagents' — think of it as giving Claude Code two clear jobs with separate outputs.",
     whyThisComesNow:
       "Once you understand tools and connected workflows, you can start coordinating work across steps. Delegation is the bridge from using one AI tool to designing an AI-enabled workflow.",
     howThisConnectsToAI:
@@ -1617,13 +1617,14 @@ const curriculumEnhancementsByWeek: Record<number, WeekCurriculumEnhancement> = 
       }
     ],
     learningObjectives: [
-      "Run a multi-step task using Claude Code's Task tool to execute parallel subagents.",
-      "Describe the difference between sequential and parallel task execution.",
-      "Review combined subagent output and identify where human judgment is still required."
+      "Run two tasks at the same time in Claude Code and review the combined output.",
+      "Identify which tasks can run simultaneously and which must happen in order.",
+      "Know what still requires your own judgment after Claude Code reports back."
     ],
     workedExample:
       "Actual subagent execution: Open Claude Code in your recruiting-workspace repo and type: 'Use the Task tool to run these two tasks in parallel: Task 1 — read every file in this repo and list what each one contains. Task 2 — review the CLAUDE.md file and suggest three improvements. Report both results together.' Claude Code spawns two subagents simultaneously. Within seconds it reports back: a file inventory from Task 1 and improvement suggestions from Task 2. You defined the tasks, reviewed the output, and decided what to act on. That is delegation in practice — not a design document. Some tasks must go in order: research the company first, then draft outreach based on that research — these cannot run in parallel because step 2 depends on step 1.",
     guidedPractice: [
+      "Warm-up: before running two tasks at once, send one single-task prompt first. Ask Claude Code inside your repo: 'What files are in this repo and what does each one do?' Read the response. This is what one focused task looks like — now you will run two at the same time.",
       "Open Claude Code in your recruiting-workspace repo.",
       "Write a parallel task prompt using 'Task 1' and 'Task 2' format and send it.",
       "Review the combined output — identify which task's answer you trust most and why.",
